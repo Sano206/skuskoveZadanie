@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    var table = $('#table_data').DataTable({
-            "bFilter": false,
-            'bInfo': false,
-            'paging': false,
-        }
-    )
+    // var table = $('#table_data').DataTable({
+    //         "bFilter": false,
+    //         'bInfo': false,
+    //         'paging': false,
+    //     }
+    // )
 
 
     $('.toggler').click((element) => {
@@ -15,11 +15,19 @@ $(document).ready(function () {
         //$('#modal-body').html("asdf")
     })
 
+    $('#type').change(() => {
+        if($('#type  option:selected').val() === "multiple"){
+            $('.option-div').css("display", "block")
+        }else{
+            $('.option-div').css("display", "none")
+
+        }
+    })
 
 
 });
 
-function changeTestState(id){
+function changeTestState(id) {
     console.log(id)
     $.ajax({
         url: "testController.php",    //the page containing php script
