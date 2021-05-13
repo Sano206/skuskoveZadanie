@@ -150,7 +150,7 @@ if ($_POST['login'] == 'student') {
         } else {
 
 
-            $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check user existence
+            $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check student existence
 
             $studentCheck->bindParam(":name", $name);
             $studentCheck->bindParam(":surname", $surname);
@@ -160,8 +160,8 @@ if ($_POST['login'] == 'student') {
                 var_dump($e);
             }
             $student = $studentCheck->fetchAll();
-            if (empty($student[0])) {    //create new user if non-existent
-                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)");
+            if (empty($student[0])) {
+                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)"); //create new user if non-existent
                 $stmt->bindParam(":name", $name);
                 $stmt->bindParam(":surname", $surname);
                 try {
@@ -175,10 +175,7 @@ if ($_POST['login'] == 'student') {
                     var_dump($e);
                 }
                 $student = $studentCheck->fetchAll();
-
             }
-
-
 
             $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
             $stmt->bindParam(":test_id", $test[0]["id"]);
@@ -192,7 +189,7 @@ if ($_POST['login'] == 'student') {
             if (!empty($alreadyTaken[0])) {
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
-                $_SESSION["testId"] = $test[0]["id"];
+                $_SESSION["test"] = $test[0];
                 header("location: index.php");
             } else {
                 $timestamp = date("G:i:s Y-m-d");
@@ -207,7 +204,7 @@ if ($_POST['login'] == 'student') {
                 }
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
-                $_SESSION["testId"] = $test[0]["id"];
+                $_SESSION["test"] = $test[0];
                 header("location: index.php");
             }
 
