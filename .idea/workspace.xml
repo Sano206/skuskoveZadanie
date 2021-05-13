@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="instructor reg + student login">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
+    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="student login fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/createTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/createTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +60,7 @@
       <updated>1620739713669</updated>
       <workItem from="1620739714795" duration="75000" />
       <workItem from="1620810675567" duration="1518000" />
-      <workItem from="1620890941631" duration="15669000" />
+      <workItem from="1620890941631" duration="18505000" />
     </task>
     <task id="LOCAL-00001" summary="instructor login first">
       <created>1620896846759</created>
@@ -80,7 +76,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620904080274</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="multiple tests support + activation / deactivation">
+      <created>1620909360989</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620909360989</updated>
+    </task>
+    <task id="LOCAL-00004" summary="student login fix">
+      <created>1620910994875</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620910994875</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +110,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="instructor login first" />
     <MESSAGE value="instructor reg + student login" />
-    <option name="LAST_COMMIT_MESSAGE" value="instructor reg + student login" />
+    <MESSAGE value="multiple tests support + activation / deactivation" />
+    <MESSAGE value="student login fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="student login fix" />
   </component>
 </project>

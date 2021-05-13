@@ -137,7 +137,7 @@ if ($_POST['login'] == 'student') {
 
     if (count($errors) == 0) {
 
-        $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code"); //Check code validity
+        $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code and active=1"); //Check code validity
         $stmt->bindParam(":code", $code);
         try {
             $stmt->execute();
@@ -150,18 +150,18 @@ if ($_POST['login'] == 'student') {
         } else {
 
 
-            $stmt = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check user existence
+            $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check student existence
 
-            $stmt->bindParam(":name", $name);
-            $stmt->bindParam(":surname", $surname);
+            $studentCheck->bindParam(":name", $name);
+            $studentCheck->bindParam(":surname", $surname);
             try {
-                $stmt->execute();
+                $studentCheck->execute();
             } catch (Exception $e) {
                 var_dump($e);
             }
-            $student = $stmt->fetchAll();
-            if (empty($student[0])) {    //create new user if non-existent
-                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)");
+            $student = $studentCheck->fetchAll();
+            if (empty($student[0])) {
+                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)"); //create new user if non-existent
                 $stmt->bindParam(":name", $name);
                 $stmt->bindParam(":surname", $surname);
                 try {
@@ -169,9 +169,15 @@ if ($_POST['login'] == 'student') {
                 } catch (Exception $e) {
                     var_dump($e);
                 }
+                try {
+                    $studentCheck->execute();
+                } catch (Exception $e) {
+                    var_dump($e);
+                }
+                $student = $studentCheck->fetchAll();
             }
 
-            $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check user existence
+            $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
             $stmt->bindParam(":test_id", $test[0]["id"]);
             $stmt->bindParam(":student_id", $student[0]["id"]);
             try {
@@ -183,7 +189,7 @@ if ($_POST['login'] == 'student') {
             if (!empty($alreadyTaken[0])) {
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
-                $_SESSION["testId"] = $test[0]["id"];
+                $_SESSION["test"] = $test[0];
                 header("location: index.php");
             } else {
                 $timestamp = date("G:i:s Y-m-d");
@@ -198,7 +204,7 @@ if ($_POST['login'] == 'student') {
                 }
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
-                $_SESSION["testId"] = $test[0]["id"];
+                $_SESSION["test"] = $test[0];
                 header("location: index.php");
             }
 
