@@ -53,10 +53,31 @@ if (!isset($_SESSION['instructorId'])) {
                 <input class="form-control" type="text" name="option3" value="" id="option3">
             </div>
 
+            <div class="option-div-conn">
+                <label for="conn1">Otazka 1</label>
+                <input class="form-control" type="text" name="conn1" value="" id="conn1">
+                <label for="conn1True"> Odpoved 1</label>
+                <input class="form-control" type="text" name="conn1True" value="" id="conn1True" >
+
+                <label for="conn2">Otazka 2</label>
+                <input class="form-control" type="text" name="conn2" value="" id="conn2">
+                <label for="conn2True"> Odpoved 2</label>
+                <input class="form-control" type="text" name="conn2True" value="" id="conn2True" >
+
+                <label for="conn3">Otazka 3</label>
+                <input class="form-control" type="text" name="conn3" value="" id="conn3">
+                <label for="conn3True"> Odpoved 3</label>
+                <input class="form-control" type="text" name="conn3True" value="" id="conn3True" >
+
+                <label for="connFalse">Zadaj vadnu odpoved</label>
+                <input class="form-control" type="text" name="connFalse" value="" id="connFalse" >
+
+                <label for="ConnFalse2">Zadaj dalsu vadnu odpoved</label>
+                <input class="form-control" type="text" name="ConnFalse2" value="" id="ConnFalse2" >
+            </div>
             <button type="submit" name="action" value="addQuestion">Add Question</button>
+
         </div>
-
-
 
     </form>
 </div>

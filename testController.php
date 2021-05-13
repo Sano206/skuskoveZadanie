@@ -69,13 +69,12 @@ function changeTestState($id)
 }
 
 function addQuestionController(){
+    require('config.php');
 
     if($_POST["type"] == "short") {
         addQuestion();
     }elseif($_POST["type"] == "multiple") {
         $questionId = addQuestion();
-        require('config.php');
-
 
         $sql = "INSERT INTO options(question_id,option1,option2, option3) VALUES (:question_id,:option1,:option2, :option3)";
         $stmt = $conn->prepare($sql);
@@ -88,6 +87,11 @@ function addQuestionController(){
         } catch (Exception $e) {
             return $e;
         }
+    }elseif ($_POST["type"] == "connection"){
+        $questionId = addQuestionConn();
+
+
+
     }
     return "nic";
 
@@ -134,4 +138,25 @@ function addQuestion(){
     } catch (Exception $e) {
         return $e;
     }
+}
+
+function addQuestionConn(){
+    require ('config.php');
+
+    $tmp = "-";
+    $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":test_id", $_POST["testId"]);
+    $stmt->bindParam(":question", $tmp);
+    $stmt->bindParam(":answer",  $tmp);
+    $stmt->bindParam(":points",  $_POST["points"]);
+    $stmt->bindParam(":type",  $_POST["type"]);
+    try {
+        $stmt->execute();
+        return $conn->lastInsertId();
+    } catch (Exception $e) {
+        return $e;
+    }
+
 }
