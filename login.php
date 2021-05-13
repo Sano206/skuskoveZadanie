@@ -16,7 +16,13 @@
         <h2>Login</h2>
     </div>
     <form method="post" action="login.php">
-        <?php include('errors.php'); ?>
+        <?php include('errors.php');
+        session_start();
+        if(isset($_SESSION["msg"])){
+            echo $_SESSION["msg"];
+            unset($_SESSION["msg"]);
+        }
+        ?>
         <div class="input-group">
             <label class="form-control">Username</label>
             <input class="form-control" type="text" name="username">
