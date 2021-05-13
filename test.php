@@ -12,10 +12,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-if (isset($_SESSION['userId'])) {
-    header("location: test.php");
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -38,45 +34,18 @@ if (isset($_SESSION['userId'])) {
         <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 
-    <?php  if (isset($_SESSION['instructorId'])) : ?>
+    <?php
+    require ('config.php');
+    $stmt = $conn->prepare("SELECT * from tests where instructor_id = :instructor_id");
+    $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
+    try {
+        $stmt->execute();
+    } catch (Exception $e) {
+        var_dump($e);
+    }
+    $tests = $stmt->fetchAll();
+    ?>
 
-    <div>
-        <table>
-            <tr>
-                <th>
-                    Test Name
-                </th>
-                <th>
-                    Active
-                </th>
-            </tr>
-            <?php
-            require ('config.php');
-            $stmt = $conn->prepare("SELECT id, name, active from tests where instructor_id = :instructor_id");
-            $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
-            try {
-                $stmt->execute();
-            } catch (Exception $e) {
-                var_dump($e);
-            }
-            $tests = $stmt->fetchAll();
-            foreach ($tests as $test) {
-                echo '<tr>';
-                    echo '<td>'.$test["name"].'</td>';
-                    echo '<td ><button type="submit" class="toggler" id="'.$test["id"].'">'.($test["active"] ? "Yes" : "NO").'</button></td>';
-                echo '</tr>';
-            }
-
-            ?>
-
-
-        </table>
-    </div>
-
-
-    <?php endif ?>
-
-    <a href="createTest.php">New Test</a>
 </div>
 
 
