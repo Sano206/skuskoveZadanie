@@ -10,6 +10,10 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
+if (isset($_SESSION['userId'])) {
+    header("location: test.php");
+}
+
 ?>
 
 <!DOCTYPE html>
