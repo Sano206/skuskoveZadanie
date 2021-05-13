@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="student login fix">
-      <change afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/questiontotest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/skuskoveZadanie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/skuskoveZadanie.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/createTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/createTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
@@ -15,12 +19,14 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
     </option>
+  </component>
+  <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
@@ -30,15 +36,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../docker_skuska/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,8 +70,7 @@
       <updated>1620739713669</updated>
       <workItem from="1620739714795" duration="75000" />
       <workItem from="1620810675567" duration="1518000" />
-      <workItem from="1620890941631" duration="19152000" />
-      <workItem from="1620913148851" duration="4327000" />
+      <workItem from="1620890941631" duration="10628000" />
     </task>
     <task id="LOCAL-00001" summary="instructor login first">
       <created>1620896846759</created>
@@ -72,35 +79,7 @@
       <option name="project" value="LOCAL" />
       <updated>1620896846759</updated>
     </task>
-    <task id="LOCAL-00002" summary="instructor reg + student login">
-      <created>1620904080274</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1620904080274</updated>
-    </task>
-    <task id="LOCAL-00003" summary="multiple tests support + activation / deactivation">
-      <created>1620909360989</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1620909360989</updated>
-    </task>
-    <task id="LOCAL-00004" summary="student login fix">
-      <created>1620910994875</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1620910994875</updated>
-    </task>
-    <task id="LOCAL-00005" summary="student login fix">
-      <created>1620912050844</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1620912050844</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,9 +99,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="instructor login first" />
-    <MESSAGE value="instructor reg + student login" />
-    <MESSAGE value="multiple tests support + activation / deactivation" />
-    <MESSAGE value="student login fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="student login fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="instructor login first" />
   </component>
 </project>

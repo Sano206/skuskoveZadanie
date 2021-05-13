@@ -4,6 +4,7 @@ require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
 
 session_start();
 
+
 // initializing variables
 $username = "";
 $email = "";

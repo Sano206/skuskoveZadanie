@@ -1,17 +1,17 @@
 <?php
 
 
-session_start();
+    session_start();
 
-if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-}
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: login.php");
-}
+    if (!isset($_SESSION['username'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: login.php');
+    }
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['username']);
+        header("location: login.php");
+    }
 
 ?>
 
@@ -49,6 +49,7 @@ if (isset($_GET['logout'])) {
             <label for="length" class="form-control">Length in minutes</label>
             <input class="form-control" type="number" value="45" min="0" name="length">
         </div>
+
         <div class="button-group">
             <div class="input-group">
                 <button type="submit" class="btn btn-secondary" name="action" value="createTest">Create Test</button>
@@ -56,6 +57,7 @@ if (isset($_GET['logout'])) {
         </div>
 
     </form>
+
 
 </div>
 
