@@ -40,15 +40,15 @@
     </form>
     <form method="post" action="login.php">
         <div class="input-group">
-            <label class="form-control">Username</label>
-            <input class="form-control" type="text" name="username">
+            <label for="name" class="form-control">Name</label>
+            <input class="form-control" type="text" name="name">
         </div>
         <div class="input-group">
-            <label class="form-control">Password</label>
-            <input class="form-control" type="password" name="password">
+            <label for="surname" class="form-control">Surname</label>
+            <input class="form-control" type="text" name="surname">
         </div>
         <div class="input-group">
-            <label class="form-control">Code</label>
+            <label for="code" class="form-control">Code</label>
             <input class="form-control" type="text" name="code">
         </div>
         <div class="button-group">

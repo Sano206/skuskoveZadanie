@@ -13,7 +13,26 @@ if (isset($_GET['logout'])) {
     header("location: login.php");
 }
 
-if(isset($_POST["createTest"])){
+if($_POST["action"] == "createTest"){
+    require ('config.php');
+
+    $stmt = $conn->prepare("INSERT INTO tests(name,length,code,instructor_id) values(:name,:length,:code,:instructor_id)");
+
+//    $timestamp = time();
+//    $dt = new DateTime("now", new DateTimeZone($ip["timezone"]));
+//    $dt->setTimestamp($timestamp);
+//    $timestamp = $dt->format("Y-m-d");
+
+
+    $stmt->bindParam(":name", $_POST["testName"]);
+    $stmt->bindParam(":code", $_POST["code"]);
+    $stmt->bindParam(":length", $_POST["length"]);
+    $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
+    try {
+        $stmt->execute();
+    }catch (Exception $e){
+        var_dump($e);
+    }
 
 }
 ?>
@@ -38,6 +57,11 @@ if(isset($_POST["createTest"])){
         <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 
+    <?php
+    session_start();
+    var_dump($_SESSION["instructorId"]);
+    ?>
+
     <?php if (!$_POST['createTest']) : ?>
     <form method="post" action="createTest.php">
         <div class="input-group">
@@ -48,9 +72,13 @@ if(isset($_POST["createTest"])){
             <label for="code" class="form-control">Test Code</label>
             <input class="form-control" type="text" name="code">
         </div>
+        <div class="input-group">
+            <label for="length" class="form-control">Length in minutes</label>
+            <input class="form-control" type="number" name="length">
+        </div>
         <div class="button-group">
             <div class="input-group">
-                <button type="submit" class="btn btn-secondary" name="login" value="createTest">Login Instructor</button>
+                <button type="submit" class="btn btn-secondary" name="action" value="createTest">Create Test</button>
             </div>
         </div>
         <?php endif ?>

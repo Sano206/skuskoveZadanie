@@ -58,7 +58,6 @@ if (isset($_POST['reg_user'])) {
         $password = password_hash($password_1, PASSWORD_BCRYPT);//encrypt the password before saving in the database
 
 
-
         $secret = $_POST['secret'];
 
         if ($result) {
@@ -70,7 +69,6 @@ if (isset($_POST['reg_user'])) {
         $query = "INSERT INTO instructors (username, email, password, secret) 
   			  VALUES('$username', '$email', '$password', '$secret')";
         mysqli_query($db, $query);
-
 
 
         $query = "SELECT * FROM instructors WHERE username='$username' AND password='$password'";
@@ -110,7 +108,8 @@ if ($_POST['login'] == 'instructor') {
 
             if ($result == 1) {
                 $userId = $user['id'];
-                saveLoginInfo($userId, 'registration', $username,$db);
+                $_SESSION["instructorId"] = $userId;
+                saveLoginInfo($userId, 'registration', $username, $db);
             } else {
                 array_push($errors, "Wrong code");
             }
@@ -120,8 +119,98 @@ if ($_POST['login'] == 'instructor') {
     }
 }
 
+if ($_POST['login'] == 'student') {
+    require('config.php');
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $surname = mysqli_real_escape_string($db, $_POST['surname']);
+    $code = mysqli_real_escape_string($db, $_POST['code']);
 
-function saveLoginInfo($userId, $type, $username,$db){
+    if (empty($name)) {
+        array_push($errors, "Username is required");
+    }
+    if (empty($surname)) {
+        array_push($errors, "Password is required");
+    }
+    if (empty($code)) {
+        array_push($errors, "Code is required");
+    }
+
+    if (count($errors) == 0) {
+
+        $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code"); //Check code validity
+        $stmt->bindParam(":code", $code);
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            var_dump($e);
+        }
+        $test = $stmt->fetchAll();
+        if (empty($test[0])) {
+            array_push($errors, "Invalid code");
+        } else {
+
+
+            $stmt = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check user existence
+
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":surname", $surname);
+            try {
+                $stmt->execute();
+            } catch (Exception $e) {
+                var_dump($e);
+            }
+            $student = $stmt->fetchAll();
+            if (empty($student[0])) {    //create new user if non-existent
+                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)");
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":surname", $surname);
+                try {
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    var_dump($e);
+                }
+            }
+
+            $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check user existence
+            $stmt->bindParam(":test_id", $test[0]["id"]);
+            $stmt->bindParam(":student_id", $student[0]["id"]);
+            try {
+                $stmt->execute();
+            } catch (Exception $e) {
+                var_dump($e);
+            }
+            $alreadyTaken = $stmt->fetchAll();
+            if (!empty($alreadyTaken[0])) {
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["testId"] = $test[0]["id"];
+                header("location: index.php");
+            } else {
+                $timestamp = date("G:i:s Y-m-d");
+                $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
+                $stmt->bindParam(":test_id", $test[0]["id"]);
+                $stmt->bindParam(":student_id", $student[0]["id"]);
+                $stmt->bindParam(":start_timestamp", $timestamp);
+                try {
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    var_dump($e);
+                }
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["testId"] = $test[0]["id"];
+                header("location: index.php");
+            }
+
+        }
+
+
+    }
+}
+
+
+function saveLoginInfo($userId, $type, $username, $db)
+{
 //    $timestamp = date('Y-m-d G:i:s', time()+3600*2);
 //    $query = "INSERT INTO logins (user_id, reg_type, timestamp)
 //  			  VALUES('$userId', '$type', '$timestamp')";
