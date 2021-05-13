@@ -12,6 +12,10 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
+
+if(isset($_POST["createTest"])){
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,24 +32,30 @@ if (isset($_GET['logout'])) {
 
 
 <div class="container">
-    <!-- notification message -->
-    <?php if (isset($_SESSION['success'])) : ?>
-        <div class="error success" >
-            <h3>
-                <?php
-                echo $_SESSION['success'];
-                unset($_SESSION['success']);
-                ?>
-            </h3>
-        </div>
-    <?php endif ?>
-
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['username'])) : ?>
         <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
         <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 
+    <?php if (!$_POST['createTest']) : ?>
+    <form method="post" action="createTest.php">
+        <div class="input-group">
+            <label for="testName" class="form-control">Test Name</label>
+            <input class="form-control" type="text" name="testName">
+        </div>
+        <div class="input-group">
+            <label for="code" class="form-control">Test Code</label>
+            <input class="form-control" type="text" name="code">
+        </div>
+        <div class="button-group">
+            <div class="input-group">
+                <button type="submit" class="btn btn-secondary" name="login" value="createTest">Login Instructor</button>
+            </div>
+        </div>
+        <?php endif ?>
+
+    </form>
 
 </div>
 
