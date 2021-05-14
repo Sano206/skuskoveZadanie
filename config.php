@@ -1,9 +1,10 @@
 <?php
 $dbServername = "localhost";
-$dbUsername = "xspakk";
-$dbPassword = '123';
-$database = "skuska3";
+$dbUsername = "xgossanyi";
+$dbPassword = 'I#$H5uPW2kVIJY';
+$database = "skuska";
 
 
 $conn = new PDO("mysql:host=$dbServername;dbname=$database", $dbUsername, $dbPassword);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
