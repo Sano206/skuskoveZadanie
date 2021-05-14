@@ -34,12 +34,12 @@ if (!isset($_SESSION['instructorId'])) {
                 <option value="connection">Spájanie</option>
                 <option value="image">Kreslenie</option>
             </select>
-            
+
             <label for="question" class="question-style form-control">Zadaj otazku</label> <!--        short question-->
             <input class="question-style form-control" type="text" name="question" id="question">
 
-            <label for="answer" class="question-style form-control">Zadaj odpoved</label> <!--        short answer-->
-            <input class="question-style form-control" type="text" name="answer" id="answer">
+            <label for="answer" id="anser_id" class="question-style-answer form-control">Zadaj odpoved</label> <!--        short answer-->
+            <input class="question-style-answer form-control" type="text" name="answer" id="answer">
 
             <label for="points" class="form-control">Pocet bodov</label> <!--        short answer-->
             <input class="form-control" type="number" name="points" id="points">

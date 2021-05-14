@@ -70,7 +70,7 @@
       <workItem from="1620810675567" duration="1518000" />
       <workItem from="1620890941631" duration="10628000" />
       <workItem from="1620940132332" duration="11699000" />
-      <workItem from="1620985218120" duration="1946000" />
+      <workItem from="1620985218120" duration="2812000" />
     </task>
     <task id="LOCAL-00001" summary="instructor login first">
       <created>1620896846759</created>
@@ -93,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620956187268</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="upravenie questiontotest.php">
+      <created>1620987231113</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620987231113</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +122,7 @@
     <MESSAGE value="instructor login first" />
     <MESSAGE value="adding short question type in questiontotest.php" />
     <MESSAGE value="pridanie test.php robi to vlastne zobrazenie otazok na zaklade mena a kodu funkce pre short answer a multiple canvas je nahodeny mam aj script k nemu len to nejde jak ma a treba to zrobit jak endpoint sanko takisto som pre connection vytvoril dalsiu tabulku kde sa ukladaju odpovede aby sme to vedeli spajat rano mi v klude volaj aspon vstanem" />
-    <option name="LAST_COMMIT_MESSAGE" value="pridanie test.php robi to vlastne zobrazenie otazok na zaklade mena a kodu funkce pre short answer a multiple canvas je nahodeny mam aj script k nemu len to nejde jak ma a treba to zrobit jak endpoint sanko takisto som pre connection vytvoril dalsiu tabulku kde sa ukladaju odpovede aby sme to vedeli spajat rano mi v klude volaj aspon vstanem" />
+    <MESSAGE value="upravenie questiontotest.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="upravenie questiontotest.php" />
   </component>
 </project>

@@ -19,19 +19,24 @@ $(document).ready(function () {
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
         $('.question-style').css("display", "block")
+        $('.question-style-answer').css("display", "block")
 
         if($('#type  option:selected').val() === "multiple"){
             $('.option-div').css("display", "block")
-            document.getElementById('answer').innerHTML="";
-            document.getElementById('answer').innerHTML="Zadaj spravnu odpoved";
+            document.getElementById('anser_id').innerHTML="";
+            document.getElementById('anser_id').innerHTML="Zadaj spravnu odpoved";
         }else if($('#type  option:selected').val() === "connection"){
             $('.option-div-conn').css("display", "block")
             $('.question-style').css("display", "none")
+            $('.question-style-answer').css("display", "none")
+        }else if($('#type  option:selected').val() === "image"){
+            $('.question-style-answer').css("display", "none")
         }
         else{
             $('.option-div').css("display", "none")
             $('.option-div-conn').css("display", "none")
             $('.question-style').css("display", "block")
+            $('.question-style-answer').css("display", "block")
 
         }
     })
