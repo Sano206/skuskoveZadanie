@@ -1,10 +1,5 @@
 $(document).ready(function () {
-    // var table = $('#table_data').DataTable({
-    //         "bFilter": false,
-    //         'bInfo': false,
-    //         'paging': false,
-    //     }
-    // )
+
 
 
     $('.toggler').click((element) => {
