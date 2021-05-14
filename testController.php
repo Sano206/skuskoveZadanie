@@ -9,6 +9,8 @@ if ($action == "createTest") {
     echo changeTestState($_POST["id"]);
 } elseif ($action == "addQuestion") {
     echo addQuestionController();
+}elseif ($action == "sendTest") {
+    echo sendTest();
 }
 
 
@@ -36,6 +38,12 @@ function createTest()
     }
 
     header("location: index.php");
+
+}
+function sendTest()
+{
+
+    return '';
 
 }
 

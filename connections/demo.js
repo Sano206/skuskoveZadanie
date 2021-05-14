@@ -5,7 +5,6 @@
 
         showConnectionInfo = function (s) {
             listDiv.innerHTML = s;
-            listDiv.style.display = "block";
         },
         hideConnectionInfo = function () {
             listDiv.style.display = "none";
@@ -29,6 +28,10 @@
                     s = s + "<tr><td>" + connections[j].scope + "</td>" + "<td>" + connections[j].sourceId + "</td><td>" + connections[j].targetId + "</td></tr>";
                 }
                 showConnectionInfo(s);
+                var connected = jsPlumb.getConnections();
+                $.each(connections, function (e, s) {
+                    document.getElementsByName("answer"+s.source.id[14])[0].value = s.target.textContent
+                })
             } else
                 hideConnectionInfo();
         };
@@ -282,6 +285,8 @@
                 jsPlumbUtil.consume(e);
             });
         });
+
+
 
         jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
