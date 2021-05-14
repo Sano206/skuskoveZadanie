@@ -91,41 +91,23 @@ if (isset($_GET['logout'])) {
                 $statement->execute(array(':question_id' => $row["id"]));
                 $answers = $statement->fetch();
                 $falseAnswerCheck = 1;
-//                echo '<div class="jtk-demo-main" data-demo-id="draggableConnectors">';
-//                echo '<div class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan" id="canvas">';
-                for ($i = 1; $i < 4; $i++) {
-                    $j = 4 - $i;
-                    if ($i == 1) {
-                        if (isset($answers["answer_false$falseAnswerCheck"])) {
-                            echo '
-                              <div class="row">
-                                <div class="col-6"></div>
-                                <div class="col-6"> ' . $answers["answer_false$falseAnswerCheck"] . '</div>
-                              </div>
-                             ';
-                            $falseAnswerCheck++;
-                        }
-                    }
-                    echo '
-                      <div class="row">
-                        <div class="col-6"> ' . $options["option$i"] . '</div>
-                        <div class="col-6"> ' . $answers["answer$j"] . '</div>
-                      </div>
-                     ';
-                    if ($i ==3) {
-                        if (isset($answers["answer_false$falseAnswerCheck"])) {
-                            echo '
-                              <div class="row">
-                                <div class="col-6"></div>
-                                <div class="col-6"> ' . $answers["answer_false$falseAnswerCheck"] . '</div>
-                              </div>
-                             ';
-                            $falseAnswerCheck++;
-                        }
-                    }
+                echo '<div class="jtk-demo-main" data-demo-id="draggableConnectors">';
+                echo ' <div class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan" id="canvas">';
+                if (isset($answers["answer_false1"])) {
+                    echo '<div class="window" id="dragDropWindow7"> ' . $answers["answer_false1"] . '</div>';
                 }
-//                echo '</div>';
-//                echo '</div>';
+                if (isset($answers["answer_false2"])) {
+                    echo '<div class="window" id="dragDropWindow8"> ' . $answers["answer_false2"] . '</div>';
+                }
+
+                for ($i = 1; $i < 4; $i++) {
+                    echo '
+                        <div class="window" id="dragDropWindow' . $i . '"> ' . $options["option$i"] . '</div>
+                        <div class="window" id="dragDropWindow' . ($i + 3) . '"> ' . $answers["answer$i"] . '</div>
+                        ';
+                }
+                echo '</div>';
+                echo '</div>';
 
 
             } elseif ($row["type"] == "math") {
