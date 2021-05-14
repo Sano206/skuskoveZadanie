@@ -10,6 +10,7 @@ if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
     header("location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,8 +80,6 @@ if (isset($_GET['logout'])) {
                 echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
                 echo "</select>";
                 echo "</div>";
-
-
             } elseif ($row["type"] == "connection") {
                 $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
                 $statement->execute(array(':question_id' => $row["id"]));
@@ -136,6 +135,7 @@ if (isset($_GET['logout'])) {
             }
             $i++;
         }
+
 
         ?>
 
