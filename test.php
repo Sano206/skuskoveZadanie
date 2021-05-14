@@ -149,7 +149,7 @@ $rows = $statement->fetchAll();
             echo "<p>" . $row["question"] . "</p>";
 
             echo "<input type='text' name='$x$i' id='$x$i'> ";
-            echo "<p>" . $row["points"] . "b" . "</p>";
+            echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
             echo "</div>";
         } elseif ($row["type"] == "multiple") {
             $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
@@ -163,7 +163,7 @@ $rows = $statement->fetchAll();
             echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
             echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
             echo "</select>";
-            echo "<p>" . $row["points"] . "b" . "</p>";
+            echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
             echo "</div>";
 
 

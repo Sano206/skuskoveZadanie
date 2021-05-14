@@ -69,7 +69,7 @@
       <workItem from="1620810675567" duration="1518000" />
       <workItem from="1620890941631" duration="10628000" />
       <workItem from="1620940132332" duration="11699000" />
-      <workItem from="1620985218120" duration="3587000" />
+      <workItem from="1620985218120" duration="3718000" />
     </task>
     <task id="LOCAL-00001" summary="instructor login first">
       <created>1620896846759</created>
@@ -106,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620988101473</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pridanie bodov do testu">
+      <created>1620990053601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620990053601</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +137,7 @@
     <MESSAGE value="pridanie test.php robi to vlastne zobrazenie otazok na zaklade mena a kodu funkce pre short answer a multiple canvas je nahodeny mam aj script k nemu len to nejde jak ma a treba to zrobit jak endpoint sanko takisto som pre connection vytvoril dalsiu tabulku kde sa ukladaju odpovede aby sme to vedeli spajat rano mi v klude volaj aspon vstanem" />
     <MESSAGE value="upravenie questiontotest.php" />
     <MESSAGE value="updatne of mupltiple showing" />
-    <option name="LAST_COMMIT_MESSAGE" value="updatne of mupltiple showing" />
+    <MESSAGE value="pridanie bodov do testu" />
+    <option name="LAST_COMMIT_MESSAGE" value="pridanie bodov do testu" />
   </component>
 </project>
