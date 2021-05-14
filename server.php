@@ -4,12 +4,11 @@ require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
 
 session_start();
 
-
 // initializing variables
 $username = "";
 $email = "";
 $errors = array();
-$websiteTitle = 'Skuskove Zadanie';
+$websiteTitle = 'Zadanie3';
 
 $ga = new PHPGangsta_GoogleAuthenticator();
 
@@ -80,139 +79,138 @@ if (isset($_POST['reg_user'])) {
         saveLoginInfo($userId, 'registration', $username, $db);
     }
 }
-if(isset($_POST['login'])) {
-    if ($_POST['login'] == 'instructor') {
-        $username = mysqli_real_escape_string($db, $_POST['username']);
-        $password = mysqli_real_escape_string($db, $_POST['password']);
-        $code = $_POST['code'];
 
-        if (empty($username)) {
-            array_push($errors, "Username is required");
-        }
-        if (empty($password)) {
-            array_push($errors, "Password is required");
-        }
-        if (empty($code)) {
-            array_push($errors, "Code is required");
-        }
+if ($_POST['login'] == 'instructor') {
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
+    $code = $_POST['code'];
 
-
-        if (count($errors) == 0) {
-
-            $query = "SELECT * FROM instructors WHERE username='$username'";
-            $results = mysqli_query($db, $query);
-            $user = mysqli_fetch_assoc($results);
-
-            if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {
-                $secret = $user['secret'];
-                $result = $ga->verifyCode($secret, $code);
-
-                if ($result == 1) {
-                    $userId = $user['id'];
-                    $_SESSION["instructorId"] = $userId;
-                    saveLoginInfo($userId, 'registration', $username, $db);
-                } else {
-                    array_push($errors, "Wrong code");
-                }
-            } else {
-                array_push($errors, "Wrong username/password combination");
-            }
-        }
+    if (empty($username)) {
+        array_push($errors, "Username is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+    if (empty($code)) {
+        array_push($errors, "Code is required");
     }
 
-    if ($_POST['login'] == 'student') {
-        require('config.php');
-        $name = mysqli_real_escape_string($db, $_POST['name']);
-        $surname = mysqli_real_escape_string($db, $_POST['surname']);
-        $code = mysqli_real_escape_string($db, $_POST['code']);
 
-        if (empty($name)) {
-            array_push($errors, "Username is required");
-        }
-        if (empty($surname)) {
-            array_push($errors, "Password is required");
-        }
-        if (empty($code)) {
-            array_push($errors, "Code is required");
-        }
+    if (count($errors) == 0) {
 
-        if (count($errors) == 0) {
+        $query = "SELECT * FROM instructors WHERE username='$username'";
+        $results = mysqli_query($db, $query);
+        $user = mysqli_fetch_assoc($results);
 
-            $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code and active=1"); //Check code validity
-            $stmt->bindParam(":code", $code);
+        if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {
+            $secret = $user['secret'];
+            $result = $ga->verifyCode($secret, $code);
+
+            if ($result == 1) {
+                $userId = $user['id'];
+                $_SESSION["instructorId"] = $userId;
+                saveLoginInfo($userId, 'registration', $username, $db);
+            } else {
+                array_push($errors, "Wrong code");
+            }
+        } else {
+            array_push($errors, "Wrong username/password combination");
+        }
+    }
+}
+
+if ($_POST['login'] == 'student') {
+    require('config.php');
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $surname = mysqli_real_escape_string($db, $_POST['surname']);
+    $code = mysqli_real_escape_string($db, $_POST['code']);
+
+    if (empty($name)) {
+        array_push($errors, "Username is required");
+    }
+    if (empty($surname)) {
+        array_push($errors, "Password is required");
+    }
+    if (empty($code)) {
+        array_push($errors, "Code is required");
+    }
+
+    if (count($errors) == 0) {
+
+        $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code and active=1"); //Check code validity
+        $stmt->bindParam(":code", $code);
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            var_dump($e);
+        }
+        $test = $stmt->fetchAll();
+        if (empty($test[0])) {
+            array_push($errors, "Invalid code");
+        } else {
+
+
+            $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check student existence
+
+            $studentCheck->bindParam(":name", $name);
+            $studentCheck->bindParam(":surname", $surname);
             try {
-                $stmt->execute();
+                $studentCheck->execute();
             } catch (Exception $e) {
                 var_dump($e);
             }
-            $test = $stmt->fetchAll();
-            if (empty($test[0])) {
-                array_push($errors, "Invalid code");
-            } else {
-
-
-                $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check student existence
-
-                $studentCheck->bindParam(":name", $name);
-                $studentCheck->bindParam(":surname", $surname);
+            $student = $studentCheck->fetchAll();
+            if (empty($student[0])) {
+                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)"); //create new user if non-existent
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":surname", $surname);
+                try {
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    var_dump($e);
+                }
                 try {
                     $studentCheck->execute();
                 } catch (Exception $e) {
                     var_dump($e);
                 }
                 $student = $studentCheck->fetchAll();
-                if (empty($student[0])) {
-                    $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)"); //create new user if non-existent
-                    $stmt->bindParam(":name", $name);
-                    $stmt->bindParam(":surname", $surname);
-                    try {
-                        $stmt->execute();
-                    } catch (Exception $e) {
-                        var_dump($e);
-                    }
-                    try {
-                        $studentCheck->execute();
-                    } catch (Exception $e) {
-                        var_dump($e);
-                    }
-                    $student = $studentCheck->fetchAll();
-                }
+            }
 
-                $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
+            $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
+            $stmt->bindParam(":test_id", $test[0]["id"]);
+            $stmt->bindParam(":student_id", $student[0]["id"]);
+            try {
+                $stmt->execute();
+            } catch (Exception $e) {
+                var_dump($e);
+            }
+            $alreadyTaken = $stmt->fetchAll();
+            if (!empty($alreadyTaken[0])) {
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["test"] = $test[0];
+                header("location: index.php");
+            } else {
+                $timestamp = date("G:i:s Y-m-d");
+                $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
                 $stmt->bindParam(":test_id", $test[0]["id"]);
                 $stmt->bindParam(":student_id", $student[0]["id"]);
+                $stmt->bindParam(":start_timestamp", $timestamp);
                 try {
                     $stmt->execute();
                 } catch (Exception $e) {
                     var_dump($e);
                 }
-                $alreadyTaken = $stmt->fetchAll();
-                if (!empty($alreadyTaken[0])) {
-                    $_SESSION["username"] = $student[0]["name"];
-                    $_SESSION["userId"] = $student[0]["id"];
-                    $_SESSION["test"] = $test[0];
-                    header("location: index.php");
-                } else {
-                    $timestamp = date("G:i:s Y-m-d");
-                    $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
-                    $stmt->bindParam(":test_id", $test[0]["id"]);
-                    $stmt->bindParam(":student_id", $student[0]["id"]);
-                    $stmt->bindParam(":start_timestamp", $timestamp);
-                    try {
-                        $stmt->execute();
-                    } catch (Exception $e) {
-                        var_dump($e);
-                    }
-                    $_SESSION["username"] = $student[0]["name"];
-                    $_SESSION["userId"] = $student[0]["id"];
-                    $_SESSION["test"] = $test[0];
-                    header("location: test.php");
-                }
-
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["test"] = $test[0];
+                header("location: index.php");
             }
 
-
         }
+
+
     }
 }
 
