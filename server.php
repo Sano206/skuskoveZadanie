@@ -208,10 +208,6 @@ if ($_POST['login'] == 'student') {
                 $_SESSION["test"] = $test[0];
                 header("location: test.php");
             }
-
-            }
-
-
         }
     }
 }
