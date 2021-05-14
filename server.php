@@ -191,7 +191,7 @@ if(isset($_POST['login'])) {
                     $_SESSION["username"] = $student[0]["name"];
                     $_SESSION["userId"] = $student[0]["id"];
                     $_SESSION["test"] = $test[0];
-                    header("location: index.php");
+                    header("location: test.php");
                 } else {
                     $timestamp = date("G:i:s Y-m-d");
                     $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
