@@ -13,224 +13,124 @@ if (isset($_GET['logout'])) {
     header("location: login.php");
 }
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>test</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script src="canvas.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="connections/css/jsplumbtoolkit-defaults.css">
+    <link rel="stylesheet" href="connections/css/main.css">
+    <link rel="stylesheet" href="connections/css/jsplumbtoolkit-demo.css">
+    <link rel="stylesheet" href="connections/demo.css">
 </head>
 <body>
 
 
 <div class="container">
     <!-- logged in user information -->
-    <?php  if (isset($_SESSION['username'])) : ?>
+    <?php if (isset($_SESSION['username'])) : ?>
         <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-        <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+        <p><a href="index.php?logout='1'" style="color: red;">logout</a></p>
     <?php endif ?>
 
     <?php
-    require ('config.php');
-    $stmt = $conn->prepare("SELECT * from tests where instructor_id = :instructor_id");
-    $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
-    try {
-        $stmt->execute();
-    } catch (Exception $e) {
-        var_dump($e);
-    }
-    $tests = $stmt->fetchAll();
+
+    require_once "config.php";
+    $test = $_SESSION["test"];
+    $test_id = $test[0];
+    $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
+    $statement->execute(array(':test_id' => $test_id));
+    $rows = $statement->fetchAll();
+
+
     ?>
 
-</div>
+    <h1 style="text-align: center">TESTERINO</h1>
+
+    <?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>" ?>
+
+    <form class="container" method="post">
+        <?php
+        $x = "q";
+        $i = 0;
+        foreach ($rows as $row) {
+
+            if ($row["type"] == "short") {
+                echo "<div class='form-control'>";
+                echo "<p>" . $row["question"] . "</p>";
+                echo "<input type='text' name='$x$i' id='$x$i'> ";
+                echo "</div>";
+            } elseif ($row["type"] == "multiple") {
+                $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
+                $statement->execute(array(':question_id' => $row["id"]));
+                $columns = $statement->fetch();
+                echo "<div class='form-control'>";
+                echo "<p>" . $row["question"] . "</p>";
+                echo "<select>";
+                echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";        //TODO: randomize
+                echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
+                echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
+                echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
+                echo "</select>";
+                echo "</div>";
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
-
-session_start();
-require_once "config.php";
-$test = $_SESSION["test"];
-$test_id = $test[0];
-$statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
-$statement->execute(array(':test_id' => $test_id));
-$rows = $statement->fetchAll();
-
-
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>test</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <script>
-        var canvas, ctx, flag = false,
-            prevX = 0,
-            currX = 0,
-            prevY = 0,
-            currY = 0,
-            dot_flag = false;
-
-        var x = "black",
-            y = 2;
-
-        function init() {
-            canvas = document.getElementById('can');
-            ctx = canvas.getContext("2d");
-            w = canvas.width;
-            h = canvas.height;
-
-            canvas.addEventListener("mousemove", function (e) {
-                findxy('move', e)
-            }, false);
-            canvas.addEventListener("mousedown", function (e) {
-                findxy('down', e)
-            }, false);
-            canvas.addEventListener("mouseup", function (e) {
-                findxy('up', e)
-            }, false);
-            canvas.addEventListener("mouseout", function (e) {
-                findxy('out', e)
-            }, false);
-        }
-
-        function color(obj) {
-            switch (obj.id) {
-                case "green":
-                    x = "green";
-                    break;
-                case "blue":
-                    x = "blue";
-                    break;
-                case "red":
-                    x = "red";
-                    break;
-                case "yellow":
-                    x = "yellow";
-                    break;
-                case "orange":
-                    x = "orange";
-                    break;
-                case "black":
-                    x = "black";
-                    break;
-                case "white":
-                    x = "white";
-                    break;
-            }
-            if (x == "white") y = 14;
-            else y = 2;
-
-        }
-
-        function draw() {
-            ctx.beginPath();
-            ctx.moveTo(prevX, prevY);
-            ctx.lineTo(currX, currY);
-            ctx.strokeStyle = x;
-            ctx.lineWidth = y;
-            ctx.stroke();
-            ctx.closePath();
-        }
-
-        function erase() {
-            var m = confirm("Want to clear");
-            if (m) {
-                ctx.clearRect(0, 0, w, h);
-                document.getElementById("canvasimg").style.display = "none";
-            }
-        }
-
-        function save() {
-            document.getElementById("canvasimg").style.border = "2px solid";
-            var dataURL = canvas.toDataURL();
-            document.getElementById("canvasimg").src = dataURL;
-            document.getElementById("canvasimg").style.display = "inline";
-        }
-
-        function findxy(res, e) {
-            if (res == 'down') {
-                prevX = currX;
-                prevY = currY;
-                currX = e.clientX - canvas.offsetLeft;
-                currY = e.clientY - canvas.offsetTop;
-
-                flag = true;
-                dot_flag = true;
-                if (dot_flag) {
-                    ctx.beginPath();
-                    ctx.fillStyle = x;
-                    ctx.fillRect(currX, currY, 2, 2);
-                    ctx.closePath();
-                    dot_flag = false;
+            } elseif ($row["type"] == "connection") {
+                $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
+                $statement->execute(array(':question_id' => $row["id"]));
+                $options = $statement->fetch();
+                $statement = $conn->prepare("SELECT * FROM answers WHERE question_id = :question_id");
+                $statement->execute(array(':question_id' => $row["id"]));
+                $answers = $statement->fetch();
+                $falseAnswerCheck = 1;
+//                echo '<div class="jtk-demo-main" data-demo-id="draggableConnectors">';
+//                echo '<div class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan" id="canvas">';
+                for ($i = 1; $i < 4; $i++) {
+                    $j = 4 - $i;
+                    if ($i == 1) {
+                        if (isset($answers["answer_false$falseAnswerCheck"])) {
+                            echo '
+                              <div class="row">
+                                <div class="col-6"></div>
+                                <div class="col-6"> ' . $answers["answer_false$falseAnswerCheck"] . '</div>
+                              </div>
+                             ';
+                            $falseAnswerCheck++;
+                        }
+                    }
+                    echo '
+                      <div class="row">
+                        <div class="col-6"> ' . $options["option$i"] . '</div>
+                        <div class="col-6"> ' . $answers["answer$j"] . '</div>
+                      </div>
+                     ';
+                    if ($i ==3) {
+                        if (isset($answers["answer_false$falseAnswerCheck"])) {
+                            echo '
+                              <div class="row">
+                                <div class="col-6"></div>
+                                <div class="col-6"> ' . $answers["answer_false$falseAnswerCheck"] . '</div>
+                              </div>
+                             ';
+                            $falseAnswerCheck++;
+                        }
+                    }
                 }
-            }
-            if (res == 'up' || res == "out") {
-                flag = false;
-            }
-            if (res == 'move') {
-                if (flag) {
-                    prevX = currX;
-                    prevY = currY;
-                    currX = e.clientX - canvas.offsetLeft;
-                    currY = e.clientY - canvas.offsetTop;
-                    draw();
-                }
-            }
-        }
-    </script>
-</head>
-<body>
-<h1 style="text-align: center">TESTERINO</h1>
-
-<?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>"?>
-
-<form class="container" method="post">
-    <?php
-    $x = "q";
-    $i = 0;
-    foreach ($rows as $row) {
-
-        if($row["type"] == "short"){
-            echo "<div class='form-control'>";
-            echo "<p>" . $row["question"] . "</p>";
-            echo "<input type='text' name='$x$i' id='$x$i'> ";
-            echo "</div>";
-        }
-        elseif ($row["type"] == "multiple") {
-            $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
-            $statement->execute(array(':question_id' => $row["id"]));
-            $columns = $statement->fetch();
-            echo "<div class='form-control'>";
-            echo "<p>" . $row["question"] . "</p>";
-            echo "<select>";
-            echo "<option value=".$row['answer'].">". $row['answer'] . "</option>";
-            echo "<option value=".$columns['option1'].">". $columns['option1'] . "</option>";
-            echo "<option value=".$columns['option2'].">". $columns['option2'] . "</option>";
-            echo "<option value=".$columns['option3'].">". $columns['option3']. "</option>";
-            echo "</select>";
-            echo "</div>";
+//                echo '</div>';
+//                echo '</div>';
 
 
-        } elseif ($row["type"] == "connection") {
+            } elseif ($row["type"] == "math") {
 
-        } elseif ($row["type"] == "math") {
-
-        } elseif ($row["type"] == "image") {
+            } elseif ($row["type"] == "image") {
 
 
 //            echo "<div style='z-index: 156456'>";
@@ -252,19 +152,34 @@ $rows = $statement->fetchAll();
 //            echo "Idz do pici z kanvasom";
 //            echo "</div>";
 
+            }
+            $i++;
         }
-  $i++;
-    }
 
-    ?>
+        ?>
 
-    <div class="form-control">
-        <input type="submit" class="btn-primary" value="Chuju posielaj">
-    </div>
+        <div class="form-control">
+            <input type="submit" class="btn-primary" value="Chuju posielaj">
+        </div>
 
 
-</form>
+    </form>
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+<!-- JS -->
+<script src="connections/dist/js/jsplumb.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="connections/demo.js"></script>
+
+<script src="connections/demo-list.js"></script>
 </body>
 </html>

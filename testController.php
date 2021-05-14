@@ -97,12 +97,9 @@ function addQuestionController(){
 
         $stmt->execute();
 
-
         $statement = $conn->prepare("SELECT id FROM options WHERE question_id = :question_id");
         $statement->execute(array(':question_id' => $questionId));
         $row = $statement->fetch();
-
-        echo "borovicka";
 
         $sql = "INSERT INTO answers(question_id,option_id,answer1,answer2, answer3,answer_false1,answer_false2) VALUES (:question_id,:option_id,:answer1,:answer2, :answer3,:answer_false1,:answer_false2)";
         $stmt = $conn->prepare($sql);
