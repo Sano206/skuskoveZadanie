@@ -178,7 +178,24 @@ if(isset($_POST['login'])) {
                     $student = $studentCheck->fetchAll();
                 }
 
-                $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
+
+            $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
+            $stmt->bindParam(":test_id", $test[0]["id"]);
+            $stmt->bindParam(":student_id", $student[0]["id"]);
+            try {
+                $stmt->execute();
+            } catch (Exception $e) {
+                var_dump($e);
+            }
+            $alreadyTaken = $stmt->fetchAll();
+            if (!empty($alreadyTaken[0])) {
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["test"] = $test[0];
+                header("location: test.php");
+            } else {
+                $timestamp = date("G:i:s Y-m-d");
+                $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
                 $stmt->bindParam(":test_id", $test[0]["id"]);
                 $stmt->bindParam(":student_id", $student[0]["id"]);
                 try {
@@ -186,32 +203,12 @@ if(isset($_POST['login'])) {
                 } catch (Exception $e) {
                     var_dump($e);
                 }
-                $alreadyTaken = $stmt->fetchAll();
-                if (!empty($alreadyTaken[0])) {
-                    $_SESSION["username"] = $student[0]["name"];
-                    $_SESSION["userId"] = $student[0]["id"];
-                    $_SESSION["test"] = $test[0];
-                    header("location: index.php");
-                } else {
-                    $timestamp = date("G:i:s Y-m-d");
-                    $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
-                    $stmt->bindParam(":test_id", $test[0]["id"]);
-                    $stmt->bindParam(":student_id", $student[0]["id"]);
-                    $stmt->bindParam(":start_timestamp", $timestamp);
-                    try {
-                        $stmt->execute();
-                    } catch (Exception $e) {
-                        var_dump($e);
-                    }
-                    $_SESSION["username"] = $student[0]["name"];
-                    $_SESSION["userId"] = $student[0]["id"];
-                    $_SESSION["test"] = $test[0];
-                    header("location: test.php");
-                }
 
+                $_SESSION["username"] = $student[0]["name"];
+                $_SESSION["userId"] = $student[0]["id"];
+                $_SESSION["test"] = $test[0];
+                header("location: test.php");
             }
-
-
         }
     }
 }

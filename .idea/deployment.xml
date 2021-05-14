@@ -5,7 +5,15 @@
       <paths name="wt54.fei.stuba.sk - 147.175.98.54">
         <serverdata>
           <mappings>
-            <mapping deploy="/skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
+
+            <mapping deploy="/finale" local="$PROJECT_DIR$" web="/finale" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="webtech2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
           </mappings>
         </serverdata>
       </paths>
