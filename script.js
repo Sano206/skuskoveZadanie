@@ -18,14 +18,20 @@ $(document).ready(function () {
     $('#type').change(() => {
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
+        $('.question-style').css("display", "block")
+
         if($('#type  option:selected').val() === "multiple"){
             $('.option-div').css("display", "block")
+            document.getElementById('answer').innerHTML="";
+            document.getElementById('answer').innerHTML="Zadaj spravnu odpoved";
         }else if($('#type  option:selected').val() === "connection"){
             $('.option-div-conn').css("display", "block")
+            $('.question-style').css("display", "none")
         }
         else{
             $('.option-div').css("display", "none")
             $('.option-div-conn').css("display", "none")
+            $('.question-style').css("display", "block")
 
         }
     })
