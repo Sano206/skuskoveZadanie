@@ -56,7 +56,7 @@ if (isset($_GET['logout'])) {
 
     <?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>" ?>
 
-    <form class="container" method="post">
+    <form class="container" action="testController.php" method="post">
         <?php
         $x = "q";
         $i = 0;
@@ -107,9 +107,14 @@ if (isset($_GET['logout'])) {
                         <div class="window" id="dragDropWindow' . ($i + 3) . '"> ' . $answers["answer$i"] . '</div>
                         ';
                 }
+
+                echo '<div hidden id="list"></div>';
                 echo '</div>';
                 echo '</div>';
 
+               echo '<input hidden class="form-control" type="text" name="answer1" id="answer1">';
+               echo '<input hidden class="form-control" type="text" name="answer2" id="answer2">';
+               echo '<input hidden class="form-control" type="text" name="answer3" id="answer3">';
 
             } elseif ($row["type"] == "math") {
 
@@ -144,7 +149,7 @@ if (isset($_GET['logout'])) {
 
         <div class="form-control">
           <p >Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
-            <input type="submit" class="btn-primary" value="Chuju posielaj">
+            <button type="submit" class="btn-primary" name="action" value="sendTest">Odosli</button>
         </div>
 
 

@@ -24,8 +24,7 @@ if (!isset($_SESSION['instructorId'])) {
     <form method="post" action="testController.php">
         <div class="input-group">
 
-            <input hidden class="form-control" type="number" name="testId" id="testId"
-                   value="<?php echo $_GET["id"]; ?>">
+            <input hidden class="form-control" type="number" name="testId" id="testId" value="<?php echo $_GET["id"]; ?>">
             <label for="type" class="form-control">Typ otazky</label>
             <select class="form-control" name="type" id="type">
                 <option value="short">Doplňovacia odpoveď</option>
