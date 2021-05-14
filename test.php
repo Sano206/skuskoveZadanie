@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -11,7 +10,6 @@ if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
     header("location: login.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +131,7 @@ if (isset($_GET['logout'])) {
 //        <input type='button' value='clear' id='clr' size='23' onclick='erase()' style='position:static;top:55%;left:15%;'>";
 //            echo "Idz do pici z kanvasom";
 //            echo "</div>";
+
 
             }
             $i++;
