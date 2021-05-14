@@ -46,6 +46,7 @@ function changeTestState($id)
 
     $stmt = $conn->prepare("SELECT active from tests where id = :id");
 
+
     $stmt->bindParam(":id", $id);
     try {
         $stmt->execute();
@@ -102,7 +103,6 @@ function addQuestionController(){
         $statement->execute(array(':question_id' => $questionId));
         $row = $statement->fetch();
 
-        echo "borovicka";
 
         $sql = "INSERT INTO answers(question_id,option_id,answer1,answer2, answer3,answer_false1,answer_false2) VALUES (:question_id,:option_id,:answer1,:answer2, :answer3,:answer_false1,:answer_false2)";
         $stmt = $conn->prepare($sql);
@@ -191,4 +191,6 @@ function addQuestionConn(){
         return $e;
     }
 
+
 }
+
