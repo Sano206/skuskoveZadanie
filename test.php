@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -48,6 +47,7 @@ if (isset($_GET['logout'])) {
     $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
     $statement->execute(array(':test_id' => $test_id));
     $rows = $statement->fetchAll();
+    $countOfPoints = 0;
 
 
     ?>
@@ -62,24 +62,29 @@ if (isset($_GET['logout'])) {
         $i = 0;
         foreach ($rows as $row) {
 
-            if ($row["type"] == "short") {
-                echo "<div class='form-control'>";
-                echo "<p>" . $row["question"] . "</p>";
-                echo "<input type='text' name='$x$i' id='$x$i'> ";
-                echo "</div>";
-            } elseif ($row["type"] == "multiple") {
-                $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
-                $statement->execute(array(':question_id' => $row["id"]));
-                $columns = $statement->fetch();
-                echo "<div class='form-control'>";
-                echo "<p>" . $row["question"] . "</p>";
-                echo "<select>";
-                echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";        //TODO: randomize
-                echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
-                echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
-                echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
-                echo "</select>";
-                echo "</div>";
+           if ($row["type"] == "short") {
+                      echo "<div class='form-control'>";
+                      echo "<p>" . $row["question"] . "</p>";
+
+                      echo "<input type='text' name='$x$i' id='$x$i'> ";
+                      echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+                      $countOfPoints = $countOfPoints + $row["points"];
+                      echo "</div>";
+                  } elseif ($row["type"] == "multiple") {
+                      $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
+                      $statement->execute(array(':question_id' => $row["id"]));
+                      $columns = $statement->fetch();
+                      echo "<div class='form-control'>";
+                      echo "<p>" . $row["question"] . "</p>";
+                      echo "<select>";
+                      echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";
+                      echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
+                      echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
+                      echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
+                      echo "</select>";
+                      echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+                      $countOfPoints = $countOfPoints + $row["points"];
+                      echo "</div>";
             } elseif ($row["type"] == "connection") {
                 $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
                 $statement->execute(array(':question_id' => $row["id"]));
@@ -96,7 +101,6 @@ if (isset($_GET['logout'])) {
                 if (isset($answers["answer_false2"])) {
                     echo '<div class="window" id="dragDropWindow8"> ' . $answers["answer_false2"] . '</div>';
                 }
-
                 for ($i = 1; $i < 4; $i++) {
                     echo '
                         <div class="window" id="dragDropWindow' . $i . '"> ' . $options["option$i"] . '</div>
@@ -136,10 +140,10 @@ if (isset($_GET['logout'])) {
             $i++;
         }
 
-
         ?>
 
         <div class="form-control">
+          <p >Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
             <input type="submit" class="btn-primary" value="Chuju posielaj">
         </div>
 

@@ -24,17 +24,8 @@ if (!isset($_SESSION['instructorId'])) {
     <form method="post" action="testController.php">
         <div class="input-group">
 
-            <input hidden class="form-control" type="number" name="testId" id="testId" value="<?php echo $_GET["id"]; ?>">
-
-            <label for="question" class="form-control">Zadaj otazku</label> <!--        short question-->
-            <input class="form-control" type="text" name="question" id="question">
-
-            <label for="answer" class="form-control">Zadaj odpoved</label> <!--        short answer-->
-            <input class="form-control" type="text" name="answer" id="answer">
-
-            <label for="points" class="form-control">Pocet bodov</label> <!--        short answer-->
-            <input class="form-control" type="number" name="points" id="points">
-
+            <input hidden class="form-control" type="number" name="testId" id="testId"
+                   value="<?php echo $_GET["id"]; ?>">
             <label for="type" class="form-control">Typ otazky</label>
             <select class="form-control" name="type" id="type">
                 <option value="short">Doplňovacia odpoveď</option>
@@ -43,6 +34,17 @@ if (!isset($_SESSION['instructorId'])) {
                 <option value="connection">Spájanie</option>
                 <option value="image">Kreslenie</option>
             </select>
+
+            <label for="question" class="question-style form-control">Zadaj otazku</label> <!--        short question-->
+            <input class="question-style form-control" type="text" name="question" id="question">
+
+            <label for="answer" id="anser_id" class="question-style-answer form-control">Zadaj odpoved</label> <!--        short answer-->
+            <input class="question-style-answer form-control" type="text" name="answer" id="answer">
+
+            <label for="points" class="form-control">Pocet bodov</label> <!--        short answer-->
+            <input class="form-control" type="number" name="points" id="points">
+
+
 
             <div class="option-div">
                 <label for="option" class="form-control">Zadaj odpoved</label>
@@ -56,28 +58,27 @@ if (!isset($_SESSION['instructorId'])) {
                 <label for="conn1">Otazka 1</label>
                 <input class="form-control" type="text" name="conn1" value="" id="conn1">
                 <label for="conn1True"> Odpoved 1</label>
-                <input class="form-control" type="text" name="conn1True" value="" id="conn1True" >
+                <input class="form-control" type="text" name="conn1True" value="" id="conn1True">
 
                 <label for="conn2">Otazka 2</label>
                 <input class="form-control" type="text" name="conn2" value="" id="conn2">
                 <label for="conn2True"> Odpoved 2</label>
-                <input class="form-control" type="text" name="conn2True" value="" id="conn2True" >
+                <input class="form-control" type="text" name="conn2True" value="" id="conn2True">
 
                 <label for="conn3">Otazka 3</label>
                 <input class="form-control" type="text" name="conn3" value="" id="conn3">
                 <label for="conn3True"> Odpoved 3</label>
-                <input class="form-control" type="text" name="conn3True" value="" id="conn3True" >
+                <input class="form-control" type="text" name="conn3True" value="" id="conn3True">
 
                 <label for="connFalse">Zadaj vadnu odpoved</label>
-                <input class="form-control" type="text" name="connFalse" value="" id="connFalse" >
+                <input class="form-control" type="text" name="connFalse" value="" id="connFalse">
 
                 <label for="ConnFalse2">Zadaj dalsu vadnu odpoved</label>
-                <input class="form-control" type="text" name="connFalse2" value="" id="connFalse2" >
+                <input class="form-control" type="text" name="connFalse2" value="" id="connFalse2">
             </div>
 
             <button type="submit" name="action" value="addQuestion">Add Question</button>
         </div>
-
 
 
     </form>
