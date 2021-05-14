@@ -6,8 +6,7 @@ $test_id = $test[0];
 $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
 $statement->execute(array(':test_id' => $test_id));
 $rows = $statement->fetchAll();
-
-
+$countOfPoints = 0;
 
 ?>
 <!DOCTYPE html>
@@ -137,7 +136,7 @@ $rows = $statement->fetchAll();
 <body>
 <h1 style="text-align: center">TESTERINO</h1>
 
-<?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>"?>
+<?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>" ?>
 
 <form class="container" method="post">
     <?php
@@ -145,24 +144,28 @@ $rows = $statement->fetchAll();
     $i = 0;
     foreach ($rows as $row) {
 
-        if($row["type"] == "short"){
+        if ($row["type"] == "short") {
             echo "<div class='form-control'>";
             echo "<p>" . $row["question"] . "</p>";
+
             echo "<input type='text' name='$x$i' id='$x$i'> ";
+            echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+            $countOfPoints = $countOfPoints + $row["points"];
             echo "</div>";
-        }
-        elseif ($row["type"] == "multiple") {
+        } elseif ($row["type"] == "multiple") {
             $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
             $statement->execute(array(':question_id' => $row["id"]));
             $columns = $statement->fetch();
             echo "<div class='form-control'>";
             echo "<p>" . $row["question"] . "</p>";
             echo "<select>";
-            echo "<option value=".$row['answer'].">". $row['answer'] . "</option>";
-            echo "<option value=".$columns['option1'].">". $columns['option1'] . "</option>";
-            echo "<option value=".$columns['option2'].">". $columns['option2'] . "</option>";
-            echo "<option value=".$columns['option3'].">". $columns['option3']. "</option>";
+            echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";
+            echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
+            echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
+            echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
             echo "</select>";
+            echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+            $countOfPoints = $countOfPoints + $row["points"];
             echo "</div>";
 
 
@@ -193,12 +196,13 @@ $rows = $statement->fetchAll();
 //            echo "</div>";
 
         }
-  $i++;
+        $i++;
     }
 
     ?>
 
     <div class="form-control">
+        <p >Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
         <input type="submit" class="btn-primary" value="Chuju posielaj">
     </div>
 
