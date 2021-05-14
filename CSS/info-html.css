@@ -1,0 +1,100 @@
+@import url('http://fonts.googleapis.com/css?family=Arapey');
+
+body{
+    margin: 0;
+    font-family: 'Arapey', serif;
+
+}
+
+ul li a{
+    color: white;
+    background: black;
+    opacity: .8;
+}
+nav{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    background: black;
+    opacity: .8;
+}
+
+h1{
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    left: 46.5%;
+    transform: translate(-50% -50%);
+    color: black;
+}
+
+img{
+    width: 30%;
+    right: 0;
+    top: 10%;
+    position: absolute;
+}
+
+section{
+    color: black;
+    height: 100vh;
+    padding: 3em;
+    position: relative;
+    box-sizing: border-box;
+    background: -moz-linear-gradient(top, #f2f6f5 0%, #97e2e7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f6f5), color-stop(100%, #97e2e7));
+    background: -webkit-linear-gradient(top, #f2f6f5 0%, #97e2e7 100%);
+}
+
+h2{
+    font-family: "Times New Roman",Serif;
+    font-size: 3em;
+    width: 30%;
+    margin-top: 17%;
+    position: absolute;
+}
+
+span{
+    width: 100%;
+    background: #97e2e7;
+    display: block;
+    height: 5px;
+    margin-top: 20px;
+}
+
+section:nth-child(odd){
+    background: -moz-linear-gradient(top, #97e2e7 0%, #f2f6f5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #97e2e7), color-stop(100%, #f2f6f5));
+    background: -webkit-linear-gradient(top, #97e2e7 0%, #f2f6f5 100%);
+}
+
+p{
+    width: 40%;
+    position: absolute;
+    top: 60%;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 1300px) {
+    p{
+        top: 50%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    p{
+        top: 45%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    p{
+        top: 35%;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    p{
+        top: 30%;
+    }
+}
