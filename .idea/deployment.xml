@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="webtech" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="WEBTE2" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="webtech">
+      <paths name="WEBTE2">
         <serverdata>
           <mappings>
-            <mapping deploy="/finale" local="$PROJECT_DIR$" web="/finale" />
+            <mapping deploy="/skuska" local="$PROJECT_DIR$" web="/skuska" />
           </mappings>
         </serverdata>
       </paths>
