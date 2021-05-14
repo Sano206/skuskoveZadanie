@@ -16,6 +16,122 @@ $rows = $statement->fetchAll();
     <title>test</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script>
+        var canvas, ctx, flag = false,
+            prevX = 0,
+            currX = 0,
+            prevY = 0,
+            currY = 0,
+            dot_flag = false;
+
+        var x = "black",
+            y = 2;
+
+        function init() {
+            canvas = document.getElementById('can');
+            ctx = canvas.getContext("2d");
+            w = canvas.width;
+            h = canvas.height;
+
+            canvas.addEventListener("mousemove", function (e) {
+                findxy('move', e)
+            }, false);
+            canvas.addEventListener("mousedown", function (e) {
+                findxy('down', e)
+            }, false);
+            canvas.addEventListener("mouseup", function (e) {
+                findxy('up', e)
+            }, false);
+            canvas.addEventListener("mouseout", function (e) {
+                findxy('out', e)
+            }, false);
+        }
+
+        function color(obj) {
+            switch (obj.id) {
+                case "green":
+                    x = "green";
+                    break;
+                case "blue":
+                    x = "blue";
+                    break;
+                case "red":
+                    x = "red";
+                    break;
+                case "yellow":
+                    x = "yellow";
+                    break;
+                case "orange":
+                    x = "orange";
+                    break;
+                case "black":
+                    x = "black";
+                    break;
+                case "white":
+                    x = "white";
+                    break;
+            }
+            if (x == "white") y = 14;
+            else y = 2;
+
+        }
+
+        function draw() {
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
+            ctx.lineTo(currX, currY);
+            ctx.strokeStyle = x;
+            ctx.lineWidth = y;
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        function erase() {
+            var m = confirm("Want to clear");
+            if (m) {
+                ctx.clearRect(0, 0, w, h);
+                document.getElementById("canvasimg").style.display = "none";
+            }
+        }
+
+        function save() {
+            document.getElementById("canvasimg").style.border = "2px solid";
+            var dataURL = canvas.toDataURL();
+            document.getElementById("canvasimg").src = dataURL;
+            document.getElementById("canvasimg").style.display = "inline";
+        }
+
+        function findxy(res, e) {
+            if (res == 'down') {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+
+                flag = true;
+                dot_flag = true;
+                if (dot_flag) {
+                    ctx.beginPath();
+                    ctx.fillStyle = x;
+                    ctx.fillRect(currX, currY, 2, 2);
+                    ctx.closePath();
+                    dot_flag = false;
+                }
+            }
+            if (res == 'up' || res == "out") {
+                flag = false;
+            }
+            if (res == 'move') {
+                if (flag) {
+                    prevX = currX;
+                    prevY = currY;
+                    currX = e.clientX - canvas.offsetLeft;
+                    currY = e.clientY - canvas.offsetTop;
+                    draw();
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <h1 style="text-align: center">TESTERINO</h1>
@@ -56,34 +172,40 @@ $rows = $statement->fetchAll();
         } elseif ($row["type"] == "math") {
 
         } elseif ($row["type"] == "image") {
-            echo "<div class='form-control'>";
-            echo "<p>" . $row["question"] . "</p>";
 
-            echo '<button class="" id="imgur">send</button>';
-            echo '<canvas id="draw" width="500" height="500" style="border: 1px solid black"></canvas>';
 
-            echo '<input type="hidden" value="" id="link">';
+//            echo "<div style='z-index: 156456'>";
+//
+//
+//            echo "<canvas onload='init()' id='can' width='400' height='400' style='position:static;top:10%;left:10%;border:2px solid;'></canvas>
+//        <div style='position:static;top:12%;left:43%;'>Choose Color</div>
+//        <div style='position:static;top:15%;left:45%;width:10px;height:10px;background:green;' id='green' onclick='color(this)'></div>
+//        <div style='position:static;top:15%;left:46%;width:10px;height:10px;background:blue;' id='blue' onclick='color(this)'></div>
+//        <div style='position:static;top:15%;left:47%;width:10px;height:10px;background:red;' id='red' onclick='color(this)'></div>
+//        <div style='position:static;top:17%;left:45%;width:10px;height:10px;background:yellow;' id='yellow' onclick='color(this)'></div>
+//        <div style='position:static;top:17%;left:46%;width:10px;height:10px;background:orange;' id='orange' onclick='color(this)'></div>
+//        <div style='position:static;top:17%;left:47%;width:10px;height:10px;background:black;' id='black' onclick='color(this)'></div>
+//        <div style='position:static;top:20%;left:43%;'>Eraser</div>
+//        <div style='position:static;top:22%;left:45%;width:15px;height:15px;background:white;border:2px solid;' id='white' onclick='color(this)'></div>
+//        <img id='canvasimg' style='position:static;top:10%;left:52%;' style='display:none;'>
+//        <input type='button value='save' id='btn' size='30' onclick='save()' style='position:absolute;top:55%;left:10%;'>
+//        <input type='button' value='clear' id='clr' size='23' onclick='erase()' style='position:static;top:55%;left:15%;'>";
+//            echo "Idz do pici z kanvasom";
+//            echo "</div>";
 
-            echo "<p style='float: right'>" . $row["points"] . "b</p>";
-            echo "</div>";
         }
         $i++;
     }
 
     ?>
 
-    <div class="form-control" style="margin-top: 50px">
+    <div class="form-control">
         <input type="submit" class="btn-primary" value="Chuju posielaj">
     </div>
+
+
 </form>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="draw.js"></script>
 
 </body>
 </html>

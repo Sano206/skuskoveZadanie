@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
+    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="commits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
@@ -69,7 +69,7 @@
       <workItem from="1620810675567" duration="1518000" />
       <workItem from="1620890941631" duration="10628000" />
       <workItem from="1620940132332" duration="11699000" />
-      <workItem from="1620985218120" duration="3718000" />
+      <workItem from="1620985218120" duration="4045000" />
     </task>
     <task id="LOCAL-00001" summary="instructor login first">
       <created>1620896846759</created>
@@ -113,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620990053601</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="lehce upravenie bodov este">
+      <created>1620990214827</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620990214827</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +145,7 @@
     <MESSAGE value="upravenie questiontotest.php" />
     <MESSAGE value="updatne of mupltiple showing" />
     <MESSAGE value="pridanie bodov do testu" />
-    <option name="LAST_COMMIT_MESSAGE" value="pridanie bodov do testu" />
+    <MESSAGE value="lehce upravenie bodov este" />
+    <option name="LAST_COMMIT_MESSAGE" value="lehce upravenie bodov este" />
   </component>
 </project>
