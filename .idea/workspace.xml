@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="instructor ui test - shor + multiple choice, + controller">
-      <change afterPath="$PROJECT_DIR$/canvas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/skuskoveZadanie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/skuskoveZadanie.iml" afterDir="false" />
+    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="connections ui first try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testController.php" beforeDir="false" afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620932651338</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="connections ui first try">
+      <created>1620983852226</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620983852226</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="instructor login first" />
-    <option name="LAST_COMMIT_MESSAGE" value="instructor login first" />
+    <MESSAGE value="connections ui first try" />
+    <option name="LAST_COMMIT_MESSAGE" value="connections ui first try" />
   </component>
 </project>
