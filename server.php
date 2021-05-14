@@ -9,7 +9,7 @@ session_start();
 $username = "";
 $email = "";
 $errors = array();
-$websiteTitle = 'Zadanie3';
+$websiteTitle = 'Skuskove Zadanie';
 
 $ga = new PHPGangsta_GoogleAuthenticator();
 
@@ -209,9 +209,10 @@ if ($_POST['login'] == 'student') {
                 header("location: test.php");
             }
 
+            }
+
+
         }
-
-
     }
 }
 

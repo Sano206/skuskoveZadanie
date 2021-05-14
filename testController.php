@@ -69,14 +69,11 @@ function changeTestState($id)
 }
 
 function addQuestionController(){
-
+    require('config.php');
     if($_POST["type"] == "short") {
         addQuestion();
     }elseif($_POST["type"] == "multiple") {
         $questionId = addQuestion();
-        require('config.php');
-
-
         $sql = "INSERT INTO options(question_id,option1,option2, option3) VALUES (:question_id,:option1,:option2, :option3)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":question_id", $questionId);
@@ -88,7 +85,47 @@ function addQuestionController(){
         } catch (Exception $e) {
             return $e;
         }
+    }elseif ($_POST["type"] == "connection")
+    {
+        $questionId = addQuestionConn();
+        $sql = "INSERT INTO options(question_id,option1,option2, option3) VALUES (:question_id,:option1,:option2, :option3)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":question_id", $questionId);
+        $stmt->bindParam(":option1", $_POST["conn1"]);
+        $stmt->bindParam(":option2",  $_POST["conn2"]);
+        $stmt->bindParam(":option3",  $_POST["conn3"]);
+
+        $stmt->execute();
+
+
+        $statement = $conn->prepare("SELECT id FROM options WHERE question_id = :question_id");
+        $statement->execute(array(':question_id' => $questionId));
+        $row = $statement->fetch();
+
+        echo "borovicka";
+
+        $sql = "INSERT INTO answers(question_id,option_id,answer1,answer2, answer3,answer_false1,answer_false2) VALUES (:question_id,:option_id,:answer1,:answer2, :answer3,:answer_false1,:answer_false2)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":question_id", $questionId);
+        $stmt->bindParam(":option_id", $row["id"]);
+        $stmt->bindParam(":answer1", $_POST["conn1True"]);
+        $stmt->bindParam(":answer2",  $_POST["conn2True"]);
+        $stmt->bindParam(":answer3",  $_POST["conn3True"]);
+        $stmt->bindParam(":answer_false1",  $_POST["connFalse"]);
+        $stmt->bindParam(":answer_false2",  $_POST["connFalse2"]);
+        $stmt->execute();
+//        try {
+//            return $stmt->execute();
+//        } catch (Exception $e) {
+//            return $e;
+//        }
+
     }
+    elseif($_POST["type"] == "image") {
+        addQuestion();
+
+    }
+
     return "nic";
 
 
@@ -134,4 +171,24 @@ function addQuestion(){
     } catch (Exception $e) {
         return $e;
     }
+}
+function addQuestionConn(){
+    require ('config.php');
+
+    $tmp = "-";
+    $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":test_id", $_POST["testId"]);
+    $stmt->bindParam(":question", $tmp);
+    $stmt->bindParam(":answer",  $tmp);
+    $stmt->bindParam(":points",  $_POST["points"]);
+    $stmt->bindParam(":type",  $_POST["type"]);
+    try {
+        $stmt->execute();
+        return $conn->lastInsertId();
+    } catch (Exception $e) {
+        return $e;
+    }
+
 }

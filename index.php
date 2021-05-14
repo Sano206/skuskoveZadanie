@@ -52,7 +52,7 @@ if (isset($_SESSION['userId'])) {
                 </tr>
                 <?php
                 require('config.php');
-                $stmt = $conn->prepare("SELECT id, name, active from tests where instructor_id = :instructor_id");
+                $stmt = $conn->prepare("SELECT * from tests where instructor_id = :instructor_id");
                 $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
                 try {
                     $stmt->execute();
@@ -62,7 +62,7 @@ if (isset($_SESSION['userId'])) {
                 $tests = $stmt->fetchAll();
                 foreach ($tests as $test) {
                     echo '<tr>';
-                    echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >' . $test["name"] . "</a>" . '</td>';
+                    echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >' . $test["name"] ."</a>" . "   ". $test["code"] . '</td>';
                     echo '<td ><button type="submit" class="toggler" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "NO") . '</button></td>';
                     echo '</tr>';
                 }
