@@ -6,7 +6,7 @@ $test_id = $test[0];
 $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
 $statement->execute(array(':test_id' => $test_id));
 $rows = $statement->fetchAll();
-
+$countOfPoints = 0;
 
 ?>
 <!DOCTYPE html>
@@ -150,6 +150,7 @@ $rows = $statement->fetchAll();
 
             echo "<input type='text' name='$x$i' id='$x$i'> ";
             echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+            $countOfPoints = $countOfPoints + $row["points"];
             echo "</div>";
         } elseif ($row["type"] == "multiple") {
             $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
@@ -164,6 +165,7 @@ $rows = $statement->fetchAll();
             echo "<option value=" . $columns['option3'] . ">" . $columns['option3'] . "</option>";
             echo "</select>";
             echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+            $countOfPoints = $countOfPoints + $row["points"];
             echo "</div>";
 
 
@@ -200,6 +202,7 @@ $rows = $statement->fetchAll();
     ?>
 
     <div class="form-control">
+        <p >Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
         <input type="submit" class="btn-primary" value="Chuju posielaj">
     </div>
 
