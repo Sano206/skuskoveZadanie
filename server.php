@@ -4,11 +4,12 @@ require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
 
 session_start();
 
+
 // initializing variables
 $username = "";
 $email = "";
 $errors = array();
-$websiteTitle = 'Zadanie3';
+$websiteTitle = 'Skuskove Zadanie';
 
 $ga = new PHPGangsta_GoogleAuthenticator();
 
@@ -190,7 +191,7 @@ if ($_POST['login'] == 'student') {
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
                 $_SESSION["test"] = $test[0];
-                header("location: index.php");
+                header("location: test.php");
             } else {
                 $timestamp = date("G:i:s Y-m-d");
                 $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
@@ -205,12 +206,9 @@ if ($_POST['login'] == 'student') {
                 $_SESSION["username"] = $student[0]["name"];
                 $_SESSION["userId"] = $student[0]["id"];
                 $_SESSION["test"] = $test[0];
-                header("location: index.php");
+                header("location: test.php");
             }
-
         }
-
-
     }
 }
 
