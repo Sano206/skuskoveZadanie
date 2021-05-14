@@ -42,7 +42,10 @@ if (isset($_SESSION['userId'])) {
             <table>
                 <tr>
                     <th>
-                        Test Name
+                        Name
+                    </th>
+                    <th>
+                        Code
                     </th>
                     <th>
                         Active
@@ -60,8 +63,11 @@ if (isset($_SESSION['userId'])) {
                 $tests = $stmt->fetchAll();
                 foreach ($tests as $test) {
                     echo '<tr>';
-                    echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >' . $test["name"] ."</a>" . "   ". $test["code"] . '</td>';
+                    echo '<td>' .  $test["name"] . '</td>';
+                    echo '<td>' . $test["code"] . '</td>';
                     echo '<td ><button type="submit" class="toggler" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "NO") . '</button></td>';
+                    echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button class='btn btn-primary btn-lg' > Nahliadni na test </button>" ."</a>" . '</td>';
+                    echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >'. "<button class='btn btn-primary btn-lg' > Pridaj otazku </button>" ."</a>" . "  ". '</td>';
                     echo '</tr>';
                 }
 

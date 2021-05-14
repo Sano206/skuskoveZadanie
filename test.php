@@ -119,6 +119,16 @@ if (isset($_GET['logout'])) {
             } elseif ($row["type"] == "math") {
 
             } elseif ($row["type"] == "image") {
+               echo "<div class='form-control'>";
+               echo "<p>" . $row["question"] . "</p>";
+
+               echo '<button class="" id="imgur">send</button>';
+               echo '<canvas id="draw" width="500" height="500" style="border: 1px solid black"></canvas>';
+
+               echo '<input type="hidden" value="" id="link">';
+
+               echo "<p style='float: right'>" . $row["points"] . "b</p>";
+               echo "</div>";
 
 
 //            echo "<div style='z-index: 156456'>";
@@ -169,7 +179,29 @@ if (isset($_GET['logout'])) {
 
 <!--  demo code -->
 <script src="connections/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+<!-- JS -->
+<script src="connections/dist/js/jsplumb.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="connections/demo.js"></script>
+
+<script src="connections/demo-list.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="draw.js"></script>
 <script src="connections/demo-list.js"></script>
 </body>
 </html>
