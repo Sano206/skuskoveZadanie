@@ -14,7 +14,7 @@
 
 <div style="position: absolute; right: 15px; top: 15px">
     <a class="btn btn-info" href="Credits/info.html">Made by</a>
-    <a class="btn btn-info" href="Credits/tasks.php">Tasks</a>
+    <a class="btn btn-info" href="Credits/tasks.html">Tasks</a>
 </div>
 
 <div  class="w-25 container" id="content">
