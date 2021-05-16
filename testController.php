@@ -65,7 +65,19 @@ function sendTest()
 
     for($i=0; $i<count($arrayPost); $i++) {
             $q = $d[$j]['question'];
+            $answer = $arrayPost[$i];
 
+            if ($d[$j]['type'] == 'multiple')
+            {
+                $option = isset($_POST['taskOption']) ? $_POST['taskOption'] : false;
+                if ($option) {
+                    echo htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
+                    $answer = htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
+                } else {
+                    echo "task option is required";
+                    exit;
+                }
+            }
 
             if ($d[$j]['type'] == 'connection') {
                 if ($x == 0) {
@@ -82,7 +94,7 @@ function sendTest()
                 $stmt->bindParam(":test_id", $test_id);
                 $stmt->bindParam(":question_id", $d[$j][0]);
                 $stmt->bindParam(":question", $q);
-                $stmt->bindParam(":answer", $arrayPost[$i]);
+                $stmt->bindParam(":answer", $answer);
                 $stmt->bindParam(":type", $d[$j][5]);
                 try {
                     $stmt->execute();

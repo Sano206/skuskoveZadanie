@@ -109,7 +109,7 @@ if (isset($_GET['logout'])) {
                       $columns = $statement->fetch();
                       echo "<div class='form-control'>";
                       echo "<p>" . $row["question"] . "</p>";
-                      echo "<select>";
+                      echo "<select name = 'taskOption'>";
                       echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";
                       echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
                       echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
