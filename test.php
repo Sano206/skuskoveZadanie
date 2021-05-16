@@ -156,16 +156,6 @@ if (isset($_GET['logout'])) {
             } elseif ($row["type"] == "math") {
 
             } elseif ($row["type"] == "image") {
-               echo "<div class='form-control'>";
-               echo "<p>" . $row["question"] . "</p>";
-
-               echo '<button class="" id="imgur">send</button>';
-               echo '<canvas id="draw" width="500" height="500" style="border: 1px solid black"></canvas>';
-
-               echo '<input type="hidden" value="" id="link">';
-
-               echo "<p style='float: right'>" . $row["points"] . "b</p>";
-               echo "</div>";
 
                echo "<div class='form-control'>";
                echo "<p>" . $row["question"] . "</p>";
