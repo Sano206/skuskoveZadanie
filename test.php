@@ -163,7 +163,7 @@ if (isset($_GET['logout'])) {
                echo "<button type='button' class='' id='imgur' value='$i' onClick='reply(this.value)'>send</button>";
                echo "<canvas id='draw$i' width='500' height='500' style='border: 1px solid black' onClick='reply_click(this.id)'></canvas>";
 
-               echo "<input type='hidden' value='' id='link$i'>";
+               echo "<input type='hidden' value='' id='link$i' name='link$i'>";
 
                echo "<p style='float: right'>" . $row["points"] . "b</p>";
                echo "</div>";
@@ -177,7 +177,6 @@ if (isset($_GET['logout'])) {
           <p >Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
             <button type="submit" class="btn-primary" name="action" value="sendTest">Odosli</button>
         </div>
-
 
     </form>
 </div>

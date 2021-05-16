@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once 'config.php';
 $action = $_POST["action"];
 
 if ($action == "createTest") {
@@ -10,14 +10,14 @@ if ($action == "createTest") {
 } elseif ($action == "addQuestion") {
     echo addQuestionController();
 }elseif ($action == "sendTest") {
-    echo sendTest();
+    sendTest();
 }
 
 
 function createTest()
 {
 
-    require('config.php');
+    //require('config.php');
 
     $stmt = $conn->prepare("INSERT INTO tests(name,length,code,instructor_id) values(:name,:length,:code,:instructor_id)");
 
@@ -42,15 +42,34 @@ function createTest()
 }
 function sendTest()
 {
+/*
+    $stmt = $conn->prepare("INSERT INTO test_complete(student_id, test_id, question_id, question, answer, type) values(:student_id, :test_id, :question_id, :question, :answer, :type)");
+    $stmt->bindParam(":student_id", $test[0]["id"]);
+    $stmt->bindParam(":test_id", $student[0]["id"]);
+    $stmt->bindParam(":question_id", $timestamp);
+    $stmt->bindParam(":question", $test[0]["id"]);
+    $stmt->bindParam(":answer", $student[0]["id"]);
+    $stmt->bindParam(":type", $timestamp);
 
-    return '';
+    try {
+        $stmt->execute();
+    } catch (Exception $e) {
+        var_dump($e);
+    }
+   */
+    foreach ($_POST as $row)
+    {
+        echo $row[1] . "<br><br>";
+    }
+
+    return $_POST;
 
 }
 
 function changeTestState($id)
 {
 
-    require('config.php');
+    //require('config.php');
 
     $stmt = $conn->prepare("SELECT active from tests where id = :id");
 
@@ -78,7 +97,7 @@ function changeTestState($id)
 }
 
 function addQuestionController(){
-    require('config.php');
+    //require('config.php');
     if($_POST["type"] == "short") {
         addQuestion();
     }elseif($_POST["type"] == "multiple") {
@@ -164,7 +183,7 @@ function addQuestionController(){
 
 
 function addQuestion(){
-    require ('config.php');
+    //require ('config.php');
 
     $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
     $stmt = $conn->prepare($sql);
@@ -181,7 +200,7 @@ function addQuestion(){
     }
 }
 function addQuestionConn(){
-    require ('config.php');
+    //require ('config.php');
 
     $tmp = "-";
     $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
