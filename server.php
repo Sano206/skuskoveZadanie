@@ -4,11 +4,12 @@ require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
 
 session_start();
 
+
 // initializing variables
 $username = "";
 $email = "";
 $errors = array();
-$websiteTitle = 'Zadanie3';
+$websiteTitle = 'Skuskove Zadanie';
 
 $ga = new PHPGangsta_GoogleAuthenticator();
 
@@ -177,6 +178,7 @@ if(isset($_POST['login'])) {
                     $student = $studentCheck->fetchAll();
                 }
 
+
                 $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
                 $stmt->bindParam(":test_id", $test[0]["id"]);
                 $stmt->bindParam(":student_id", $student[0]["id"]);
@@ -190,8 +192,9 @@ if(isset($_POST['login'])) {
                     $_SESSION["username"] = $student[0]["name"];
                     $_SESSION["userId"] = $student[0]["id"];
                     $_SESSION["test"] = $test[0];
-                    header("location: index.php");
+                    header("location: test.php");
                 } else {
+                    date_default_timezone_set('Europe/Bratislava');
                     $timestamp = date("G:i:s Y-m-d");
                     $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
                     $stmt->bindParam(":test_id", $test[0]["id"]);
@@ -202,21 +205,19 @@ if(isset($_POST['login'])) {
                     } catch (Exception $e) {
                         var_dump($e);
                     }
+
                     $_SESSION["username"] = $student[0]["name"];
                     $_SESSION["userId"] = $student[0]["id"];
                     $_SESSION["test"] = $test[0];
-                    header("location: index.php");
+                    header("location: test.php");
                 }
-
             }
-
-
         }
     }
 }
 
-function saveLoginInfo($userId, $type, $username, $db)
-{
+
+function saveLoginInfo($userId, $type, $username, $db){
 //    $timestamp = date('Y-m-d G:i:s', time()+3600*2);
 //    $query = "INSERT INTO logins (user_id, reg_type, timestamp)
 //  			  VALUES('$userId', '$type', '$timestamp')";

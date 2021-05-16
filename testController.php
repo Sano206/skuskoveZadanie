@@ -9,6 +9,8 @@ if ($action == "createTest") {
     echo changeTestState($_POST["id"]);
 } elseif ($action == "addQuestion") {
     echo addQuestionController();
+}elseif ($action == "sendTest") {
+    echo sendTest();
 }
 
 
@@ -36,6 +38,12 @@ function createTest()
     }
 
     header("location: index.php");
+
+}
+function sendTest()
+{
+
+    return '';
 
 }
 
@@ -125,8 +133,7 @@ function addQuestionController(){
         addQuestion();
 
     }
-
-    return "nic";
+    header('Location: https://wt61.fei.stuba.sk/webt/finale/ShowTest.php?id=7' );
 
 
 //
