@@ -142,12 +142,16 @@ if (isset($_GET['logout'])) {
                 }
 
                 echo '<div hidden id="list"></div>';
+                echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
                 echo '</div>';
                 echo '</div>';
+
 
                echo '<input hidden class="form-control" type="text" name="answer1" id="answer1">';
                echo '<input hidden class="form-control" type="text" name="answer2" id="answer2">';
                echo '<input hidden class="form-control" type="text" name="answer3" id="answer3">';
+
+               $countOfPoints = $countOfPoints + $row["points"];
 
             } elseif ($row["type"] == "math") {
 
@@ -173,12 +177,10 @@ if (isset($_GET['logout'])) {
 
                echo "<p style='float: right'>" . $row["points"] . "b</p>";
                echo "</div>";
-
-
+               $countOfPoints = $countOfPoints + $row["points"];
             }
             $i++;
         }
-
         ?>
 
         <div class="form-control">
