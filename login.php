@@ -5,6 +5,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
@@ -13,8 +14,8 @@
 <body>
 
 <div style="position: absolute; right: 15px; top: 15px">
-    <a class="btn btn-info" href="Credits/info.html">Made by</a>
-    <a class="btn btn-info" href="Credits/tasks.php">Tasks</a>
+    <a class="btn btn-info" href="Credits/info.html"><i class="fab fa-accessible-icon"></i>Made by</a>
+    <a class="btn btn-info" href="Credits/tasks.html"><i class="fas fa-check"></i>Tasks</a>
 </div>
 
 <div  class="w-25 container" id="content">
@@ -79,7 +80,7 @@
                         </div>
                         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-secondary" name="login" value="student">Login</button>
+                                <button type="submit" class="btn btn-secondary" name="login" value="student"><i class="fas fa-sign-in-alt"></i>Login</button>
                             </div>
                         </div>
                     </form>
@@ -118,7 +119,7 @@
                         </div>
                         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-secondary" name="login" value="instructor">Login</button>
+                                <button type="submit" class="btn btn-secondary" name="login" value="instructor"><i class="fas fa-sign-in-alt"></i>Login</button>
                             </div>
                         </div>
                         <p style="font-size: 11px; padding-left: 25px;">

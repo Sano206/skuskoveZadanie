@@ -39,6 +39,7 @@ function createTest()
     header("location: index.php");
 
 }
+
 function sendTest()
 {
     require 'config.php';
@@ -205,7 +206,7 @@ function addQuestionController(){
 
     }
 
-    return "nic";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 
 //
