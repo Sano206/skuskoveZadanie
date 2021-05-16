@@ -5,8 +5,6 @@ require_once "config.php";
 if (!isset($_SESSION['instructorId'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
-
-
 }
 
 $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
