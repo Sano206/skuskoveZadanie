@@ -83,6 +83,10 @@ $countOfPoints = 0;
     }
     echo "Dokopy bodov za test = " . $countOfPoints;
     echo "<br>";
+    echo $_GET['id'];
+    echo "<br>";
+    echo '<td>' . '<a href="questiontotest.php?id='. $_GET['id'] . '" >' .  "<button class='btn btn-primary btn-lg' >Pridaj Otazku </button>" ."</a>" . '</td>';
+    echo "<br>";
     echo '<a href="index.php" >' . "<button class='btn btn-primary btn-lg'> Ulozit </button>"."</a>" ;
 
     ?>

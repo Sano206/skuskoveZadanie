@@ -133,8 +133,7 @@ function addQuestionController(){
         addQuestion();
 
     }
-
-    return "nic";
+    header('Location: https://wt61.fei.stuba.sk/webt/finale/ShowTest.php?id=7' );
 
 
 //

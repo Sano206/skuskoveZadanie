@@ -157,15 +157,6 @@ if (isset($_GET['logout'])) {
 
             } elseif ($row["type"] == "image") {
                echo "<div class='form-control'>";
-               echo "<p>" . $row["question"] . "</p>";
-
-               echo '<button class="" id="imgur">send</button>';
-               echo '<canvas id="draw" width="500" height="500" style="border: 1px solid black"></canvas>';
-
-               echo '<input type="hidden" value="" id="link">';
-
-               echo "<p style='float: right'>" . $row["points"] . "b</p>";
-               echo "</div>";
 
                echo "<div class='form-control'>";
                echo "<p>" . $row["question"] . "</p>";
@@ -173,7 +164,7 @@ if (isset($_GET['logout'])) {
                echo "<button type='button' class='' id='imgur' value='$i' onClick='reply(this.value)'>send</button>";
                echo "<canvas id='draw$i' width='500' height='500' style='border: 1px solid black' onClick='reply_click(this.id)'></canvas>";
 
-               echo "<input type='hidden' value='' id='link$i'>";
+               echo "<input type='hidden' value='' id='link$i' name='link$i'>";
 
                echo "<p style='float: right'>" . $row["points"] . "b</p>";
                echo "</div>";
@@ -188,10 +179,22 @@ if (isset($_GET['logout'])) {
             <button type="submit" class="btn-primary" name="action" value="sendTest">Odosli</button>
         </div>
 
-
     </form>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+<!-- JS -->
+<script src="connections/dist/js/jsplumb.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="connections/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
