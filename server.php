@@ -194,10 +194,12 @@ if(isset($_POST['login'])) {
                     $_SESSION["test"] = $test[0];
                     header("location: test.php");
                 } else {
+                    date_default_timezone_set('Europe/Bratislava');
                     $timestamp = date("G:i:s Y-m-d");
                     $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
                     $stmt->bindParam(":test_id", $test[0]["id"]);
                     $stmt->bindParam(":student_id", $student[0]["id"]);
+                    $stmt->bindParam(":start_timestamp", $timestamp);
                     try {
                         $stmt->execute();
                     } catch (Exception $e) {
