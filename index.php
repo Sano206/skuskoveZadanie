@@ -70,7 +70,7 @@ if (isset($_SESSION['userId'])) {
                         echo '<td><button style="border-radius: 75px" type="submit" class="toggler btn btn-small btn-secondary" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "No") . '</button></td>';
                         echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-file-alt'></i></button>"."</a>".'</td>';
                         echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-edit'></i></button>"."</a>".'</td>';
-                        echo '<td>' . '<a href="*.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-flag-checkered'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="students.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-flag-checkered'></i></button>"."</a>".'</td>';
 
                         echo '</tr>';
                     }
