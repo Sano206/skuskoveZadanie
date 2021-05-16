@@ -40,6 +40,7 @@ function createTest()
     header("location: index.php");
 
 }
+
 function sendTest()
 {
 
@@ -133,7 +134,8 @@ function addQuestionController(){
         addQuestion();
 
     }
-    header('Location: https://wt61.fei.stuba.sk/webt/finale/ShowTest.php?id=7' );
+
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 
 //

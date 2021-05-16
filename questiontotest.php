@@ -82,6 +82,8 @@ if (!isset($_SESSION['instructorId'])) {
 
 
     </form>
+    <a href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-primary btn-lg' > Nahliadni na test </button>"</a>
+    <a href="index.php"<button class='btn btn-primary btn-lg' > DOMOV </button>"</a>
 </div>
 
 <script src="script.js"></script>

@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body{
 
     -webkit-background-size: cover;
@@ -11,6 +15,10 @@ h1{
 
 h3{
 
+}
+
+i{
+    padding-right:10px;
 }
 
 label{
@@ -29,7 +37,7 @@ label{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #97e2e7), color-stop(100%, #f2f6f5));
     background: -webkit-linear-gradient(top, #97e2e7 0%, #f2f6f5 100%);
     min-width: 500px;
-    margin-top: 50px;
+    margin-top: 75px;
     margin-bottom: 50px;
     padding: 20px;
     border: 2px solid #000000;
