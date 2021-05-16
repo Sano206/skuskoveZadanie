@@ -108,12 +108,14 @@ function sendTest()
                     if ($x >= 3) {
                         $j++;
                         $x = 0;
-                        $i--;
+                        //$i--;
                     }
                 }
             }
             $j++;
     }
+
+    echo "<img src='https://i.imgur.com/zVwEAlu.png'>";
     return '';
 
 }
