@@ -22,6 +22,7 @@ if (isset($_SESSION['userId'])) {
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -29,58 +30,60 @@ if (isset($_SESSION['userId'])) {
 <body>
 
 
-<div class="container">
+<div class="container w-50" style="min-width: 580px;" id="content">
     <!-- logged in user information -->
     <?php if (isset($_SESSION['username'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-        <p><a href="index.php?logout='1'" style="color: red;">logout</a></p>
+        <h1>Welcome <strong><?php echo $_SESSION['username']; ?></strong></h1>
     <?php endif ?>
 
     <?php if (isset($_SESSION['instructorId'])) : ?>
+    <div class="row">
 
         <div>
-            <table>
-                <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Code
-                    </th>
-                    <th>
-                        Active
-                    </th>
-                </tr>
-                <?php
-                require('config.php');
-                $stmt = $conn->prepare("SELECT * from tests where instructor_id = :instructor_id");
-                $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
-                try {
-                    $stmt->execute();
-                } catch (Exception $e) {
-                    var_dump($e);
-                }
-                $tests = $stmt->fetchAll();
-                foreach ($tests as $test) {
-                    echo '<tr>';
-                    echo '<td>' .  $test["name"] . '</td>';
-                    echo '<td>' . $test["code"] . '</td>';
-                    echo '<td ><button type="submit" class="toggler" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "NO") . '</button></td>';
-                    echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button class='btn btn-primary btn-lg' > Nahliadni na test </button>" ."</a>" . '</td>';
-                    echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >'. "<button class='btn btn-primary btn-lg' > Pridaj otazku </button>" ."</a>" . "  ". '</td>';
-                    echo '</tr>';
-                }
+            <h3 style="margin-top: 20px">List of existing tests:</h3>
+            <div class="table-responsive" style="margin-right: 50px; margin-left: 50px;">
+                <table class="table table-hover" >
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Active</th>
+                        <th>Details</th>
+                        <th>Edit</th>
+                        <th>Completed</th>
+                    </tr>
+                    </thead>
+                    <?php
+                    require('config.php');
+                    $stmt = $conn->prepare("SELECT * from tests where instructor_id = :instructor_id");
+                    $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
+                    try {
+                        $stmt->execute();
+                    } catch (Exception $e) {
+                        var_dump($e);
+                    }
+                    $tests = $stmt->fetchAll();
+                    foreach ($tests as $test) {
+                        echo '<tr>';
+                        echo '<td>' .  $test["name"] . '</td>';
+                        echo '<td>' . $test["code"] . '</td>';
+                        echo '<td><button style="border-radius: 75px" type="submit" class="toggler btn btn-small btn-secondary" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "No") . '</button></td>';
+                        echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-file-alt'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-edit'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="students.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-flag-checkered'></i></button>"."</a>".'</td>';
 
-                ?>
-
-
-            </table>
+                        echo '</tr>';
+                    }
+                    ?>
+                </table>
+            </div>
         </div>
-
-
-    <?php endif ?>
-
-    <a href="createTest.php">New Test</a>
+        <?php endif ?>
+    </div>
+<div style="padding-left: 25px; padding-top: 25px">
+    <a id="addtest" type="button" class="btn btn-secondary btn-md" href="createTest.php"><i class="far fa-plus-square"></i>Add new test</a>
+    <a href="index.php?logout='1'" type="button" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i>logout</a>
+</div>
 </div>
 
 
