@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'config.php';
 $action = $_POST["action"];
 
 if ($action == "createTest") {
@@ -17,7 +16,7 @@ if ($action == "createTest") {
 function createTest()
 {
 
-    //require('config.php');
+    require('config.php');
 
     $stmt = $conn->prepare("INSERT INTO tests(name,length,code,instructor_id) values(:name,:length,:code,:instructor_id)");
 
@@ -42,34 +41,87 @@ function createTest()
 }
 function sendTest()
 {
-/*
-    $stmt = $conn->prepare("INSERT INTO test_complete(student_id, test_id, question_id, question, answer, type) values(:student_id, :test_id, :question_id, :question, :answer, :type)");
-    $stmt->bindParam(":student_id", $test[0]["id"]);
-    $stmt->bindParam(":test_id", $student[0]["id"]);
-    $stmt->bindParam(":question_id", $timestamp);
-    $stmt->bindParam(":question", $test[0]["id"]);
-    $stmt->bindParam(":answer", $student[0]["id"]);
-    $stmt->bindParam(":type", $timestamp);
+    require 'config.php';
 
-    try {
-        $stmt->execute();
-    } catch (Exception $e) {
-        var_dump($e);
-    }
-   */
+    $test = $_SESSION["test"];
+    $user_id = $_SESSION["userId"];
+    $test_id = $test[0];
+
+    $a = $conn->prepare ("SELECT * FROM questions WHERE test_id = :test_id");
+    $a->bindParam(":test_id", $test_id);
+    $a->execute();
+    $d = $a->fetchAll();
+
+    $stmt = $conn->prepare("INSERT INTO test_complete(student_id, test_id, question_id, question, answer, type) values(:student_id, :test_id, :question_id, :question, :answer, :type)");
+
+    $j = 0;
+    $x = 0;
+    $arrayPost = array();
+
     foreach ($_POST as $row)
     {
-        echo $row[1] . "<br><br>";
+        array_push($arrayPost, $row);
     }
 
-    return $_POST;
+    for($i=0; $i<count($arrayPost); $i++) {
+            $q = $d[$j]['question'];
+            $answer = $arrayPost[$i];
+
+            if ($d[$j]['type'] == 'multiple')
+            {
+                $option = isset($_POST['taskOption']) ? $_POST['taskOption'] : false;
+                if ($option) {
+                    echo htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
+                    $answer = htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
+                } else {
+                    echo "task option is required";
+                    exit;
+                }
+            }
+
+            if ($d[$j]['type'] == 'connection') {
+                if ($x == 0) {
+                    $q = 'answer1';
+                } elseif ($x == 1) {
+                    $q = 'answer2';
+                } else {
+                    $q = 'answer3';
+                }
+            }
+        echo $q . "   " . $arrayPost[$i] . "<br>";
+            if ($arrayPost[$i] != 'sendTest') {
+                $stmt->bindParam(":student_id", $user_id);
+                $stmt->bindParam(":test_id", $test_id);
+                $stmt->bindParam(":question_id", $d[$j][0]);
+                $stmt->bindParam(":question", $q);
+                $stmt->bindParam(":answer", $answer);
+                $stmt->bindParam(":type", $d[$j][5]);
+                try {
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    var_dump($e);
+                }
+
+                if ($d[$j]['type'] == 'connection') {
+                    $j--;
+                    $x++;
+                    if ($x >= 3) {
+                        $j++;
+                        $x = 0;
+                    }
+                }
+            }
+            $j++;
+    }
+
+    return '';
 
 }
 
 function changeTestState($id)
 {
 
-    //require('config.php');
+    require('config.php');
 
     $stmt = $conn->prepare("SELECT active from tests where id = :id");
 
@@ -97,7 +149,7 @@ function changeTestState($id)
 }
 
 function addQuestionController(){
-    //require('config.php');
+    require('config.php');
     if($_POST["type"] == "short") {
         addQuestion();
     }elseif($_POST["type"] == "multiple") {
@@ -182,7 +234,7 @@ function addQuestionController(){
 
 
 function addQuestion(){
-    //require ('config.php');
+    require ('config.php');
 
     $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
     $stmt = $conn->prepare($sql);
@@ -199,7 +251,7 @@ function addQuestion(){
     }
 }
 function addQuestionConn(){
-    //require ('config.php');
+    require ('config.php');
 
     $tmp = "-";
     $sql = "INSERT INTO questions (test_id,question,answer,points, type) VALUES (:test_id,:question,:answer,:points, :type)";
