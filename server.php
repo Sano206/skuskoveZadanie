@@ -122,6 +122,7 @@ if(isset($_POST['login'])) {
 
     if ($_POST['login'] == 'student') {
         require('config.php');
+        date_default_timezone_set('Europe/Bratislava');
         $name = mysqli_real_escape_string($db, $_POST['name']);
         $surname = mysqli_real_escape_string($db, $_POST['surname']);
         $code = mysqli_real_escape_string($db, $_POST['code']);
@@ -135,6 +136,7 @@ if(isset($_POST['login'])) {
         if (empty($code)) {
             array_push($errors, "Code is required");
         }
+
 
         if (count($errors) == 0) {
 
@@ -192,9 +194,19 @@ if(isset($_POST['login'])) {
                     $_SESSION["username"] = $student[0]["name"];
                     $_SESSION["userId"] = $student[0]["id"];
                     $_SESSION["test"] = $test[0];
+                    $test = $_SESSION["test"];
+                    $test_id = $test[0];
+                    $sql_time = $conn->prepare("SELECT * FROM tests_taken WHERE test_id = :test_id and student_id = :student_id");
+                    $sql_time->execute(array(':test_id' => $test_id, ':student_id' => $_SESSION["userId"]));
+                    $times = $sql_time->fetch();
+                    if (strtotime($times['end_timestamp']) < strtotime(date("H:i:s Y-m-d "))) {
+                        array_push($errors, "Na test ti vyprsal cas");
+
+
+                    }
                     header("location: test.php");
                 } else {
-                    date_default_timezone_set('Europe/Bratislava');
+
                     $timestamp = date("G:i:s Y-m-d");
                     $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
                     $stmt->bindParam(":test_id", $test[0]["id"]);
@@ -209,6 +221,16 @@ if(isset($_POST['login'])) {
                     $_SESSION["username"] = $student[0]["name"];
                     $_SESSION["userId"] = $student[0]["id"];
                     $_SESSION["test"] = $test[0];
+                    $test = $_SESSION["test"];
+                    $test_id = $test[0];
+                    $sql_time = $conn->prepare("SELECT * FROM tests_taken WHERE test_id = :test_id and student_id = :student_id");
+                    $sql_time->execute(array(':test_id' => $test_id, ':student_id' => $_SESSION["userId"]));
+                    $times = $sql_time->fetch();
+                    if (strtotime($times['end_timestamp']) < strtotime(date("H:i:s Y-m-d "))) {
+                        array_push($errors, "Na test ti vyprsal cas");
+
+
+                    }
                     header("location: test.php");
                 }
             }

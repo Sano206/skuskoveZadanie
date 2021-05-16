@@ -13,14 +13,23 @@ $(document).ready(function () {
     $('#type').change(() => {
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
+        $('.question-style-answer').css("display", "block")
+        $('.question-style').css("display", "block")
 
         if($('#type  option:selected').val() === "multiple"){
             $('.option-div').css("display", "block")
         }else if($('#type  option:selected').val() === "connection"){
             $('.option-div-conn').css("display", "block")
+            $('.question-style-answer').css("display", "none")
+            $('.question-style').css("display", "none")
+
+        }
+        else if($('#type  option:selected').val() === "image"){
+            $('.question-style-answer').css("display", "none")
 
         }else{
             $('.option-div').css("display", "none")
+            $('.question-style-answer').css("display", "block")
 
         }
     })
