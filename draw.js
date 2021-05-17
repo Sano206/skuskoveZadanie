@@ -12,6 +12,7 @@ function download(url, name) {
 }
 function send_imgur() {
     var canvas = document.getElementById(id);
+
     dataURL = canvas.toDataURL();
     dataURL = dataURL.substring(22);
 

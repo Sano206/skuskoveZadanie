@@ -8,6 +8,7 @@ $(document).ready(function () {
     })
 
     $('#type').change(() => {
+
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
         $('.question-style-answer').css("display", "block")
@@ -22,6 +23,9 @@ $(document).ready(function () {
 
         }
         else if($('#type  option:selected').val() === "image"){
+            $('.question-style-answer').css("display", "none")
+
+        }else if($('#type  option:selected').val() === "math"){
             $('.question-style-answer').css("display", "none")
 
         }else{

@@ -40,6 +40,7 @@ $a->execute();
 $d = $a->fetchAll();
 
 $students_id = array();
+
 foreach ($d as $row)
 {
     if (!in_array($row['student_id'], $students_id))

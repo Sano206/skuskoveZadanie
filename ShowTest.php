@@ -69,6 +69,7 @@ $countOfPoints = 0;
             echo "<strong>Wrong answers: </strong> " . $tmps['option1'] . ", " . $tmps['option2'] . ", " . $tmps['option3'];
 
 
+
         } else if ($row['type'] == "connection") {
             $sql = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
             $sql->execute(array(':question_id' => $row['id']));
@@ -89,6 +90,12 @@ $countOfPoints = 0;
 
         } else if ($row['type'] == "image") {
             echo "<strong>Question: </strong>" . $row['question']. " - Drawing question";
+            echo "<br>";
+            echo "<strong>Correct answer: </strong> teacher check needed";
+
+
+        } else if ($row['type'] == "math") {
+            echo "<strong>Question: </strong>" . $row['question']. " - Math question";
             echo "<br>";
             echo "<strong>Correct answer: </strong> teacher check needed";
 

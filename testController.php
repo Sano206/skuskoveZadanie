@@ -16,6 +16,7 @@ if ($action == "createTest") {
 function createTest()
 {
 
+
     require('config.php');
 
     $stmt = $conn->prepare("INSERT INTO tests(name,length,code,instructor_id) values(:name,:length,:code,:instructor_id)");
@@ -207,6 +208,8 @@ function addQuestionController()
     } elseif ($_POST["type"] == "image") {
         addQuestion();
 
+    } elseif ($_POST["type"] == "math") {
+        addQuestion();
     }
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -14,6 +14,7 @@ if (isset($_SESSION['userId'])) {
     header("location: test.php");
 }
 
+
 ?>
 
 <!DOCTYPE html>
