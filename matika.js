@@ -1,5 +1,5 @@
 var mathFieldSpan = document.getElementById('math-field');
-//var otazka = document.getElementById('daco');
+var otazka = document.getElementById('daco');
 var latexSpan = document.getElementById('latex');
 var bu = document.getElementsByClassName('somarina')[0];
 var mama = document.getElementById('mama');
@@ -16,7 +16,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
     }
 });
 
-/*var daco = MQ.MathField(otazka, {
+var daco = MQ.MathField(otazka, {
     spaceBehavesLikeTab: true, // configurable
     handlers: {
         edit: function() { // useful event handlers
@@ -24,7 +24,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
 
         }
     }
-});*/
+});
 
 function vypis() {
     return latexSpan.value;

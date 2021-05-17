@@ -153,10 +153,7 @@ if (isset($_GET['logout'])) {
                 echo "<div class='form-control'>";
                 echo "<p>Otazka: <span id='daco' style='pointer-events: none;' >". $row["question"] ."</span></p>";
                 echo "<br>";
-                //echo "<input type='text' name='$x$i' id='$x$i'> ";
-                //
-                //
-                //
+
                 echo "<p>Type math here: <span id='math-field'></span></p>";
                 echo  "<span style='display: none;' id='latex' name='latex'></span>";
                 //$var = "<span id='latex' name='latex'></span>";
