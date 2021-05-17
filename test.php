@@ -18,13 +18,13 @@ if (isset($_GET['logout'])) {
     <meta charset="UTF-8">
     <title>test</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" href="mathquill-0.10.1/mathquill.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <script src="canvas.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-
+    <script src="mathquill-0.10.1/mathquill.js"></script>
     <link rel="stylesheet" href="connections/css/jsplumbtoolkit-defaults.css">
     <link rel="stylesheet" href="connections/css/main.css">
     <link rel="stylesheet" href="connections/css/jsplumbtoolkit-demo.css">
@@ -152,7 +152,21 @@ if (isset($_GET['logout'])) {
                 $countOfPoints = $countOfPoints + $row["points"];
 
             } elseif ($row["type"] == "math") {
-
+                echo "<div class='form-control'>";
+                echo "<p>Otazka: <span id='daco' style='pointer-events: none;' >". $row["question"] ."</span></p>";
+                echo "<br>";
+                //echo "<input type='text' name='$x$i' id='$x$i'> ";
+                //
+                //
+                //
+                echo "<p>Type math here: <span id='math-field'></span></p>";
+                echo  "<span style='display: none;' id='latex' name='latex'></span>";
+                //$var = "<span id='latex' name='latex'></span>";
+                echo "<input type='text' name='$x$i' id='$x$i' class='somarina' style='display: none;' value='' >";
+                echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
+                $countOfPoints = $countOfPoints + $row["points"];
+                echo "<br>";
+                echo "</div>";
             } elseif ($row["type"] == "image") {
 
                 echo "<div class='form-control' id='imgDiv'>";
@@ -239,7 +253,7 @@ if (isset($_GET['logout'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="draw.js"></script>
-
+<script src="matika.js"></script>
 
 <script>
     // Set the date we're counting down to

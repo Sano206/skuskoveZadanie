@@ -24,6 +24,9 @@ $(document).ready(function () {
         else if($('#type  option:selected').val() === "image"){
             $('.question-style-answer').css("display", "none")
 
+        }else if($('#type  option:selected').val() === "math"){
+            $('.question-style-answer').css("display", "none")
+
         }else{
             $('.option-div').css("display", "none")
             $('.question-style-answer').css("display", "block")

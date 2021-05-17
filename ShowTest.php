@@ -86,6 +86,12 @@ $countOfPoints = 0;
             echo "<strong>Correct answer: </strong> teacher check needed";
 
 
+        } else if ($row['type'] == "math") {
+            echo "<strong>Question: </strong>" . $row['question']. " - Math question";
+            echo "<br>";
+            echo "<strong>Correct answer: </strong> teacher check needed";
+
+
         }
 
         echo "<br>";
