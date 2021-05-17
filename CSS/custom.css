@@ -1,0 +1,64 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    background-image: url("background-image5.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+}
+
+h1{
+    padding-bottom: 20px;
+}
+
+h3{
+    margin-top: 20px;
+}
+
+i.fa-check-square {
+    color: #198754;
+    font-size: 35px;
+}
+#navbutton{
+    position: absolute; right: 15px; top: 15px
+}
+i{
+    padding-right: 10px;
+}
+
+
+label{
+    padding-left: 15px;
+}
+
+.option-div{
+    display: none;
+}
+.option-div-conn{
+    display: none;
+}
+
+#content{
+    background: -moz-linear-gradient(top, #C5E7E7A3 0%, #f2f6f5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #C5E7E7A3), color-stop(100%, #f2f6f5));
+    background: -webkit-linear-gradient(top, #C5E7E7A3 0%, #f2f6f5 100%);
+    min-width: 500px;
+    margin-top: 75px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    opacity: 0.9;
+}
