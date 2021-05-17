@@ -14,10 +14,14 @@ if (!isset($_SESSION['instructorId'])) {
     <title>Pridanie otazky do testu</title>
     <link rel="stylesheet" href="CSS/custom.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container shadow-lg" id="content">
+<div id="navbutton">
+    <a style="margin-right: 10px" href="index.php"<button class='btn btn-outline-success btn-lg '><i class="fas fa-arrow-left"></i>Back to tests</button></a>
+</div>
+<div class="container shadow-lg w-50" id="content">
     <h1>Add questions</h1>
     <form method="post" action="testController.php">
         <div class="form-row">
@@ -42,7 +46,7 @@ if (!isset($_SESSION['instructorId'])) {
             <div class="form-group col-6"></div>
             <div class="form-group col-2">
                 <label for="points" ><strong>Points</strong></label>
-                <input class="form-control" min="1" type="number" name="points" id="points">
+                <input class="form-control" min="1" type="number" name="points" id="points" required>
             </div>
         </div>
 
@@ -124,9 +128,9 @@ if (!isset($_SESSION['instructorId'])) {
 
         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
             <div class="input-group">
-                <button style="margin-right: 10px" class="btn btn-success " type="submit" name="action" value="addQuestion">Add Question</button>
-                <a style="margin-right: 10px" href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-primary ' > Nahliadni na test </button></a>
-                <a style="margin-right: 10px" href="index.php"<button class='btn btn-primary ' > DOMOV </button></a>
+                <button style="margin-right: 10px" class="btn btn-success " type="submit" name="action" value="addQuestion"><i class="far fa-plus-square"></i>Add Question</button>
+                <a style="margin-right: 10px" href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-secondary ' ><i style='width: 15px' class='fas fa-file-alt'></i> Test details </button></a>
+
             </div>
         </div>
 
