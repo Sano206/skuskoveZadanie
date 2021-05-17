@@ -1,0 +1,509 @@
+Index: config.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n$dbServername = \"localhost:3306\";\r\n$dbUsername = \"xgajdosa1\";\r\n$dbPassword = 'An#$sjkA5oAP4x';\r\n$database = \"skuska\";\r\n\r\n\r\n$conn = new PDO(\"mysql:host=$dbServername;dbname=$database\", $dbUsername, $dbPassword);\r\n$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.php b/config.php
+--- a/config.php	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/config.php	(date 1620985820644)
+@@ -1,7 +1,7 @@
+ <?php
+ $dbServername = "localhost:3306";
+-$dbUsername = "xgajdosa1";
+-$dbPassword = 'An#$sjkA5oAP4x';
++$dbUsername = "xgossanyi";
++$dbPassword = 'I#$H5uPW2kVIJY';
+ $database = "skuska";
+ 
+ 
+Index: login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php include('server.php');\r\n?>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Login</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css\">\r\n\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <div class=\"header\">\r\n        <h2>Login</h2>\r\n    </div>\r\n    <form method=\"post\" action=\"login.php\">\r\n        <?php include('errors.php');\r\n        session_start();\r\n        if(isset($_SESSION[\"msg\"])){\r\n            echo $_SESSION[\"msg\"];\r\n            unset($_SESSION[\"msg\"]);\r\n        }\r\n        ?>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Username</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"username\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Password</label>\r\n            <input class=\"form-control\" type=\"password\" name=\"password\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Code</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"code\">\r\n        </div>\r\n        <div class=\"button-group\">\r\n            <div class=\"input-group\">\r\n                <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"instructor\">Login Instructor</button>\r\n            </div>\r\n        </div>\r\n        <p>\r\n            Not yet a member? <a href=\"register.php\">Sign up</a>\r\n        </p>\r\n    </form>\r\n    <form method=\"post\" action=\"login.php\">\r\n        <div class=\"input-group\">\r\n            <label for=\"name\" class=\"form-control\">Name</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"name\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label for=\"surname\" class=\"form-control\">Surname</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"surname\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label for=\"code\" class=\"form-control\">Code</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"code\">\r\n        </div>\r\n        <div class=\"button-group\">\r\n            <div class=\"input-group\">\r\n                <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"student\">Login Student</button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login.php b/login.php
+--- a/login.php	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/login.php	(date 1620986468029)
+@@ -4,7 +4,7 @@
+ <html>
+ <head>
+     <title>Login</title>
+-    <link rel="stylesheet" type="text/css" href="style.css">
++    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
+@@ -12,8 +12,63 @@
+ </head>
+ <body>
+ <div class="container">
++    <div class="navmenu">
++        <a class="btn btn-info" href="Credits/info.php">Vypracovali</a>
++        <a class="btn btn-info" href="Credits/tasks.php">Rozdelenie úloh</a>
++    </div>
++
+     <div class="header">
+         <h2>Login</h2>
++    </div>
++
++    <div class="row">
++
++        <div id="accordion">
++            <div class="card">
++                <div class="card-header" id="headingOne">
++                    <h5 class="mb-0">
++                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
++                            Collapsible Group Item #1
++                        </button>
++                    </h5>
++                </div>
++
++                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
++                    <div class="card-body">
++                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
++                    </div>
++                </div>
++            </div>
++            <div class="card">
++                <div class="card-header" id="headingTwo">
++                    <h5 class="mb-0">
++                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
++                            Collapsible Group Item #2
++                        </button>
++                    </h5>
++                </div>
++                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
++                    <div class="card-body">
++                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
++                    </div>
++                </div>
++            </div>
++            <div class="card">
++                <div class="card-header" id="headingThree">
++                    <h5 class="mb-0">
++                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
++                            Collapsible Group Item #3
++                        </button>
++                    </h5>
++                </div>
++                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
++                    <div class="card-body">
++                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
++                    </div>
++                </div>
++            </div>
++        </div>
++
+     </div>
+     <form method="post" action="login.php">
+         <?php include('errors.php');
+@@ -44,6 +99,7 @@
+             Not yet a member? <a href="register.php">Sign up</a>
+         </p>
+     </form>
++
+     <form method="post" action="login.php">
+         <div class="input-group">
+             <label for="name" class="form-control">Name</label>
+@@ -63,6 +119,7 @@
+             </div>
+         </div>
+     </form>
++
+ </div>
+ </body>
+ </html>
+Index: index.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\n\r\nsession_start();\r\n\r\nif (!isset($_SESSION['username'])) {\r\n    $_SESSION['msg'] = \"You must log in first\";\r\n    header('location: login.php');\r\n}\r\nif (isset($_GET['logout'])) {\r\n    session_destroy();\r\n    unset($_SESSION['username']);\r\n    header(\"location: login.php\");\r\n}\r\n?>\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Home</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n\r\n</head>\r\n<body>\r\n\r\n\r\n<div class=\"container\">\r\n    <!-- logged in user information -->\r\n    <?php if (isset($_SESSION['username'])) : ?>\r\n        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>\r\n        <p><a href=\"index.php?logout='1'\" style=\"color: red;\">logout</a></p>\r\n    <?php endif ?>\r\n\r\n    <?php if (isset($_SESSION['instructorId'])) : ?>\r\n\r\n        <div>\r\n            <table>\r\n                <tr>\r\n                    <th>\r\n                        Test Name\r\n                    </th>\r\n                    <th>\r\n                        Active\r\n                    </th>\r\n                </tr>\r\n                <?php\r\n                require('config.php');\r\n                $stmt = $conn->prepare(\"SELECT * from tests where instructor_id = :instructor_id\");\r\n                $stmt->bindParam(\":instructor_id\", $_SESSION[\"instructorId\"]);\r\n                try {\r\n                    $stmt->execute();\r\n                } catch (Exception $e) {\r\n                    var_dump($e);\r\n                }\r\n                $tests = $stmt->fetchAll();\r\n                foreach ($tests as $test) {\r\n                    echo '<tr>';\r\n                    echo '<td>' . '<a href=\"questiontotest.php?id='. $test[\"id\"]. '\" >' . $test[\"name\"] .\"</a>\" . \"   \". $test[\"code\"] . '</td>';\r\n                    echo '<td ><button type=\"submit\" class=\"toggler\" id=\"' . $test[\"id\"] . '\">' . ($test[\"active\"] ? \"Yes\" : \"NO\") . '</button></td>';\r\n                    echo '</tr>';\r\n                }\r\n\r\n                ?>\r\n\r\n\r\n            </table>\r\n        </div>\r\n\r\n\r\n    <?php endif ?>\r\n\r\n    <a href=\"createTest.php\">New Test</a>\r\n</div>\r\n\r\n\r\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js\"></script>\r\n<script src=\"//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js\"></script>\r\n\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8\"\r\n        crossorigin=\"anonymous\"></script>\r\n<script src=\"script.js\"></script>\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.php b/index.php
+--- a/index.php	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/index.php	(date 1620986044956)
+@@ -1,6 +1,4 @@
+ <?php
+-
+-
+ session_start();
+ 
+ if (!isset($_SESSION['username'])) {
+@@ -19,7 +17,7 @@
+ <head>
+     <meta charset="UTF-8">
+     <title>Home</title>
+-    <link rel="stylesheet" type="text/css" href="style.css">
++    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+Index: server.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\nrequire('config.php');\r\nrequire_once './2FA/PHPGangsta/GoogleAuthenticator.php';\r\n\r\nsession_start();\r\n\r\n\r\n// initializing variables\r\n$username = \"\";\r\n$email = \"\";\r\n$errors = array();\r\n$websiteTitle = 'Skuskove Zadanie';\r\n\r\n$ga = new PHPGangsta_GoogleAuthenticator();\r\n\r\n$db = mysqli_connect($dbServername, $dbUsername, $dbPassword, $database);\r\n\r\n// REGISTER USER\r\nif (isset($_POST['reg_user'])) {\r\n    // receive all input values from the form\r\n    $username = mysqli_real_escape_string($db, $_POST['username']);\r\n    $email = mysqli_real_escape_string($db, $_POST['email']);\r\n    $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);\r\n    $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);\r\n\r\n    // form validation: ensure that the form is correctly filled ...\r\n    // by adding (array_push()) corresponding error unto $errors array\r\n    if (empty($username)) {\r\n        array_push($errors, \"Username is required\");\r\n    }\r\n    if (empty($email)) {\r\n        array_push($errors, \"Email is required\");\r\n    }\r\n    if (empty($password_1)) {\r\n        array_push($errors, \"Password is required\");\r\n    }\r\n    if ($password_1 != $password_2) {\r\n        array_push($errors, \"The two passwords do not match\");\r\n    }\r\n\r\n    // first check the database to make sure\r\n    // a user does not already exist with the same username and/or email\r\n    $user_check_query = \"SELECT * FROM instructors WHERE username='$username' OR email='$email' LIMIT 1\";\r\n    $result = mysqli_query($db, $user_check_query);\r\n    $user = mysqli_fetch_assoc($result);\r\n\r\n    if ($user) { // if user exists\r\n        if ($user['username'] === $username) {\r\n            array_push($errors, \"Username already exists\");\r\n        }\r\n\r\n        if ($user['email'] === $email) {\r\n            array_push($errors, \"email already exists\");\r\n        }\r\n    }\r\n\r\n    // Finally, register user if there are no errors in the form\r\n    if (count($errors) == 0) {\r\n        $password = password_hash($password_1, PASSWORD_BCRYPT);//encrypt the password before saving in the database\r\n\r\n\r\n        $secret = $_POST['secret'];\r\n\r\n        if ($result) {\r\n            echo 'Verified';\r\n        } else {\r\n            echo 'Not verified';\r\n        }\r\n\r\n        $query = \"INSERT INTO instructors (username, email, password, secret) \r\n  \t\t\t  VALUES('$username', '$email', '$password', '$secret')\";\r\n        mysqli_query($db, $query);\r\n\r\n\r\n        $query = \"SELECT * FROM instructors WHERE username='$username' AND password='$password'\";\r\n        $results = mysqli_query($db, $query);\r\n        $user = mysqli_fetch_assoc($results);\r\n        $userId = $user['id'];\r\n        $secret = $user['secret'];\r\n        saveLoginInfo($userId, 'registration', $username, $db);\r\n    }\r\n}\r\nif(isset($_POST['login'])) {\r\n    if ($_POST['login'] == 'instructor') {\r\n        $username = mysqli_real_escape_string($db, $_POST['username']);\r\n        $password = mysqli_real_escape_string($db, $_POST['password']);\r\n        $code = $_POST['code'];\r\n\r\n        if (empty($username)) {\r\n            array_push($errors, \"Username is required\");\r\n        }\r\n        if (empty($password)) {\r\n            array_push($errors, \"Password is required\");\r\n        }\r\n        if (empty($code)) {\r\n            array_push($errors, \"Code is required\");\r\n        }\r\n\r\n\r\n        if (count($errors) == 0) {\r\n\r\n            $query = \"SELECT * FROM instructors WHERE username='$username'\";\r\n            $results = mysqli_query($db, $query);\r\n            $user = mysqli_fetch_assoc($results);\r\n\r\n            if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {\r\n                $secret = $user['secret'];\r\n                $result = $ga->verifyCode($secret, $code);\r\n\r\n                if ($result == 1) {\r\n                    $userId = $user['id'];\r\n                    $_SESSION[\"instructorId\"] = $userId;\r\n                    saveLoginInfo($userId, 'registration', $username, $db);\r\n                } else {\r\n                    array_push($errors, \"Wrong code\");\r\n                }\r\n            } else {\r\n                array_push($errors, \"Wrong username/password combination\");\r\n            }\r\n        }\r\n    }\r\n\r\n    if ($_POST['login'] == 'student') {\r\n        require('config.php');\r\n        $name = mysqli_real_escape_string($db, $_POST['name']);\r\n        $surname = mysqli_real_escape_string($db, $_POST['surname']);\r\n        $code = mysqli_real_escape_string($db, $_POST['code']);\r\n\r\n        if (empty($name)) {\r\n            array_push($errors, \"Username is required\");\r\n        }\r\n        if (empty($surname)) {\r\n            array_push($errors, \"Password is required\");\r\n        }\r\n        if (empty($code)) {\r\n            array_push($errors, \"Code is required\");\r\n        }\r\n\r\n        if (count($errors) == 0) {\r\n\r\n            $stmt = $conn->prepare(\"SELECT * FROM tests WHERE code=:code and active=1\"); //Check code validity\r\n            $stmt->bindParam(\":code\", $code);\r\n            try {\r\n                $stmt->execute();\r\n            } catch (Exception $e) {\r\n                var_dump($e);\r\n            }\r\n            $test = $stmt->fetchAll();\r\n            if (empty($test[0])) {\r\n                array_push($errors, \"Invalid code\");\r\n            } else {\r\n\r\n\r\n                $studentCheck = $conn->prepare(\"SELECT * FROM students WHERE name=:name and surname = :surname\"); //check student existence\r\n\r\n                $studentCheck->bindParam(\":name\", $name);\r\n                $studentCheck->bindParam(\":surname\", $surname);\r\n                try {\r\n                    $studentCheck->execute();\r\n                } catch (Exception $e) {\r\n                    var_dump($e);\r\n                }\r\n                $student = $studentCheck->fetchAll();\r\n                if (empty($student[0])) {\r\n                    $stmt = $conn->prepare(\"INSERT INTO students(name, surname) values(:name, :surname)\"); //create new user if non-existent\r\n                    $stmt->bindParam(\":name\", $name);\r\n                    $stmt->bindParam(\":surname\", $surname);\r\n                    try {\r\n                        $stmt->execute();\r\n                    } catch (Exception $e) {\r\n                        var_dump($e);\r\n                    }\r\n                    try {\r\n                        $studentCheck->execute();\r\n                    } catch (Exception $e) {\r\n                        var_dump($e);\r\n                    }\r\n                    $student = $studentCheck->fetchAll();\r\n                }\r\n\r\n                $stmt = $conn->prepare(\"SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id\"); //check if test already taken\r\n                $stmt->bindParam(\":test_id\", $test[0][\"id\"]);\r\n                $stmt->bindParam(\":student_id\", $student[0][\"id\"]);\r\n                try {\r\n                    $stmt->execute();\r\n                } catch (Exception $e) {\r\n                    var_dump($e);\r\n                }\r\n                $alreadyTaken = $stmt->fetchAll();\r\n                if (!empty($alreadyTaken[0])) {\r\n                    $_SESSION[\"username\"] = $student[0][\"name\"];\r\n                    $_SESSION[\"userId\"] = $student[0][\"id\"];\r\n                    $_SESSION[\"test\"] = $test[0];\r\n                    header(\"location: index.php\");\r\n                } else {\r\n                    $timestamp = date(\"G:i:s Y-m-d\");\r\n                    $stmt = $conn->prepare(\"INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)\");\r\n                    $stmt->bindParam(\":test_id\", $test[0][\"id\"]);\r\n                    $stmt->bindParam(\":student_id\", $student[0][\"id\"]);\r\n                    $stmt->bindParam(\":start_timestamp\", $timestamp);\r\n                    try {\r\n                        $stmt->execute();\r\n                    } catch (Exception $e) {\r\n                        var_dump($e);\r\n                    }\r\n                    $_SESSION[\"username\"] = $student[0][\"name\"];\r\n                    $_SESSION[\"userId\"] = $student[0][\"id\"];\r\n                    $_SESSION[\"test\"] = $test[0];\r\n                    header(\"location: test.php\");\r\n                }\r\n\r\n            }\r\n\r\n\r\n        }\r\n    }\r\n}\r\n\r\n\r\nfunction saveLoginInfo($userId, $type, $username, $db)\r\n{\r\n//    $timestamp = date('Y-m-d G:i:s', time()+3600*2);\r\n//    $query = \"INSERT INTO logins (user_id, reg_type, timestamp)\r\n//  \t\t\t  VALUES('$userId', '$type', '$timestamp')\";\r\n//    mysqli_query($db, $query);\r\n\r\n    $_SESSION['username'] = $username;\r\n    $_SESSION['success'] = \"You are now logged in\";\r\n    header('location: index.php');\r\n}\r\n\r\n?>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server.php b/server.php
+--- a/server.php	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/server.php	(date 1620985344432)
+@@ -4,12 +4,11 @@
+ 
+ session_start();
+ 
+-
+ // initializing variables
+ $username = "";
+ $email = "";
+ $errors = array();
+-$websiteTitle = 'Skuskove Zadanie';
++$websiteTitle = 'Zadanie3';
+ 
+ $ga = new PHPGangsta_GoogleAuthenticator();
+ 
+@@ -59,6 +58,7 @@
+         $password = password_hash($password_1, PASSWORD_BCRYPT);//encrypt the password before saving in the database
+ 
+ 
++
+         $secret = $_POST['secret'];
+ 
+         if ($result) {
+@@ -72,6 +72,7 @@
+         mysqli_query($db, $query);
+ 
+ 
++
+         $query = "SELECT * FROM instructors WHERE username='$username' AND password='$password'";
+         $results = mysqli_query($db, $query);
+         $user = mysqli_fetch_assoc($results);
+@@ -80,145 +81,47 @@
+         saveLoginInfo($userId, 'registration', $username, $db);
+     }
+ }
+-if(isset($_POST['login'])) {
+-    if ($_POST['login'] == 'instructor') {
+-        $username = mysqli_real_escape_string($db, $_POST['username']);
+-        $password = mysqli_real_escape_string($db, $_POST['password']);
+-        $code = $_POST['code'];
++
++if ($_POST['login'] == 'instructor') {
++    $username = mysqli_real_escape_string($db, $_POST['username']);
++    $password = mysqli_real_escape_string($db, $_POST['password']);
++    $code = $_POST['code'];
+ 
+-        if (empty($username)) {
+-            array_push($errors, "Username is required");
+-        }
+-        if (empty($password)) {
+-            array_push($errors, "Password is required");
+-        }
+-        if (empty($code)) {
+-            array_push($errors, "Code is required");
+-        }
++    if (empty($username)) {
++        array_push($errors, "Username is required");
++    }
++    if (empty($password)) {
++        array_push($errors, "Password is required");
++    }
++    if (empty($code)) {
++        array_push($errors, "Code is required");
++    }
+ 
+ 
+-        if (count($errors) == 0) {
++    if (count($errors) == 0) {
+ 
+-            $query = "SELECT * FROM instructors WHERE username='$username'";
+-            $results = mysqli_query($db, $query);
+-            $user = mysqli_fetch_assoc($results);
++        $query = "SELECT * FROM instructors WHERE username='$username'";
++        $results = mysqli_query($db, $query);
++        $user = mysqli_fetch_assoc($results);
+ 
+-            if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {
+-                $secret = $user['secret'];
+-                $result = $ga->verifyCode($secret, $code);
++        if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {
++            $secret = $user['secret'];
++            $result = $ga->verifyCode($secret, $code);
+ 
+-                if ($result == 1) {
+-                    $userId = $user['id'];
+-                    $_SESSION["instructorId"] = $userId;
+-                    saveLoginInfo($userId, 'registration', $username, $db);
+-                } else {
+-                    array_push($errors, "Wrong code");
+-                }
+-            } else {
+-                array_push($errors, "Wrong username/password combination");
+-            }
+-        }
+-    }
++            if ($result == 1) {
++                $userId = $user['id'];
++                saveLoginInfo($userId, 'registration', $username,$db);
++            } else {
++                array_push($errors, "Wrong code");
++            }
++        } else {
++            array_push($errors, "Wrong username/password combination");
++        }
++    }
++}
+ 
+-    if ($_POST['login'] == 'student') {
+-        require('config.php');
+-        $name = mysqli_real_escape_string($db, $_POST['name']);
+-        $surname = mysqli_real_escape_string($db, $_POST['surname']);
+-        $code = mysqli_real_escape_string($db, $_POST['code']);
+-
+-        if (empty($name)) {
+-            array_push($errors, "Username is required");
+-        }
+-        if (empty($surname)) {
+-            array_push($errors, "Password is required");
+-        }
+-        if (empty($code)) {
+-            array_push($errors, "Code is required");
+-        }
+-
+-        if (count($errors) == 0) {
+-
+-            $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code and active=1"); //Check code validity
+-            $stmt->bindParam(":code", $code);
+-            try {
+-                $stmt->execute();
+-            } catch (Exception $e) {
+-                var_dump($e);
+-            }
+-            $test = $stmt->fetchAll();
+-            if (empty($test[0])) {
+-                array_push($errors, "Invalid code");
+-            } else {
+-
+ 
+-                $studentCheck = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check student existence
+-
+-                $studentCheck->bindParam(":name", $name);
+-                $studentCheck->bindParam(":surname", $surname);
+-                try {
+-                    $studentCheck->execute();
+-                } catch (Exception $e) {
+-                    var_dump($e);
+-                }
+-                $student = $studentCheck->fetchAll();
+-                if (empty($student[0])) {
+-                    $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)"); //create new user if non-existent
+-                    $stmt->bindParam(":name", $name);
+-                    $stmt->bindParam(":surname", $surname);
+-                    try {
+-                        $stmt->execute();
+-                    } catch (Exception $e) {
+-                        var_dump($e);
+-                    }
+-                    try {
+-                        $studentCheck->execute();
+-                    } catch (Exception $e) {
+-                        var_dump($e);
+-                    }
+-                    $student = $studentCheck->fetchAll();
+-                }
+-
+-                $stmt = $conn->prepare("SELECT * FROM tests_taken WHERE student_id=:student_id and test_id = :test_id"); //check if test already taken
+-                $stmt->bindParam(":test_id", $test[0]["id"]);
+-                $stmt->bindParam(":student_id", $student[0]["id"]);
+-                try {
+-                    $stmt->execute();
+-                } catch (Exception $e) {
+-                    var_dump($e);
+-                }
+-                $alreadyTaken = $stmt->fetchAll();
+-                if (!empty($alreadyTaken[0])) {
+-                    $_SESSION["username"] = $student[0]["name"];
+-                    $_SESSION["userId"] = $student[0]["id"];
+-                    $_SESSION["test"] = $test[0];
+-                    header("location: index.php");
+-                } else {
+-                    $timestamp = date("G:i:s Y-m-d");
+-                    $stmt = $conn->prepare("INSERT INTO tests_taken(test_id, student_id, start_timestamp) values(:test_id, :student_id, :start_timestamp)");
+-                    $stmt->bindParam(":test_id", $test[0]["id"]);
+-                    $stmt->bindParam(":student_id", $student[0]["id"]);
+-                    $stmt->bindParam(":start_timestamp", $timestamp);
+-                    try {
+-                        $stmt->execute();
+-                    } catch (Exception $e) {
+-                        var_dump($e);
+-                    }
+-                    $_SESSION["username"] = $student[0]["name"];
+-                    $_SESSION["userId"] = $student[0]["id"];
+-                    $_SESSION["test"] = $test[0];
+-                    header("location: test.php");
+-                }
+-
+-            }
+-
+-
+-        }
+-    }
+-}
+-
+-
+-function saveLoginInfo($userId, $type, $username, $db)
+-{
++function saveLoginInfo($userId, $type, $username,$db){
+ //    $timestamp = date('Y-m-d G:i:s', time()+3600*2);
+ //    $query = "INSERT INTO logins (user_id, reg_type, timestamp)
+ //  			  VALUES('$userId', '$type', '$timestamp')";
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"PublishConfigData\" autoUpload=\"Always\" serverName=\"webtech\" remoteFilesAllowedToDisappearOnAutoupload=\"false\">\r\n    <serverData>\r\n      <paths name=\"webtech\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping deploy=\"/finale\" local=\"$PROJECT_DIR$\" web=\"/finale\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n    </serverData>\r\n    <option name=\"myAutoUpload\" value=\"ALWAYS\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deployment.xml b/.idea/deployment.xml
+--- a/.idea/deployment.xml	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/.idea/deployment.xml	(date 1620985596288)
+@@ -1,11 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="PublishConfigData" autoUpload="Always" serverName="webtech" remoteFilesAllowedToDisappearOnAutoupload="false">
++  <component name="PublishConfigData" autoUpload="Always" remoteFilesAllowedToDisappearOnAutoupload="false">
+     <serverData>
+-      <paths name="webtech">
++      <paths name="skuskovezadanie">
++        <serverdata>
++          <mappings>
++            <mapping local="$PROJECT_DIR$" web="/" />
++          </mappings>
++        </serverdata>
++      </paths>
++      <paths name="wt54.fei.stuba.sk - 147.175.98.54">
+         <serverdata>
+           <mappings>
+-            <mapping deploy="/finale" local="$PROJECT_DIR$" web="/finale" />
++            <mapping deploy="/skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
+           </mappings>
+         </serverdata>
+       </paths>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"first commit\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/config.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/questiontotest.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/questiontotest.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/script.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/script.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/testController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/testController.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sONXHtx7SVpmysBCcsobhH3HuZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../webtZ7\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620739713669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620739713669</updated>\r\n      <workItem from=\"1620739714795\" duration=\"75000\" />\r\n      <workItem from=\"1620810675567\" duration=\"1518000\" />\r\n      <workItem from=\"1620890941631\" duration=\"10628000\" />\r\n      <workItem from=\"1620940132332\" duration=\"11426000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"instructor login first\">\r\n      <created>1620896846759</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620896846759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"adding short question type in questiontotest.php\">\r\n      <created>1620932651338</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620932651338</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"instructor login first\" />\r\n    <MESSAGE value=\"adding short question type in questiontotest.php\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"adding short question type in questiontotest.php\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 457a49fb27f83b90c06fa1bd9cb44f4b42337f4a)
++++ b/.idea/workspace.xml	(date 1620985824465)
+@@ -2,14 +2,12 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
++      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/questiontotest.php" beforeDir="false" afterPath="$PROJECT_DIR$/questiontotest.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/testController.php" beforeDir="false" afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -18,43 +16,34 @@
+   </component>
+   <component name="ComposerSettings">
+     <execution />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="HTML File" />
+-      </list>
+-    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
+-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="WebServerToolWindowFactoryState" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+-    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../webtZ7" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zadanie3final" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+     <property name="node.js.path.for.package.tslint" value="project" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+-    <property name="nodejs_package_manager_path" value="npm" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
+   <component name="RecentsManager">
+@@ -72,24 +61,8 @@
+       <updated>1620739713669</updated>
+       <workItem from="1620739714795" duration="75000" />
+       <workItem from="1620810675567" duration="1518000" />
+-      <workItem from="1620890941631" duration="10628000" />
+-      <workItem from="1620940132332" duration="11426000" />
++      <workItem from="1620890941631" duration="3076000" />
+     </task>
+-    <task id="LOCAL-00001" summary="instructor login first">
+-      <created>1620896846759</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1620896846759</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="adding short question type in questiontotest.php">
+-      <created>1620932651338</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1620932651338</updated>
+-    </task>
+-    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -107,9 +80,4 @@
+     </option>
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="instructor login first" />
+-    <MESSAGE value="adding short question type in questiontotest.php" />
+-    <option name="LAST_COMMIT_MESSAGE" value="adding short question type in questiontotest.php" />
+-  </component>
+ </project>
+\ No newline at end of file

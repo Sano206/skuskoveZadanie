@@ -1,0 +1,295 @@
+Index: login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php include('server.php');\r\n?>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Login</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css\">\r\n\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <div class=\"header\">\r\n        <h2>Login</h2>\r\n    </div>\r\n    <form method=\"post\" action=\"login.php\">\r\n        <?php include('errors.php'); ?>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Username</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"username\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Password</label>\r\n            <input class=\"form-control\" type=\"password\" name=\"password\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Code</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"code\">\r\n        </div>\r\n        <div class=\"button-group\">\r\n            <div class=\"input-group\">\r\n                <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"instructor\">Login Instructor</button>\r\n            </div>\r\n        </div>\r\n        <p>\r\n            Not yet a member? <a href=\"register.php\">Sign up</a>\r\n        </p>\r\n    </form>\r\n    <form method=\"post\" action=\"login.php\">\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Username</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"username\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Password</label>\r\n            <input class=\"form-control\" type=\"password\" name=\"password\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Code</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"code\">\r\n        </div>\r\n        <div class=\"button-group\">\r\n            <div class=\"input-group\">\r\n                <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"student\">Login Student</button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login.php b/login.php
+--- a/login.php	(revision 99e60a7d1aac8d96ab586c44231a87168359e741)
++++ b/login.php	(date 1620904133381)
+@@ -12,8 +12,17 @@
+ </head>
+ <body>
+ <div class="container">
++    <div class="navmenu">
++        <a class="btn btn" href="Credits/info.php">Vypracovali</a>
++        <a href="Credits/tasks.php">Rozdelenie úloh</a>
++    </div>
++
+     <div class="header">
+         <h2>Login</h2>
++    </div>
++
++    <div class="row">
++
+     </div>
+     <form method="post" action="login.php">
+         <?php include('errors.php'); ?>
+Index: index.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\n\r\nsession_start();\r\n\r\nif (!isset($_SESSION['username'])) {\r\n    $_SESSION['msg'] = \"You must log in first\";\r\n    header('location: login.php');\r\n}\r\nif (isset($_GET['logout'])) {\r\n    session_destroy();\r\n    unset($_SESSION['username']);\r\n    header(\"location: login.php\");\r\n}\r\n?>\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Home</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n\r\n</head>\r\n<body>\r\n\r\n\r\n<div class=\"container\">\r\n    <!-- notification message -->\r\n    <?php if (isset($_SESSION['success'])) : ?>\r\n        <div class=\"error success\" >\r\n            <h3>\r\n                <?php\r\n                echo $_SESSION['success'];\r\n                unset($_SESSION['success']);\r\n                ?>\r\n            </h3>\r\n        </div>\r\n    <?php endif ?>\r\n\r\n    <!-- logged in user information -->\r\n    <?php  if (isset($_SESSION['username'])) : ?>\r\n        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>\r\n        <p> <a href=\"index.php?logout='1'\" style=\"color: red;\">logout</a> </p>\r\n    <?php endif ?>\r\n\r\n\r\n</div>\r\n\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.php b/index.php
+--- a/index.php	(revision 99e60a7d1aac8d96ab586c44231a87168359e741)
++++ b/index.php	(date 1620902299068)
+@@ -1,6 +1,4 @@
+ <?php
+-
+-
+ session_start();
+ 
+ if (!isset($_SESSION['username'])) {
+@@ -19,7 +17,7 @@
+ <head>
+     <meta charset="UTF-8">
+     <title>Home</title>
+-    <link rel="stylesheet" type="text/css" href="style.css">
++    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"PublishConfigData\" autoUpload=\"Always\" serverName=\"webtech2\" remoteFilesAllowedToDisappearOnAutoupload=\"false\">\r\n    <serverData>\r\n      <paths name=\"webtech\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping local=\"$PROJECT_DIR$\" web=\"/\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n      <paths name=\"webtech2\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping deploy=\"skuskoveZadanie\" local=\"$PROJECT_DIR$\" web=\"/skuskoveZadanie\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n    </serverData>\r\n    <option name=\"myAutoUpload\" value=\"ALWAYS\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deployment.xml b/.idea/deployment.xml
+--- a/.idea/deployment.xml	(revision 99e60a7d1aac8d96ab586c44231a87168359e741)
++++ b/.idea/deployment.xml	(date 1620899784373)
+@@ -1,18 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="PublishConfigData" autoUpload="Always" serverName="webtech2" remoteFilesAllowedToDisappearOnAutoupload="false">
++  <component name="PublishConfigData" autoUpload="Always" remoteFilesAllowedToDisappearOnAutoupload="false">
+     <serverData>
+-      <paths name="webtech">
++      <paths name="skuskovezadanie">
+         <serverdata>
+           <mappings>
+-            <mapping local="$PROJECT_DIR$" web="/" />
++            <mapping deploy="/skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
+           </mappings>
+         </serverdata>
+       </paths>
+-      <paths name="webtech2">
++      <paths name="wt54.fei.stuba.sk - 147.175.98.54">
+         <serverdata>
+           <mappings>
+-            <mapping deploy="skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
++            <mapping local="$PROJECT_DIR$" web="/" />
+           </mappings>
+         </serverdata>
+       </paths>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"first commit\">\r\n      <change afterPath=\"$PROJECT_DIR$/2FA/PHPGangsta/GoogleAuthenticator.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/config.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/createTest.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/errors.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/login.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/register.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/server.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/deployment.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/deployment.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sONXHtx7SVpmysBCcsobhH3HuZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620739713669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620739713669</updated>\r\n      <workItem from=\"1620739714795\" duration=\"75000\" />\r\n      <workItem from=\"1620810675567\" duration=\"1518000\" />\r\n      <workItem from=\"1620890941631\" duration=\"3076000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 99e60a7d1aac8d96ab586c44231a87168359e741)
++++ b/.idea/workspace.xml	(date 1620904128412)
+@@ -2,16 +2,11 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
+-      <change afterPath="$PROJECT_DIR$/2FA/PHPGangsta/GoogleAuthenticator.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/createTest.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/errors.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,17 +15,32 @@
+   </component>
+   <component name="ComposerSettings">
+     <execution />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="CSS File" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="DatabaseDriversLRU" value="mysql" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="true" />
+@@ -39,7 +49,8 @@
+     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TINA" />
++    <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+@@ -52,6 +63,9 @@
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\PhpStorm\skuskoveZadanie" />
+     </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Asus\PhpstormProjects\WEBTECH2\skuskoveZadanie\CSS" />
++    </key>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -64,6 +78,8 @@
+       <workItem from="1620739714795" duration="75000" />
+       <workItem from="1620810675567" duration="1518000" />
+       <workItem from="1620890941631" duration="3076000" />
++      <workItem from="1620897099184" duration="4500000" />
++      <workItem from="1620902974476" duration="1147000" />
+     </task>
+     <servers />
+   </component>
+@@ -80,5 +96,6 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: server.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\nrequire('config.php');\r\nrequire_once './2FA/PHPGangsta/GoogleAuthenticator.php';\r\n\r\nsession_start();\r\n\r\n// initializing variables\r\n$username = \"\";\r\n$email = \"\";\r\n$errors = array();\r\n$websiteTitle = 'Zadanie3';\r\n\r\n$ga = new PHPGangsta_GoogleAuthenticator();\r\n\r\n$db = mysqli_connect($dbServername, $dbUsername, $dbPassword, $database);\r\n\r\n// REGISTER USER\r\nif (isset($_POST['reg_user'])) {\r\n    // receive all input values from the form\r\n    $username = mysqli_real_escape_string($db, $_POST['username']);\r\n    $email = mysqli_real_escape_string($db, $_POST['email']);\r\n    $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);\r\n    $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);\r\n\r\n    // form validation: ensure that the form is correctly filled ...\r\n    // by adding (array_push()) corresponding error unto $errors array\r\n    if (empty($username)) {\r\n        array_push($errors, \"Username is required\");\r\n    }\r\n    if (empty($email)) {\r\n        array_push($errors, \"Email is required\");\r\n    }\r\n    if (empty($password_1)) {\r\n        array_push($errors, \"Password is required\");\r\n    }\r\n    if ($password_1 != $password_2) {\r\n        array_push($errors, \"The two passwords do not match\");\r\n    }\r\n\r\n    // first check the database to make sure\r\n    // a user does not already exist with the same username and/or email\r\n    $user_check_query = \"SELECT * FROM instructors WHERE username='$username' OR email='$email' LIMIT 1\";\r\n    $result = mysqli_query($db, $user_check_query);\r\n    $user = mysqli_fetch_assoc($result);\r\n\r\n    if ($user) { // if user exists\r\n        if ($user['username'] === $username) {\r\n            array_push($errors, \"Username already exists\");\r\n        }\r\n\r\n        if ($user['email'] === $email) {\r\n            array_push($errors, \"email already exists\");\r\n        }\r\n    }\r\n\r\n    // Finally, register user if there are no errors in the form\r\n    if (count($errors) == 0) {\r\n        $password = password_hash($password_1, PASSWORD_BCRYPT);//encrypt the password before saving in the database\r\n\r\n\r\n\r\n        $secret = $_POST['secret'];\r\n\r\n        if ($result) {\r\n            echo 'Verified';\r\n        } else {\r\n            echo 'Not verified';\r\n        }\r\n\r\n        $query = \"INSERT INTO instructors (username, email, password, secret) \r\n  \t\t\t  VALUES('$username', '$email', '$password', '$secret')\";\r\n        mysqli_query($db, $query);\r\n\r\n\r\n\r\n        $query = \"SELECT * FROM instructors WHERE username='$username' AND password='$password'\";\r\n        $results = mysqli_query($db, $query);\r\n        $user = mysqli_fetch_assoc($results);\r\n        $userId = $user['id'];\r\n        $secret = $user['secret'];\r\n        saveLoginInfo($userId, 'registration', $username, $db);\r\n    }\r\n}\r\n\r\nif ($_POST['login'] == 'instructor') {\r\n    $username = mysqli_real_escape_string($db, $_POST['username']);\r\n    $password = mysqli_real_escape_string($db, $_POST['password']);\r\n    $code = $_POST['code'];\r\n\r\n    if (empty($username)) {\r\n        array_push($errors, \"Username is required\");\r\n    }\r\n    if (empty($password)) {\r\n        array_push($errors, \"Password is required\");\r\n    }\r\n    if (empty($code)) {\r\n        array_push($errors, \"Code is required\");\r\n    }\r\n\r\n\r\n    if (count($errors) == 0) {\r\n\r\n        $query = \"SELECT * FROM instructors WHERE username='$username'\";\r\n        $results = mysqli_query($db, $query);\r\n        $user = mysqli_fetch_assoc($results);\r\n\r\n        if (mysqli_num_rows($results) == 1 && password_verify($password, $user['password'])) {\r\n            $secret = $user['secret'];\r\n            $result = $ga->verifyCode($secret, $code);\r\n\r\n            if ($result == 1) {\r\n                $userId = $user['id'];\r\n                saveLoginInfo($userId, 'registration', $username,$db);\r\n            } else {\r\n                array_push($errors, \"Wrong code\");\r\n            }\r\n        } else {\r\n            array_push($errors, \"Wrong username/password combination\");\r\n        }\r\n    }\r\n}\r\n\r\n\r\nfunction saveLoginInfo($userId, $type, $username,$db){\r\n//    $timestamp = date('Y-m-d G:i:s', time()+3600*2);\r\n//    $query = \"INSERT INTO logins (user_id, reg_type, timestamp)\r\n//  \t\t\t  VALUES('$userId', '$type', '$timestamp')\";\r\n//    mysqli_query($db, $query);\r\n\r\n    $_SESSION['username'] = $username;\r\n    $_SESSION['success'] = \"You are now logged in\";\r\n    header('location: index.php');\r\n}\r\n\r\n?>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server.php b/server.php
+--- a/server.php	(revision 99e60a7d1aac8d96ab586c44231a87168359e741)
++++ b/server.php	(date 1620901982000)
+@@ -58,7 +58,6 @@
+         $password = password_hash($password_1, PASSWORD_BCRYPT);//encrypt the password before saving in the database
+ 
+ 
+-
+         $secret = $_POST['secret'];
+ 
+         if ($result) {
+@@ -72,7 +71,6 @@
+         mysqli_query($db, $query);
+ 
+ 
+-
+         $query = "SELECT * FROM instructors WHERE username='$username' AND password='$password'";
+         $results = mysqli_query($db, $query);
+         $user = mysqli_fetch_assoc($results);
+@@ -110,7 +108,8 @@
+ 
+             if ($result == 1) {
+                 $userId = $user['id'];
+-                saveLoginInfo($userId, 'registration', $username,$db);
++                $_SESSION["instructorId"] = $userId;
++                saveLoginInfo($userId, 'registration', $username, $db);
+             } else {
+                 array_push($errors, "Wrong code");
+             }
+@@ -120,8 +119,69 @@
+     }
+ }
+ 
++if ($_POST['login'] == 'student') {
++    require('config.php');
++    $name = mysqli_real_escape_string($db, $_POST['name']);
++    $surname = mysqli_real_escape_string($db, $_POST['surname']);
++    $code = mysqli_real_escape_string($db, $_POST['code']);
++
++    if (empty($name)) {
++        array_push($errors, "Username is required");
++    }
++    if (empty($surname)) {
++        array_push($errors, "Password is required");
++    }
++    if (empty($code)) {
++        array_push($errors, "Code is required");
++    }
++
++    if (count($errors) == 0) {
++
++        $stmt = $conn->prepare("SELECT * FROM tests WHERE code=:code"); //Check code validity
++        $stmt->bindParam(":code", $code);
++        try {
++            $stmt->execute();
++        } catch (Exception $e) {
++            var_dump($e);
++        }
++        $test = $stmt->fetchAll();
++        if (empty($test[0])) {
++            array_push($errors, "Invalid code");
++        } else {
++
+ 
+-function saveLoginInfo($userId, $type, $username,$db){
++            $stmt = $conn->prepare("SELECT * FROM students WHERE name=:name and surname = :surname"); //check user existence
++
++            $stmt->bindParam(":name", $name);
++            $stmt->bindParam(":surname", $surname);
++            try {
++                $stmt->execute();
++            } catch (Exception $e) {
++                var_dump($e);
++            }
++            $result = $stmt->fetchAll();
++            if (empty($result[0])) {    //create new user if non-existent
++                $stmt = $conn->prepare("INSERT INTO students(name, surname) values(:name, :surname)");
++                $stmt->bindParam(":name", $name);
++                $stmt->bindParam(":surname", $surname);
++                try {
++                    $stmt->execute();
++                } catch (Exception $e) {
++                    var_dump($e);
++                }
++            }
++
++            $timestamp = date("G:i:s Y-m-d");
++            
++        }
++
++
++    }
++}
++
++
++function saveLoginInfo($userId, $type, $username, $db)
++{
+ //    $timestamp = date('Y-m-d G:i:s', time()+3600*2);
+ //    $query = "INSERT INTO logins (user_id, reg_type, timestamp)
+ //  			  VALUES('$userId', '$type', '$timestamp')";

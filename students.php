@@ -25,7 +25,6 @@
             <thead>
             <tr>
                 <th>Student name</th>
-                <th>Points</th>
             </tr>
             </thead>
 
@@ -53,6 +52,7 @@ for($i=0; $i<count($students_id); $i++)
     $a->bindParam(":id", $students_id[$i]);
     $a->execute();
     $d = $a->fetch();
+
     echo '<tr>';
     echo '<td><a href="students_completed_tests.php?student_id='. $students_id[$i].'&amp;test_id=' . $id . '  ">'. $d['name'] . " " . $d['surname'] ."</a><br></td>";
     echo '</tr>';

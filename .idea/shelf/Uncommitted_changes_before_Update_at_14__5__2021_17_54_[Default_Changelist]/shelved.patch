@@ -1,0 +1,501 @@
+Index: login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php include('server.php');\r\n?>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Login</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"CSS/custom.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css\">\r\n\r\n</head>\r\n<body>\r\n\r\n<div style=\"position: absolute; right: 15px; top: 15px\">\r\n    <a class=\"btn btn-info\" href=\"Credits/info.php\">Made by</a>\r\n    <a class=\"btn btn-info\" href=\"Credits/tasks.php\">Tasks</a>\r\n</div>\r\n\r\n<div style=\"min-width: 500px; padding-top: 50px\" class=\"w-25 container\">\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-8\">\r\n            <h2 class=\"\">Exam system login</h2>\r\n        </div>\r\n        <div class=\"col-4\">\r\n            <img class=\"\" style=\"float: right; width: 50px; height: 50px\" src=\"CSS/test-photo.png\"/>\r\n\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n        <div id=\"accordion\">\r\n            <div class=\"card\">\r\n                <div class=\"card-header\" >\r\n                    <h5 class=\"mb-0\">\r\n                        <a class=\"btn btn-info\" data-toggle=\"collapse\" data-target=\"#collapseOne\" aria-expanded=\"false\" aria-controls=\"collapseOne\">\r\n                            Login Student\r\n                        </a>\r\n                        <a class=\"btn btn-info \" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\r\n                            Login Teacher\r\n                        </a>\r\n                    </h5>\r\n                </div>\r\n\r\n\r\n\r\n                <!-- LOGIN STUDENT -->\r\n                <div id=\"collapseOne\" class=\"collapse show\" data-parent=\"#accordion\">\r\n                    <div class=\"card-body\">\r\n\r\n                        <form method=\"post\" action=\"login.php\">\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"name\" class=\"col-sm-3 col-form-label\">ID</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"name\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"name\" class=\"col-sm-3 col-form-label\">Name</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"name\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"surname\" class=\"col-sm-3 col-form-label\">Surname</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"surname\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"code\" class=\"col-sm-3 col-form-label\">Test Code</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"code\">\r\n                                </div>\r\n                            </div>\r\n                            <div style=\"padding-left: 25px; padding-top: 25px;\" class=\"button-group\">\r\n                                <div class=\"input-group\">\r\n                                    <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"student\">Login Student</button>\r\n                                </div>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                </div>\r\n\r\n\r\n                <!-- LOGIN TEACHER -->\r\n                <div id=\"collapseTwo\" class=\"collapse\" data-parent=\"#accordion\">\r\n                    <div class=\"card-body\">\r\n                        <form method=\"post\" action=\"login.php\">\r\n                            <?php include('errors.php');\r\n                            session_start();\r\n                            if(isset($_SESSION[\"msg\"])){\r\n                                echo $_SESSION[\"msg\"];\r\n                                unset($_SESSION[\"msg\"]);\r\n                            }\r\n                            ?>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"name\" class=\"col-sm-3 col-form-label\">Username</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"username\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"name\" class=\"col-sm-3 col-form-label\">Password</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"password\" name=\"password\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group row\">\r\n                                <label style=\"padding-left: 15px\" for=\"name\" class=\"col-sm-3 col-form-label\">Auth. Code</label>\r\n                                <div class=\"col-sm-9\">\r\n                                    <input class=\"form-control\" type=\"text\" name=\"code\">\r\n                                </div>\r\n                            </div>\r\n                            <div style=\"padding-left: 25px; padding-top: 25px;\" class=\"button-group\">\r\n                                <div class=\"input-group\">\r\n                                    <button type=\"submit\" class=\"btn btn-secondary\" name=\"login\" value=\"instructor\">Login Instructor</button>\r\n                                </div>\r\n                            </div>\r\n                            <p style=\"font-size: 11px; padding-left: 25px;\">\r\n                                Not yet a member? <a href=\"register.php\">Sign up</a>\r\n                            </p>\r\n                        </form>\r\n\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n</body>\r\n\r\n<script src=\"https://code.jquery.com/jquery-3.4.1.slim.min.js\" integrity=\"sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n\" crossorigin=\"anonymous\"></script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>\r\n<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>\r\n\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login.php b/login.php
+--- a/login.php	(revision 471b2c348c1c59e1e1eb45f1cd1821494f4fc819)
++++ b/login.php	(date 1621007277805)
+@@ -13,16 +13,16 @@
+ <body>
+ 
+ <div style="position: absolute; right: 15px; top: 15px">
+-    <a class="btn btn-info" href="Credits/info.php">Made by</a>
++    <a class="btn btn-info" href="Credits/info.html">Made by</a>
+     <a class="btn btn-info" href="Credits/tasks.php">Tasks</a>
+ </div>
+ 
+-<div style="min-width: 500px; padding-top: 50px" class="w-25 container">
++<div  class="w-25 container" id="content">
+ 
+ 
+     <div class="row">
+         <div class="col-8">
+-            <h2 class="">Exam system login</h2>
++            <h3 class="">Exam system login</h3>
+         </div>
+         <div class="col-4">
+             <img class="" style="float: right; width: 50px; height: 50px" src="CSS/test-photo.png"/>
+@@ -31,103 +31,104 @@
+     </div>
+ 
+     <div class="row">
+-
+         <div id="accordion">
+-            <div class="card">
+-                <div class="card-header" >
+-                    <h5 class="mb-0">
+-                        <a class="btn btn-info" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+-                            Login Student
+-                        </a>
+-                        <a class="btn btn-info " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+-                            Login Teacher
+-                        </a>
+-                    </h5>
+-                </div>
++            <div class="header" >
++                <h5 class="mb-0">
++
++                    <a class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
++                        Login Student <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
++                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
++                        </svg>
++                    </a>
++                    <a class="btn btn-secondary " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
++                        Login Teacher <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
++                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
++                        </svg>
++                    </a>
++                </h5>
++            </div>
+ 
+-
+-
+-                <!-- LOGIN STUDENT -->
+-                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+-                    <div class="card-body">
++            <!-- LOGIN STUDENT -->
++            <div id="collapseOne" class="collapse show" data-parent="#accordion">
++                <div class="card-body">
+ 
+-                        <form method="post" action="login.php">
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="name" class="col-sm-3 col-form-label">ID</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="name">
+-                                </div>
+-                            </div>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="name" class="col-sm-3 col-form-label">Name</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="name">
+-                                </div>
+-                            </div>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="surname" class="col-sm-3 col-form-label">Surname</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="surname">
+-                                </div>
+-                            </div>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="code" class="col-sm-3 col-form-label">Test Code</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="code">
+-                                </div>
+-                            </div>
+-                            <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
+-                                <div class="input-group">
+-                                    <button type="submit" class="btn btn-secondary" name="login" value="student">Login Student</button>
+-                                </div>
+-                            </div>
+-                        </form>
+-                    </div>
+-                </div>
++                    <form method="post" action="login.php">
++                        <div class="form-group row">
++                            <label  for="name" class="col-sm-3 col-form-label">ID</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="name">
++                            </div>
++                        </div>
++                        <div class="form-group row">
++                            <label  for="name" class="col-sm-3 col-form-label">Name</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="name">
++                            </div>
++                        </div>
++                        <div class="form-group row">
++                            <label  for="surname" class="col-sm-3 col-form-label">Surname</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="surname">
++                            </div>
++                        </div>
++                        <div class="form-group row">
++                            <label  for="code" class="col-sm-3 col-form-label">Test Code</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="code">
++                            </div>
++                        </div>
++                        <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
++                            <div class="input-group">
++                                <button type="submit" class="btn btn-secondary" name="login" value="student">Login</button>
++                            </div>
++                        </div>
++                    </form>
++                </div>
++            </div>
+ 
+ 
+-                <!-- LOGIN TEACHER -->
+-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+-                    <div class="card-body">
+-                        <form method="post" action="login.php">
+-                            <?php include('errors.php');
+-                            session_start();
+-                            if(isset($_SESSION["msg"])){
+-                                echo $_SESSION["msg"];
+-                                unset($_SESSION["msg"]);
+-                            }
+-                            ?>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="name" class="col-sm-3 col-form-label">Username</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="username">
+-                                </div>
+-                            </div>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="name" class="col-sm-3 col-form-label">Password</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="password" name="password">
+-                                </div>
+-                            </div>
+-                            <div class="form-group row">
+-                                <label style="padding-left: 15px" for="name" class="col-sm-3 col-form-label">Auth. Code</label>
+-                                <div class="col-sm-9">
+-                                    <input class="form-control" type="text" name="code">
+-                                </div>
+-                            </div>
+-                            <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
+-                                <div class="input-group">
+-                                    <button type="submit" class="btn btn-secondary" name="login" value="instructor">Login Instructor</button>
+-                                </div>
+-                            </div>
+-                            <p style="font-size: 11px; padding-left: 25px;">
+-                                Not yet a member? <a href="register.php">Sign up</a>
+-                            </p>
+-                        </form>
++            <!-- LOGIN TEACHER -->
++            <div id="collapseTwo" class="collapse" data-parent="#accordion">
++                <div class="card-body">
++                    <form method="post" action="login.php">
++                        <?php include('errors.php');
++                        session_start();
++                        if(isset($_SESSION["msg"])){
++                            //echo $_SESSION["msg"];
++                            unset($_SESSION["msg"]);
++                        }
++                        ?>
++                        <div class="form-group row">
++                            <label for="name" class="col-sm-3 col-form-label">Username</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="username">
++                            </div>
++                        </div>
++                        <div class="form-group row">
++                            <label for="name" class="col-sm-3 col-form-label">Password</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="password" name="password">
++                            </div>
++                        </div>
++                        <div class="form-group row">
++                            <label for="name" class="col-sm-3 col-form-label">Auth. Code</label>
++                            <div class="col-sm-9">
++                                <input class="form-control" type="text" name="code">
++                            </div>
++                        </div>
++                        <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
++                            <div class="input-group">
++                                <button type="submit" class="btn btn-secondary" name="login" value="instructor">Login</button>
++                            </div>
++                        </div>
++                        <p style="font-size: 11px; padding-left: 25px;">
++                            Not a member yet? <a style="font-size: 15px;" href="register.php">Sign up</a>
++                        </p>
++                    </form>
+ 
+-                    </div>
+                 </div>
+             </div>
++
+         </div>
+     </div>
+ 
+Index: register.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php include('server.php') ?>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Registration system PHP and MySQL</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css\">\r\n\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <div class=\"header\">\r\n        <h2>Register</h2>\r\n    </div>\r\n    <form method=\"post\" action=\"register.php\">\r\n        <?php include('errors.php'); ?>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Username</label>\r\n            <input class=\"form-control\" type=\"text\" name=\"username\" value=\"<?php echo $username; ?>\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Email</label>\r\n            <input class=\"form-control\" type=\"email\" name=\"email\" value=\"<?php echo $email; ?>\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Password</label>\r\n            <input class=\"form-control\" type=\"password\" name=\"password_1\">\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <label class=\"form-control\">Confirm password</label>\r\n            <input class=\"form-control\" type=\"password\" name=\"password_2\">\r\n        </div>\r\n        <div>\r\n            <?php\r\n            require_once './2FA/PHPGangsta/GoogleAuthenticator.php';\r\n            $ga = new PHPGangsta_GoogleAuthenticator();\r\n            $websiteTitle = 'Skuska';\r\n\r\n            $secret = $ga->createSecret();\r\n            echo 'Secret is: ' . $secret . '<br />';\r\n            echo '<input type=\"text\" name=\"secret\" value=\"' . $secret . '\" hidden=\"true\">';\r\n\r\n            $qrCodeUrl = $ga->getQRCodeGoogleUrl($websiteTitle, $secret);\r\n            echo 'Google Charts URL QR-Code:<br /><img src=\"' . $qrCodeUrl . '\" />';\r\n            ?>\r\n        </div>\r\n        <div class=\"input-group\">\r\n            <button type=\"submit\" class=\"btn\" name=\"reg_user\">Register</button>\r\n        </div>\r\n        <p>\r\n            Already a member? <a href=\"login.php\">Sign in</a>\r\n        </p>\r\n    </form>\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/register.php b/register.php
+--- a/register.php	(revision 471b2c348c1c59e1e1eb45f1cd1821494f4fc819)
++++ b/register.php	(date 1621006174912)
+@@ -3,55 +3,96 @@
+ <html>
+ <head>
+     <title>Registration system PHP and MySQL</title>
+-    <link rel="stylesheet" type="text/css" href="style.css">
++    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
++    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
+ 
+ </head>
+ <body>
+-<div class="container">
+-    <div class="header">
+-        <h2>Register</h2>
++
++<div style="position: absolute; right: 15px; top: 15px">
++    <a class="btn btn-info" href="Credits/info.html">Made by</a>
++    <a class="btn btn-info" href="Credits/tasks.html">Tasks</a>
++</div>
++
++<div class="container w-25" id="content">
++    <div class="row">
++        <div class="col-8">
++            <h2>Register</h2>
++        </div>
++        <div class="col-4">
++            <img class="" style="float: right; width: 50px; height: 50px" src="CSS/test-photo.png"/>
++        </div>
++
+     </div>
+     <form method="post" action="register.php">
+         <?php include('errors.php'); ?>
+-        <div class="input-group">
+-            <label class="form-control">Username</label>
+-            <input class="form-control" type="text" name="username" value="<?php echo $username; ?>">
+-        </div>
+-        <div class="input-group">
+-            <label class="form-control">Email</label>
+-            <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
+-        </div>
+-        <div class="input-group">
+-            <label class="form-control">Password</label>
+-            <input class="form-control" type="password" name="password_1">
+-        </div>
+-        <div class="input-group">
+-            <label class="form-control">Confirm password</label>
+-            <input class="form-control" type="password" name="password_2">
+-        </div>
+-        <div>
+-            <?php
+-            require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
+-            $ga = new PHPGangsta_GoogleAuthenticator();
+-            $websiteTitle = 'Skuska';
++        <div class="row card-body">
++
++                <div class="form-group row">
++                    <label class="col-sm-3 col-form-label">Username</label>
++                    <div class="col-sm-9">
++                        <input class="form-control" type="text" name="username" value="<?php echo $username; ?>" placeholder="enter username">
++                    </div>
++                </div>
++                <div class="form-group row">
++                    <label class="col-sm-3 col-form-label">Email</label>
++                    <div class="col-sm-9">
++                        <input class="form-control" type="email" name="email" value="<?php echo $email; ?>" placeholder="mail@domain.com">
++                    </div>
++                </div>
++                <div class="form-group row">
++                    <label class="col-sm-3 col-form-label">Password</label>
++                    <div class="col-sm-9">
++                        <input class="form-control" type="password" name="password_1" placeholder="enter password">
++                    </div>
++                </div>
++                <div class="form-group row">
++                    <label class="col-sm-3 col-form-label">Confirm</label>
++                    <div class="col-sm-9">
++                        <input class="form-control" type="password" name="password_2" placeholder="confirm password">
++                    </div>
++                </div>
++
++                <div style="padding-top: 10px;" class="row align-items-center">
++                    <div class="col-sm-4 ">
++                        Scan QR Code
++                    </div>
++                    <div style="padding-left: 20px" class="col-sm-8 ">
++                        <?php
++                        require_once './2FA/PHPGangsta/GoogleAuthenticator.php';
++                        $ga = new PHPGangsta_GoogleAuthenticator();
++                        $websiteTitle = 'Skuska';
+ 
+-            $secret = $ga->createSecret();
+-            echo 'Secret is: ' . $secret . '<br />';
+-            echo '<input type="text" name="secret" value="' . $secret . '" hidden="true">';
++                        $secret = $ga->createSecret();
++                        //echo 'Secret is: ' . $secret . '<br />';
++                        echo '<input type="text" name="secret" value="' . $secret . '" hidden="true">';
+ 
+-            $qrCodeUrl = $ga->getQRCodeGoogleUrl($websiteTitle, $secret);
+-            echo 'Google Charts URL QR-Code:<br /><img src="' . $qrCodeUrl . '" />';
+-            ?>
+-        </div>
+-        <div class="input-group">
+-            <button type="submit" class="btn" name="reg_user">Register</button>
+-        </div>
+-        <p>
+-            Already a member? <a href="login.php">Sign in</a>
+-        </p>
++                        $qrCodeUrl = $ga->getQRCodeGoogleUrl($websiteTitle, $secret);
++                        echo '<img src="' . $qrCodeUrl . '" />';
++                        ?>
++                    </div>
++                </div>
++                <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
++                    <div class="input-group">
++                        <button type="submit" class="btn btn-secondary" name="reg_user">Register</button>
++                    </div>
++                </div>
++                <p style="font-size: 11px; padding-left: 25px;">
++                    Already a member? <a style="font-size: 15px;" href="login.php">Sign in</a>
++                </p>
++
++
++
++
++        </div>
+     </form>
+ </div>
+ </body>
++
++<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
++<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
++<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
++
+ </html>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"first commit\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/config.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/questiontotest.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/questiontotest.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/script.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/script.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/testController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/testController.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sONXHtx7SVpmysBCcsobhH3HuZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../webtZ7\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620739713669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620739713669</updated>\r\n      <workItem from=\"1620739714795\" duration=\"75000\" />\r\n      <workItem from=\"1620810675567\" duration=\"1518000\" />\r\n      <workItem from=\"1620890941631\" duration=\"10628000\" />\r\n      <workItem from=\"1620940132332\" duration=\"11426000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"instructor login first\">\r\n      <created>1620896846759</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620896846759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"adding short question type in questiontotest.php\">\r\n      <created>1620932651338</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620932651338</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"instructor login first\" />\r\n    <MESSAGE value=\"adding short question type in questiontotest.php\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"adding short question type in questiontotest.php\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 471b2c348c1c59e1e1eb45f1cd1821494f4fc819)
++++ b/.idea/workspace.xml	(date 1621006344606)
+@@ -3,13 +3,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/questiontotest.php" beforeDir="false" afterPath="$PROJECT_DIR$/questiontotest.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/testController.php" beforeDir="false" afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -23,6 +18,7 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="HTML File" />
++        <option value="CSS File" />
+       </list>
+     </option>
+   </component>
+@@ -30,24 +26,25 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
+-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="WebServerToolWindowFactoryState" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+-    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../webtZ7" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zadanie3final" />
++    <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+@@ -60,6 +57,9 @@
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\PhpStorm\skuskoveZadanie" />
++    </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Asus\PhpstormProjects\WEBTECH2\skuskoveZadanie\access" />
+     </key>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -72,24 +72,8 @@
+       <updated>1620739713669</updated>
+       <workItem from="1620739714795" duration="75000" />
+       <workItem from="1620810675567" duration="1518000" />
+-      <workItem from="1620890941631" duration="10628000" />
+-      <workItem from="1620940132332" duration="11426000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="instructor login first">
+-      <created>1620896846759</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1620896846759</updated>
++      <workItem from="1620890941631" duration="3076000" />
+     </task>
+-    <task id="LOCAL-00002" summary="adding short question type in questiontotest.php">
+-      <created>1620932651338</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1620932651338</updated>
+-    </task>
+-    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -100,16 +84,23 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/HodonF" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+     </option>
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="instructor login first" />
+-    <MESSAGE value="adding short question type in questiontotest.php" />
+-    <option name="LAST_COMMIT_MESSAGE" value="adding short question type in questiontotest.php" />
+-  </component>
+ </project>
+\ No newline at end of file

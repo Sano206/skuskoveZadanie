@@ -1,0 +1,159 @@
+Index: Credits/tasks.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"sk\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Table</title>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"../CSS/custom.css\">\r\n\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n\r\n</head>\r\n<body>\r\n<div style=\"position: absolute; right: 15px; top: 15px\">\r\n    <a class=\"btn btn-info\" href=\"../index.php\">Back</a>\r\n</div>\r\n\r\n<div class=\"container\" id=\"content\">\r\n    <h1 class=\"text-center\">Tasks</h1>\r\n<table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n        <th><h2>Úloha</h2></th>\r\n        <th><h2>Denis</h2></th>\r\n        <th><h2>Kristián</h2></th>\r\n        <th><h2>Filip</h2></th>\r\n        <th><h2>Matúš</h2></th>\r\n        <th><h2>Alexander</h2></th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr>\r\n        <td>Prihlasovanie sa do aplikácie (6b.)</td>\r\n        <td></td>\r\n        <td></td>\r\n        <td></td>\r\n        <td></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px; color: #4f4f4f\"></i></td>\r\n    </tr>\r\n    <tr>\r\n        <td>realizácia otázok s viacerými odpoveďami (10b.)</td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n        <td></td>\r\n\r\n    </tr>\r\n    <tr>\r\n        <td>realizácia otázok s krátkymi odpoveďami (10b.)</td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i style=\"font-size:35px;color:green\"></i></td>\r\n        <td></td>\r\n        <td></td>\r\n\r\n    </tr>\r\n    <tr>\r\n        <td>realizácia párovacích otázok (12b.)</td>\r\n        <td></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n\r\n    </tr>\r\n    <tr>\r\n        <td>realizácia otázok s kreslením (15b.)</td>\r\n        <td></td>\r\n        <td></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n        <td></td>\r\n\r\n    </tr>\r\n    <tr>\r\n        <td>realizácia otázok s matematickým výrazom (15b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>ukončenie testu (8.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>možnosť zadefinovania viacerých testov, ich aktivácia a deaktivácia (8.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>info pre učiteľa ozbiehaní testov (10b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>export do pdf (10b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>export do csv (10b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>docker balíček(16b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    <tr>\r\n        <td>dizajn a štruktúra (20b.)</td>\r\n        <td><i></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td><i class=\"fa fa-check-square\" style=\"font-size:35px;color:#4f4f4f\"></i></td>\r\n        <td></td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n</div>\r\n\r\n\r\n<script src=\"https://code.jquery.com/jquery-3.5.0.js\"></script>\r\n\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Credits/tasks.html b/Credits/tasks.html
+--- a/Credits/tasks.html	(revision 41922592a58e1d10b30c77595f4ddd09f7f9694e)
++++ b/Credits/tasks.html	(date 1621181033839)
+@@ -17,7 +17,7 @@
+ 
+ <div class="container" id="content">
+     <h1 class="text-center">Tasks</h1>
+-<table class="table">
++<table class="table" style="max-width: 400px;">
+     <thead>
+     <tr>
+         <th><h2>Úloha</h2></th>
+Index: style.css
+===================================================================
+diff --git a/style.css b/style.css
+deleted file mode 100644
+--- a/style.css	(revision 41922592a58e1d10b30c77595f4ddd09f7f9694e)
++++ /dev/null	(revision 41922592a58e1d10b30c77595f4ddd09f7f9694e)
+@@ -1,6 +0,0 @@
+-.option-div{
+-    display: none;
+-}
+-.option-div-conn{
+-    display: none;
+-}
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"PublishConfigData\" autoUpload=\"Always\" serverName=\"wt54.fei.stuba.sk - 147.175.98.54\" remoteFilesAllowedToDisappearOnAutoupload=\"false\">\r\n    <serverData>\r\n      <paths name=\"wt54.fei.stuba.sk - 147.175.98.54\">\r\n        <serverdata>\r\n          <mappings>\r\n\r\n            <mapping deploy=\"/finale\" local=\"$PROJECT_DIR$\" web=\"/finale\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n      <paths name=\"webtech2\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping deploy=\"skuskoveZadanie\" local=\"$PROJECT_DIR$\" web=\"/skuskoveZadanie\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n    </serverData>\r\n    <option name=\"myAutoUpload\" value=\"ALWAYS\" />\r\n  </component>\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deployment.xml b/.idea/deployment.xml
+--- a/.idea/deployment.xml	(revision 41922592a58e1d10b30c77595f4ddd09f7f9694e)
++++ b/.idea/deployment.xml	(date 1621011208596)
+@@ -5,19 +5,11 @@
+       <paths name="wt54.fei.stuba.sk - 147.175.98.54">
+         <serverdata>
+           <mappings>
+-
+-            <mapping deploy="/finale" local="$PROJECT_DIR$" web="/finale" />
+-          </mappings>
+-        </serverdata>
+-      </paths>
+-      <paths name="webtech2">
+-        <serverdata>
+-          <mappings>
+-            <mapping deploy="skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
++            <mapping deploy="/skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
+           </mappings>
+         </serverdata>
+       </paths>
+     </serverData>
+     <option name="myAutoUpload" value="ALWAYS" />
+   </component>
+-</project>
++</project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"first commit\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/config.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/questiontotest.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/questiontotest.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/script.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/script.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/testController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/testController.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sONXHtx7SVpmysBCcsobhH3HuZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../webtZ7\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620739713669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620739713669</updated>\r\n      <workItem from=\"1620739714795\" duration=\"75000\" />\r\n      <workItem from=\"1620810675567\" duration=\"1518000\" />\r\n      <workItem from=\"1620890941631\" duration=\"10628000\" />\r\n      <workItem from=\"1620940132332\" duration=\"11426000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"instructor login first\">\r\n      <created>1620896846759</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620896846759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"adding short question type in questiontotest.php\">\r\n      <created>1620932651338</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620932651338</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"instructor login first\" />\r\n    <MESSAGE value=\"adding short question type in questiontotest.php\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"adding short question type in questiontotest.php\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 41922592a58e1d10b30c77595f4ddd09f7f9694e)
++++ b/.idea/workspace.xml	(date 1621180921010)
+@@ -1,15 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="first commit">
++    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!">
++      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/questiontotest.php" beforeDir="false" afterPath="$PROJECT_DIR$/questiontotest.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/testController.php" beforeDir="false" afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Credits/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/Credits/tasks.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -23,6 +19,7 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="HTML File" />
++        <option value="CSS File" />
+       </list>
+     </option>
+   </component>
+@@ -30,7 +27,9 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -47,7 +46,8 @@
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../webtZ7" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+@@ -74,6 +74,8 @@
+       <workItem from="1620810675567" duration="1518000" />
+       <workItem from="1620890941631" duration="10628000" />
+       <workItem from="1620940132332" duration="11426000" />
++      <workItem from="1621095849028" duration="625000" />
++      <workItem from="1621180593661" duration="324000" />
+     </task>
+     <task id="LOCAL-00001" summary="instructor login first">
+       <created>1620896846759</created>
+@@ -89,7 +91,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1620932651338</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!">
++      <created>1621009965735</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1621009965735</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -110,6 +119,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="instructor login first" />
+     <MESSAGE value="adding short question type in questiontotest.php" />
+-    <option name="LAST_COMMIT_MESSAGE" value="adding short question type in questiontotest.php" />
++    <MESSAGE value="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!" />
++    <option name="LAST_COMMIT_MESSAGE" value="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!" />
+   </component>
+ </project>
+\ No newline at end of file

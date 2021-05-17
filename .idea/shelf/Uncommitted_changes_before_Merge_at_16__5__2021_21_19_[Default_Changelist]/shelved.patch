@@ -1,0 +1,244 @@
+Index: config.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n$dbServername = \"localhost\";\r\n$dbUsername = \"xgajdosa1\";\r\n$dbPassword = 'An#$sjkA5oAP4x';\r\n$database = \"skuska\";\r\n\r\n\r\n$conn = new PDO(\"mysql:host=$dbServername;dbname=$database\", $dbUsername, $dbPassword);\r\n$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.php b/config.php
+--- a/config.php	(revision aee0ce798626f040283750233747a61758155553)
++++ b/config.php	(date 1621181356199)
+@@ -1,7 +1,7 @@
+ <?php
+ $dbServername = "localhost";
+-$dbUsername = "xgajdosa1";
+-$dbPassword = 'An#$sjkA5oAP4x';
++$dbUsername = "xgossanyi";
++$dbPassword = 'I#$H5uPW2kVIJY';
+ $database = "skuska";
+ 
+ 
+Index: style.css
+===================================================================
+diff --git a/style.css b/style.css
+deleted file mode 100644
+--- a/style.css	(revision aee0ce798626f040283750233747a61758155553)
++++ /dev/null	(revision aee0ce798626f040283750233747a61758155553)
+@@ -1,8 +0,0 @@
+-.option-div{
+-    display: none;
+-}
+-
+-.option-div-conn
+-{
+-    display: none;
+-}
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"PublishConfigData\" autoUpload=\"Always\" serverName=\"webtech2\" remoteFilesAllowedToDisappearOnAutoupload=\"false\">\r\n    <serverData>\r\n      <paths name=\"webtech\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping deploy=\"/finale\" local=\"$PROJECT_DIR$\" web=\"/finale\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n      <paths name=\"webtech2\">\r\n        <serverdata>\r\n          <mappings>\r\n            <mapping deploy=\"skuskoveZadanie\" local=\"$PROJECT_DIR$\" web=\"/skuskoveZadanie\" />\r\n          </mappings>\r\n        </serverdata>\r\n      </paths>\r\n    </serverData>\r\n    <option name=\"myAutoUpload\" value=\"ALWAYS\" />\r\n  </component>\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deployment.xml b/.idea/deployment.xml
+--- a/.idea/deployment.xml	(revision aee0ce798626f040283750233747a61758155553)
++++ b/.idea/deployment.xml	(date 1621185514465)
+@@ -1,22 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="PublishConfigData" autoUpload="Always" serverName="webtech2" remoteFilesAllowedToDisappearOnAutoupload="false">
++  <component name="PublishConfigData" autoUpload="Always" serverName="wt54.fei.stuba.sk - 147.175.98.54" remoteFilesAllowedToDisappearOnAutoupload="false">
+     <serverData>
+-      <paths name="webtech">
++      <paths name="wt54.fei.stuba.sk - 147.175.98.54">
+         <serverdata>
+           <mappings>
+-            <mapping deploy="/finale" local="$PROJECT_DIR$" web="/finale" />
+-          </mappings>
+-        </serverdata>
+-      </paths>
+-      <paths name="webtech2">
+-        <serverdata>
+-          <mappings>
+-            <mapping deploy="skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
++            <mapping deploy="/skuskoveZadanie" local="$PROJECT_DIR$" web="/skuskoveZadanie" />
+           </mappings>
+         </serverdata>
+       </paths>
+     </serverData>
+     <option name="myAutoUpload" value="ALWAYS" />
+   </component>
+-</project>
++</project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n\r\n\r\n    <list default=\"true\" id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"connections ui first try\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"HodonF\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sONXHtx7SVpmysBCcsobhH3HuZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\r\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\r\n\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/connections\" />\r\n\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\\connections\" />\r\n      <recent name=\"D:\\PhpStorm\\skuskoveZadanie\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"363c9cf5-75eb-4b8a-b534-6d20d88bd7af\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620739713669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620739713669</updated>\r\n      <workItem from=\"1620739714795\" duration=\"75000\" />\r\n      <workItem from=\"1620810675567\" duration=\"1518000\" />\r\n      <workItem from=\"1620890941631\" duration=\"10628000\" />\r\n      <workItem from=\"1620940132332\" duration=\"11699000\" />\r\n      <workItem from=\"1620985218120\" duration=\"4045000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"instructor login first\">\r\n      <created>1620896846759</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620896846759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"adding short question type in questiontotest.php\">\r\n      <created>1620932651338</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620932651338</updated>\r\n    </task>\r\n\r\n    <task id=\"LOCAL-00003\" summary=\"connections ui first try\">\r\n      <created>1620983852226</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620983852226</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/HodonF\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"instructor login first\" />\r\n    <MESSAGE value=\"connections ui first try\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision aee0ce798626f040283750233747a61758155553)
++++ b/.idea/workspace.xml	(date 1621192392681)
+@@ -1,11 +1,21 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-
+-
+-    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="connections ui first try">
++    <list default="true" id="363c9cf5-75eb-4b8a-b534-6d20d88bd7af" name="Default Changelist" comment="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!">
++      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-
++      <change beforePath="$PROJECT_DIR$/CSS/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/custom.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Credits/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/Credits/info.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Credits/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/Credits/tasks.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/questiontotest.php" beforeDir="false" afterPath="$PROJECT_DIR$/questiontotest.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/testController.php" beforeDir="false" afterPath="$PROJECT_DIR$/testController.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,12 +30,10 @@
+       <list>
+         <option value="HTML File" />
+         <option value="CSS File" />
+-        <option value="JavaScript File" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+-
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+         <entry key="$PROJECT_DIR$" value="HodonF" />
+@@ -33,6 +41,23 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
++  </component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/CSS/custom.css" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/Credits/tasks.html" root0="FORCE_HIGHLIGHTING" />
++  </component>
++  <component name="PhpWorkspaceProjectConfiguration">
++    <include_path>
++      <path value="$PROJECT_DIR$" />
++    </include_path>
++  </component>
+   <component name="ProjectId" id="1sONXHtx7SVpmysBCcsobhH3HuZ" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="1" id="Add" />
+@@ -44,6 +69,7 @@
+   <component name="PropertiesComponent">
+     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="DefaultHtmlFileTemplate" value="HTML File" />
++    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="true" />
+@@ -52,10 +78,9 @@
+     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+-
+     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/connections" />
+-
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+@@ -63,11 +88,14 @@
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="nodejs_package_manager_path" value="npm" />
++    <property name="settings.editor.selected.configurable" value="web.server" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
++  <component name="ReaderModeSettings">
++    <option name="enabled" value="false" />
++  </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+-      <recent name="D:\PhpStorm\skuskoveZadanie\connections" />
+       <recent name="D:\PhpStorm\skuskoveZadanie" />
+     </key>
+   </component>
+@@ -82,8 +110,9 @@
+       <workItem from="1620739714795" duration="75000" />
+       <workItem from="1620810675567" duration="1518000" />
+       <workItem from="1620890941631" duration="10628000" />
+-      <workItem from="1620940132332" duration="11699000" />
+-      <workItem from="1620985218120" duration="4045000" />
++      <workItem from="1620940132332" duration="11426000" />
++      <workItem from="1621095849028" duration="625000" />
++      <workItem from="1621180593661" duration="10081000" />
+     </task>
+     <task id="LOCAL-00001" summary="instructor login first">
+       <created>1620896846759</created>
+@@ -99,13 +128,12 @@
+       <option name="project" value="LOCAL" />
+       <updated>1620932651338</updated>
+     </task>
+-
+-    <task id="LOCAL-00003" summary="connections ui first try">
+-      <created>1620983852226</created>
++    <task id="LOCAL-00003" summary="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!">
++      <created>1621009965735</created>
+       <option name="number" value="00003" />
+       <option name="presentableId" value="LOCAL-00003" />
+       <option name="project" value="LOCAL" />
+-      <updated>1620983852226</updated>
++      <updated>1621009965735</updated>
+     </task>
+     <option name="localTasksCounter" value="4" />
+     <servers />
+@@ -118,19 +146,7 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State>
+-              <option name="FILTERS">
+-                <map>
+-                  <entry key="branch">
+-                    <value>
+-                      <list>
+-                        <option value="origin/HodonF" />
+-                      </list>
+-                    </value>
+-                  </entry>
+-                </map>
+-              </option>
+-            </State>
++            <State />
+           </value>
+         </entry>
+       </map>
+@@ -139,6 +155,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="instructor login first" />
+-    <MESSAGE value="connections ui first try" />
++    <MESSAGE value="adding short question type in questiontotest.php" />
++    <MESSAGE value="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!" />
++    <option name="LAST_COMMIT_MESSAGE" value="login.php Done.&#10;register.php Done.&#10;info.html Done.&#10;&#10;Bugs fixed!!!" />
+   </component>
+ </project>
+\ No newline at end of file
