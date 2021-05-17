@@ -59,7 +59,13 @@ foreach ($d as $row)
     echo "<tr>";
 
     echo "<td>" . $row['question'] . "</td>";
-    echo "<td>" . $row['answer'] . "</td>";
+
+    if($row['type'] == 'image')
+    {
+        echo "<td><img style='width: 250px' src='" . $row['answer'] . "'></td>";
+    }else{
+        echo "<td>" . $row['answer'] . "</td>";
+    }
     echo "<td>" . $row['type'] . "</td>";
     echo "<td>" . $c['points'] . "</td>";
 

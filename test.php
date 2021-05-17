@@ -89,6 +89,7 @@ if (isset($_GET['logout'])) {
         <?php
         $x = "q";
         $i = 0;
+        $multipleCount = 0;
         foreach ($rows as $row) {
 
             if ($row["type"] == "short") {
@@ -105,7 +106,7 @@ if (isset($_GET['logout'])) {
                 $columns = $statement->fetch();
                 echo "<div class='form-control'>";
                 echo "<p>" . $row["question"] . "</p>";
-                echo "<select name = 'taskOption'>";
+                echo "<select name = 'taskOption$multipleCount'>";
                 echo "<option value=" . $row['answer'] . ">" . $row['answer'] . "</option>";
                 echo "<option value=" . $columns['option1'] . ">" . $columns['option1'] . "</option>";
                 echo "<option value=" . $columns['option2'] . ">" . $columns['option2'] . "</option>";
@@ -113,6 +114,7 @@ if (isset($_GET['logout'])) {
                 echo "</select>";
                 echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
                 $countOfPoints = $countOfPoints + $row["points"];
+                $multipleCount++;
                 echo "</div>";
             } elseif ($row["type"] == "connection") {
                 $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
@@ -153,10 +155,13 @@ if (isset($_GET['logout'])) {
 
             } elseif ($row["type"] == "image") {
 
-                echo "<div class='form-control'>";
+                echo "<div class='form-control' id='imgDiv'>";
                 echo "<p>" . $row["question"] . "</p>";
 
-                echo "<button type='button' class='' id='imgur' value='$i' onClick='reply(this.value)'>send</button>";
+                echo "<button type='button' class='' id='imgur' value='$i' onClick='reply(this.value)'>save</button>";
+
+                echo "<button type='button' class='' id='clear' value='$i' onClick='reply_clear(this.value)'>clear</button>";
+
                 echo "<canvas id='draw$i' width='500' height='500' style='border: 1px solid black' onClick='reply_click(this.id)'></canvas>";
 
                 echo "<input type='hidden' value='' id='link$i' name='link$i'>";

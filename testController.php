@@ -60,6 +60,7 @@ function sendTest()
     $j = 0;
     $x = 0;
     $arrayPost = array();
+    $multipleCount = 0;
 
     foreach ($_POST as $row) {
         array_push($arrayPost, $row);
@@ -72,14 +73,16 @@ function sendTest()
 
         //
         if ($d[$j]['type'] == 'multiple') {
-            $option = isset($_POST['taskOption']) ? $_POST['taskOption'] : false;
+            $option = isset($_POST['taskOption'.$multipleCount]) ? $_POST['taskOption'.$multipleCount] : false;
+
             if ($option) {
-                echo htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
-                $answer = htmlentities($_POST['taskOption'], ENT_QUOTES, "UTF-8");
+                echo htmlentities($_POST['taskOption'.$multipleCount], ENT_QUOTES, "UTF-8");
+                $answer = htmlentities($_POST['taskOption'.$multipleCount], ENT_QUOTES, "UTF-8");
             } else {
                 echo "task option is required";
                 exit;
             }
+            $multipleCount++;
         }
 
         if ($d[$j]['type'] == 'connection') {

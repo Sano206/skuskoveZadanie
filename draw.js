@@ -42,14 +42,26 @@ function reply_click(clicked_id)
         centeredScaling: true,
         isDrawingMode: true
     });
-
 }
 
 function reply(clicked_id)
 {
-    //this.preventDefault();
     id2 = "link"+clicked_id;
     send_imgur();
 }
 
-//$("#imgur").click(send_imgur);
+function reply_clear(clicked_id)
+{
+    id2 = "link"+clicked_id;
+
+    clear_imgur(clicked_id);
+}
+
+function clear_imgur(clicked_id){
+    var elem = document.getElementById(id);
+    elem.parentNode.removeChild(elem);
+
+    let className = document.getElementsByClassName('canvas-container')[0];
+
+    className.innerHTML += "<canvas class='lower-canvas ' id='draw" + clicked_id + "' width='500' height='500' style='border: 1px solid black; position: absolute; width: 500px; height: 500px; left: 0px; top: 0px; touch-action: none; user-select: none;' onClick='reply_click(this.id)'></canvas>";
+}
