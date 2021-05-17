@@ -207,6 +207,8 @@ function addQuestionController()
     } elseif ($_POST["type"] == "image") {
         addQuestion();
 
+    } elseif ($_POST["type"] == "math") {
+        addQuestion();
     }
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
