@@ -79,7 +79,7 @@ foreach ($d as $row)
 
         if($row['question'] == 'answer1')
         {
-            if($r['answer1'] == $row['answer'])
+            if(trim($r['answer1']) == trim($row['answer']))
             {
                 $points = $points + $c['points'];
                 echo "<td>" . $c['points'] . "</td>";
@@ -88,7 +88,7 @@ foreach ($d as $row)
             }
         }elseif ($row['question'] == 'answer2')
         {
-            if($r['answer2'] == $row['answer'])
+            if(trim($r['answer2']) == trim($row['answer']))
             {
                 $points = $points + $c['points'];
                 echo "<td>" . $c['points'] . "</td>";
@@ -96,7 +96,7 @@ foreach ($d as $row)
                 echo "<td>0</td>";
             }
         }else{
-            if($r['answer3'] == $row['answer'])
+            if(trim($r['answer3']) == trim($row['answer']))
             {
                 $points = $points + $c['points'];
                 echo "<td>" . $c['points'] . "</td>";
