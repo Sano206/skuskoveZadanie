@@ -20,6 +20,7 @@ $d = $a->fetch();
 echo "<h1>" . $d['name'] . "</h1>";
 
 
+
 $a = $conn->prepare ("SELECT * FROM test_complete WHERE test_id = :test_id and student_id = :student_id");
 $a->bindParam(":test_id", $_GET['test_id']);
 $a->bindParam(":student_id", $_GET['student_id']);

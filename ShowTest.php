@@ -62,6 +62,7 @@ $countOfPoints = 0;
             echo "<strong>Wrong answers: </strong> " . $tmps['option1'] . ", " . $tmps['option2'] . ", " . $tmps['option3'];
 
 
+
         } else if ($row['type'] == "connection") {
             $sql = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
             $sql->execute(array(':question_id' => $row['id']));

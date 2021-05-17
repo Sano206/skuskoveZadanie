@@ -92,6 +92,7 @@ if (isset($_GET['logout'])) {
         $multipleCount = 0;
         foreach ($rows as $row) {
 
+
             if ($row["type"] == "short") {
                 echo "<div class='form-control'>";
                 echo "<p>" . $row["question"] . "</p>";

@@ -8,6 +8,7 @@ $(document).ready(function () {
     })
 
     $('#type').change(() => {
+
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
         $('.question-style-answer').css("display", "block")

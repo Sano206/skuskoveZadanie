@@ -11,6 +11,7 @@ $email = "";
 $errors = array();
 $websiteTitle = 'Skuskove Zadanie';
 
+
 $ga = new PHPGangsta_GoogleAuthenticator();
 
 $db = mysqli_connect($dbServername, $dbUsername, $dbPassword, $database);

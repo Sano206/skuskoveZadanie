@@ -12,6 +12,7 @@ $(document).ready(function () {
         y = 2;
 })
 
+
 function init() {
     canvas = document.getElementById('can');
     ctx = canvas.getContext("2d");
