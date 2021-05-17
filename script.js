@@ -1,12 +1,9 @@
 $(document).ready(function () {
 
-
-
     $('.toggler').click((element) => {
         console.log(element)
         let id = element.delegateTarget.id
         changeTestState(id)
-
         //$('#modal-body').html("asdf")
     })
 
@@ -49,4 +46,3 @@ function changeTestState(id) {
         }
     });
 }
-

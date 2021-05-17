@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['instructorId'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
@@ -13,79 +12,134 @@ if (!isset($_SESSION['instructorId'])) {
 <head>
     <meta charset="UTF-8">
     <title>Pridanie otazky do testu</title>
+    <link rel="stylesheet" href="CSS/custom.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1 style="text-align: center">TU SI VYBER AKE OTAZKY CHCES ZADAT </h1>
+<div class="container shadow-lg" id="content">
+    <h1>Add questions</h1>
     <form method="post" action="testController.php">
-        <div class="input-group">
-
+        <div class="form-row">
             <input hidden class="form-control" type="number" name="testId" id="testId"
                    value="<?php echo $_GET["id"]; ?>">
-            <label for="type" class="form-control">Typ otazky</label>
-            <select class="form-control" name="type" id="type">
-                <option value="short">Doplňovacia odpoveď</option>
-                <option value="multiple">Viacnásobná odpoveď</option>
-                <option value="math">Matematický výraz</option>
-                <option value="connection">Spájanie</option>
-                <option value="image">Kreslenie</option>
-            </select>
+        </div>
 
-            <label for="question" class="question-style form-control">Zadaj otazku</label> <!--        short question-->
-            <input class="question-style form-control" type="text" name="question" id="question">
+        <div class="row">
 
-            <label for="answer" id="anser_id" class="question-style-answer form-control">Zadaj odpoved</label> <!--        short answer-->
-            <input class="question-style-answer form-control" type="text" name="answer" id="answer">
+            <!-- VYBER TYPU OTAZKY -->
+            <div class="form-group col-4">
+                <label for="type">Select type of question</label>
+                <select class="form-control" name="type" id="type">
+                    <!--<option value="question" disabled selected>Type</option>-->
+                    <option value="short">short answer</option>
+                    <option value="multiple">multiple aswers</option>
+                    <option value="math">math</option>
+                    <option value="connection">connect</option>
+                    <option value="image">drawing</option>
+                </select>
+            </div>
+            <div class="form-group col-6"></div>
+            <div class="form-group col-2">
+                <label for="points" ><strong>Points</strong></label>
+                <input class="form-control" min="1" type="number" name="points" id="points">
+            </div>
+        </div>
 
-            <label for="points" class="form-control">Pocet bodov</label> <!--        short answer-->
-            <input class="form-control" type="number" name="points" id="points">
+
+        <!--DOPLNOVACIA KRATKA ODPOVED-->
+            <div class="form-group">
+                <label for="question" class="question-style"><strong>Question</strong></label>
+                <input class="question-style form-control" type="text" name="question" id="question">
+
+                <label for="answer" id="anser_id" class="question-style-answer">Correct answer</label>
+                <input class="question-style-answer form-control" type="text" name="answer" id="answer">
+            </div>
 
 
-
+        <!-- 1 SPRAVNA, 3 NESPRAVNE-->
+        <div class="row">
             <div class="option-div">
-                <label for="option" class="form-control">Zadaj odpoved</label>
+                <label for="option">3 Wrong answers</label>
                 <input class="form-control" type="text" name="option1" value="" id="option1">
-
                 <input class="form-control" type="text" name="option2" value="" id="option2">
-
                 <input class="form-control" type="text" name="option3" value="" id="option3">
             </div>
-            <div class="option-div-conn">
-                <label for="conn1">Otazka 1</label>
-                <input class="form-control" type="text" name="conn1" value="" id="conn1">
-                <label for="conn1True"> Odpoved 1</label>
-                <input class="form-control" type="text" name="conn1True" value="" id="conn1True">
+        </div>
 
-                <label for="conn2">Otazka 2</label>
-                <input class="form-control" type="text" name="conn2" value="" id="conn2">
-                <label for="conn2True"> Odpoved 2</label>
-                <input class="form-control" type="text" name="conn2True" value="" id="conn2True">
-
-                <label for="conn3">Otazka 3</label>
-                <input class="form-control" type="text" name="conn3" value="" id="conn3">
-                <label for="conn3True"> Odpoved 3</label>
-                <input class="form-control" type="text" name="conn3True" value="" id="conn3True">
-
-                <label for="connFalse">Zadaj vadnu odpoved</label>
-                <input class="form-control" type="text" name="connFalse" value="" id="connFalse">
-
-                <label for="ConnFalse2">Zadaj dalsu vadnu odpoved</label>
-                <input class="form-control" type="text" name="connFalse2" value="" id="connFalse2">
+        <div class="option-div-conn">
+            <!-- prvy connection -->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="conn1">Question 1</label>
+                    <input class="form-control" type="text" name="conn1" value="" id="conn1">
+                </div>
+                <div class="form-group col-6">
+                    <label for="conn1True"> Correct answer/connection </label>
+                    <input class="form-control" type="text" name="conn1True" value="" id="conn1True">
+                </div>
             </div>
 
-            <button type="submit" name="action" value="addQuestion">Add Question</button>
+            <!-- druhy connection -->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="conn2">Question 2</label>
+                    <input class="form-control" type="text" name="conn2" value="" id="conn2">
+                </div>
+                <div class="form-group col-6">
+                    <label for="conn2True"> Correct answer/connection</label>
+                    <input class="form-control" type="text" name="conn2True" value="" id="conn2True">
+                </div>
+            </div>
+
+            <!-- treti connection -->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="conn3">Question 3</label>
+                    <input class="form-control" type="text" name="conn3" value="" id="conn3">
+                </div>
+                <div class="form-group col-6">
+                    <label for="conn3True"> Correct answer/connection</label>
+                    <input class="form-control" type="text" name="conn3True" value="" id="conn3True">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-6">
+
+                </div>
+                <div class="form-group col-6">
+                    <label for="connFalse">1. Extra (wrong) answer</label>
+                    <input class="form-control" type="text" name="connFalse" value="" id="connFalse">
+
+                    <label for="ConnFalse2">2. Extra (wrong) answer</label>
+                    <input class="form-control" type="text" name="connFalse2" value="" id="connFalse2">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
+            <div class="input-group">
+                <button style="margin-right: 10px" class="btn btn-success " type="submit" name="action" value="addQuestion">Add Question</button>
+                <a style="margin-right: 10px" href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-primary ' > Nahliadni na test </button></a>
+                <a style="margin-right: 10px" href="index.php"<button class='btn btn-primary ' > DOMOV </button></a>
+            </div>
         </div>
 
 
     </form>
-    <a href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-primary btn-lg' > Nahliadni na test </button>"</a>
-    <a href="index.php"<button class='btn btn-primary btn-lg' > DOMOV </button>"</a>
+
 </div>
 
-<script src="script.js"></script>
+
 </body>
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </html>

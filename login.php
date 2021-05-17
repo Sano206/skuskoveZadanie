@@ -5,6 +5,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
@@ -13,21 +14,20 @@
 </head>
 <body>
 
-<div style="position: absolute; right: 15px; top: 15px">
-    <a class="btn btn-info" href="Credits/info.html"><i class="fab fa-accessible-icon"></i>Made by</a>
-    <a class="btn btn-info" href="Credits/tasks.html"><i class="fas fa-check"></i>Tasks</a>
+<div id="navbutton">
+    <a class="btn btn-outline-success btn-lg" href="Credits/info.html"><i class="fab fa-accessible-icon"></i>Made by</a>
+    <a class="btn btn-outline-success btn-lg" href="Credits/tasks.html"><i class="fas fa-check"></i>Tasks</a>
 </div>
 
-<div  class="w-25 container" id="content">
+<div  class="w-25 container shadow-lg" id="content">
 
 
     <div class="row">
         <div class="col-8">
-            <h3 class="">Exam system login</h3>
+            <h3 >Exam system login</h3>
         </div>
         <div class="col-4">
-            <img class="" style="float: right; width: 50px; height: 50px" src="CSS/test-photo.png"/>
-
+            <img class="" style="float: right; width: 50px; height: 50px" src="CSS/exam_icon.png"/>
         </div>
     </div>
 
@@ -52,14 +52,8 @@
             <!-- LOGIN STUDENT -->
             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                 <div class="card-body">
-
+                    <h5>Student login</h5>
                     <form method="post" action="login.php">
-                        <div class="form-group row">
-                            <label  for="name" class="col-sm-3 col-form-label">ID</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="name">
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label  for="name" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
@@ -80,7 +74,7 @@
                         </div>
                         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-secondary" name="login" value="student"><i class="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="submit" class="btn btn-success" name="login" value="student"><i class="fas fa-sign-in-alt"></i> Login</button>
                             </div>
                         </div>
                     </form>
@@ -91,14 +85,8 @@
             <!-- LOGIN TEACHER -->
             <div id="collapseTwo" class="collapse" data-parent="#accordion">
                 <div class="card-body">
+                    <h5>Teacher login</h5>
                     <form method="post" action="login.php">
-                        <?php include('errors.php');
-                        session_start();
-                        if(isset($_SESSION["msg"])){
-                            //echo $_SESSION["msg"];
-                            unset($_SESSION["msg"]);
-                        }
-                        ?>
                         <div class="form-group row">
                             <label for="name" class="col-sm-3 col-form-label">Username</label>
                             <div class="col-sm-9">
@@ -119,7 +107,7 @@
                         </div>
                         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-secondary" name="login" value="instructor"><i class="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="submit" class="btn btn-success" name="login" value="instructor"><i class="fas fa-sign-in-alt"></i> Login</button>
                             </div>
                         </div>
                         <p style="font-size: 11px; padding-left: 25px;">
@@ -128,8 +116,15 @@
                     </form>
 
                 </div>
-            </div>
 
+            </div>
+            <?php include('errors.php');
+            session_start();
+            if(isset($_SESSION["msg"])){
+                //echo $_SESSION["msg"];
+                unset($_SESSION["msg"]);
+            }
+            ?>
         </div>
     </div>
 

@@ -32,11 +32,13 @@ function createTest()
     $stmt->bindParam(":instructor_id", $_SESSION["instructorId"]);
     try {
         $stmt->execute();
+        $latest_id = $conn->lastInsertId();
+        echo $latest_id;
     } catch (Exception $e) {
         var_dump($e);
     }
 
-    header("location: index.php");
+    header("location: questiontotest.php?id=".$latest_id);
 
 }
 
@@ -67,6 +69,8 @@ function sendTest()
         $q = $d[$j]['question'];
         $answer = $arrayPost[$i];
 
+
+        //
         if ($d[$j]['type'] == 'multiple') {
             $option = isset($_POST['taskOption']) ? $_POST['taskOption'] : false;
             if ($option) {

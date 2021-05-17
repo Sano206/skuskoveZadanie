@@ -83,7 +83,7 @@ if (isset($_GET['logout'])) {
     <h1 style="text-align: center">TESTERINO</h1>
     <h2 style="text-align: center" id="demo"></h2>
 
-    <?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " vitaj na teste prajeme ti vela stasti:) </h3>" ?>
+    <?php echo "<h3 style='text-align: center'>" . $_SESSION["username"] . " Welcome to your test! </h3>" ?>
 
     <form class="container" action="testController.php" method="post">
         <?php
@@ -170,8 +170,8 @@ if (isset($_GET['logout'])) {
         ?>
 
         <div class="form-control">
-            <p>Maximalny pocet bodov je <?php echo $countOfPoints ?></p>
-            <button type="submit" class="btn-primary" name="action" value="sendTest" id="sender">Odosli</button>
+            <p>Max. points <?php echo $countOfPoints ?></p>
+            <button type="submit" class="btn-primary" name="action" value="sendTest" id="sender">Send</button>
         </div>
 
     </form>
