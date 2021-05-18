@@ -11,9 +11,16 @@ $statement = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id");
 $statement->execute(array(':test_id' => $_GET['id']));
 $rows = $statement->fetchAll();
 $question_number = 1;
-
 $countOfPoints = 0;
 
+$statement2 = $conn->prepare("SELECT * FROM tests WHERE id =:test_id");
+$statement2->execute(array(':test_id' => $_GET['id']));
+$testname = $statement2->fetch();
+$testname2 = $statement2->fetchAll();
+$question_number = 1;
+$countOfPoints = 0;
+
+//var_dump($testname);
 
 ?>
 <!DOCTYPE html>
@@ -33,8 +40,8 @@ $countOfPoints = 0;
     <a class="btn btn-outline-success btn-lg" href="index.php"><i class="fas fa-arrow-left"></i>Back</a>
 </div>
 
-<div class="container" id="content">
-<h1 style="text-align: center">DENIS JE KOMPOT CO SIEL DO KRCMY MIESTO POMOCI KAMOSOM</h1>
+<div class="container w-50 shadow-lg" id="content">
+<h1 style="text-align: center">Details of test: <?php echo $testname['name'] ?></h1>
 
 <p style="margin-left: 50px" class="blockquote justify-content-center">
     <?php
@@ -70,7 +77,7 @@ $countOfPoints = 0;
             $sql2 = $conn->prepare("SELECT * FROM answers WHERE option_id = :option_id");
             $sql2->execute(array(':option_id' => $tmps['id']));
             $tmps2 = $sql2->fetch();
-            echo "<strong>Question: </strong> " . $row['question']. " - Combination question";
+            echo "<strong>Question: </strong> Combination question";
             echo "<br>";
             echo "<strong>Correct ombination: </strong> " . $tmps['option1'] . " -> " . $tmps2['answer1'];
             echo "<br>";
@@ -110,7 +117,7 @@ $countOfPoints = 0;
     <div style="padding-left: 25px; padding-top: 25px">
     <?php
     echo '<a style="margin-right: 10px" href="questiontotest.php?id='. $_GET['id'] . '" >' . "<button class='btn btn-success btn-md' ><i  class='far fa-plus-square'></i>Add question </button>"."</a>";
-    echo '<a href="index.php" >' . "<button class='btn btn-secondary btn-md'> Save & back</button>"."</a>" ;
+    echo '<a href="index.php" >' . "<button class='btn btn-secondary btn-md'><i style='width: 15px' class='fas fa-list-ul'></i> Back to tests</button>"."</a>" ;
     ?>
     </div>
 </p>

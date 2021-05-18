@@ -170,11 +170,8 @@ function addQuestionController()
         $stmt->bindParam(":option1", $_POST["option1"]);
         $stmt->bindParam(":option2", $_POST["option2"]);
         $stmt->bindParam(":option3", $_POST["option3"]);
-        try {
-            return $stmt->execute();
-        } catch (Exception $e) {
-            return $e;
-        }
+        $stmt->execute();
+
     } elseif ($_POST["type"] == "connection") {
         $questionId = addQuestionConn();
         $sql = "INSERT INTO options(question_id,option1,option2, option3) VALUES (:question_id,:option1,:option2, :option3)";
@@ -217,30 +214,6 @@ function addQuestionController()
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-
-//
-//    $stmt = $conn->prepare("SELECT active from tests where id = :id");
-//
-//    $stmt->bindParam(":id", $id);
-//    try {
-//        $stmt->execute();
-//    } catch (Exception $e) {
-//        var_dump($e);
-//    }
-//
-//    $state = $stmt->fetchAll();
-//    $state = ($state[0]["active"] == 0) ? 1 : 0;
-//
-//    $stmt = $conn->prepare("UPDATE tests SET active = :active where id = :id");
-//
-//    $stmt->bindParam(":id", $id);
-//    $stmt->bindParam(":active", $state);
-//    try {
-//        $stmt->execute();
-//    } catch (Exception $e) {
-//        var_dump($e);
-//    }
-//    return json_encode($state);
 }
 
 
