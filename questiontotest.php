@@ -143,7 +143,10 @@ if (!isset($_SESSION['instructorId'])) {
 
 
     </form>
-    <button style='margin-top: 30px;' onclick="myFunction()" class="lalaland">Latex hint</button>
+    <div class="input-group lalaland">
+        <button style='margin-top: 30px; display: none' onclick="myFunction()" class="lalaland btn btn-secondary">Latex hint</button>
+    </div>
+
     <p id="shower" class="lalaland"></p>
     <script>
         function myFunction() {
