@@ -39,9 +39,6 @@ for($i=0; $i<count($students_id); $i++)
 
 }
 
-
-
-
 ?>
 
 </body>
