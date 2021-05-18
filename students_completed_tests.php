@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mathquill-0.10.1/mathquill.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="mathquill-0.10.1/mathquill.js"></script>
     <title>Completed tests</title>
 </head>
 <body>
@@ -67,6 +68,7 @@
                 $i = 0;
                 $points = 0;
                 $tmp = 0;
+                $gosky = 0;
 
                 foreach ($d as $row) {
                     $tmp = 0;
@@ -88,7 +90,12 @@
                     //ODPOVED PRE OBRAZOK A OSTATNE
                     if ($row['type'] == 'image') {
                         echo "<td><img style='width: 150px' src='" . $row['answer'] . "'></td>";
-                    } else {
+                    }elseif ($row['type'] == 'math'){
+                        echo "<input id='latex$gosky' type='text' style='display:none;' value='" . $row['answer'] . "'></input>";
+                        echo "<td id='frajer$gosky'></td>";
+                        $gosky++;
+                    }
+                    else {
                         echo "<td>" . $row['answer'] . "</td>";
                     }
                     //TYP OTAZKY
@@ -127,7 +134,8 @@
                                 $tmp = 0;
                             }
                             //SPAJANIE BODOVANIE
-                        } else {
+                        }
+                        else {
                             $e->bindParam(":question_id", $row['question_id']);
                             $e->execute();
                             $r = $e->fetch();
@@ -265,5 +273,6 @@
         </div>
     </div>
 </div>
+<script src="completed_matika.js"></script>
 </body>
 </html>

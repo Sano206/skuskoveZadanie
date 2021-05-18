@@ -89,6 +89,7 @@ if (isset($_GET['logout'])) {
         <?php
         $x = "q";
         $i = 0;
+        $a = 0;
         $multipleCount = 0;
         foreach ($rows as $row) {
 
@@ -153,17 +154,18 @@ if (isset($_GET['logout'])) {
 
             } elseif ($row["type"] == "math") {
                 echo "<div class='form-control'>";
-                echo "<p>Otazka: <span id='daco' style='pointer-events: none;' >". $row["question"] ."</span></p>";
+                echo "<p>Otazka: <span id='daco$a' style='pointer-events: none;' class='otazka' >". $row["question"] ."</span></p>";
                 echo "<br>";
 
-                echo "<p>Type math here: <span id='math-field'></span></p>";
-                echo  "<span style='display: none;' id='latex' name='latex'></span>";
+                echo "<p>Type math here: <span id='math-field$a' class='mathPole'></span></p>";
+                echo  "<span style='display: none;' id='latex$a' name='latex' class='latex'></span>";
                 //$var = "<span id='latex' name='latex'></span>";
                 echo "<input type='text' name='$x$i' id='$x$i' class='somarina' style='display: none;' value='' >";
                 echo "<p style='float: right'>" . $row["points"] . "b" . "</p>";
                 $countOfPoints = $countOfPoints + $row["points"];
                 echo "<br>";
                 echo "</div>";
+                $a++;
             } elseif ($row["type"] == "image") {
 
                 echo "<div class='form-control' id='imgDiv'>";

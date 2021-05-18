@@ -51,8 +51,9 @@ if (!isset($_SESSION['instructorId'])) {
             <div class="form-group">
                 <label for="question" class="question-style"><strong>Question</strong></label>
                 <input class="question-style form-control" type="text" name="question" id="question">
+                <p id="lalaland" class="lalaland"><strong>Write question in latex.</strong></p>
 
-                <label for="answer" id="anser_id" class="question-style-answer">Correct answer</label>
+                <label for="answer" id="answer_id" class="question-style-answer">Correct answer</label>
                 <input class="question-style-answer form-control" type="text" name="answer" id="answer">
             </div>
 

@@ -50,6 +50,10 @@ label{
     display: none;
 }
 
+.lalaland {
+    display: none;
+}
+
 #content{
     background: -moz-linear-gradient(top, #C5E7E7A3 0%, #f2f6f5 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #C5E7E7A3), color-stop(100%, #f2f6f5));

@@ -12,9 +12,11 @@ $(document).ready(function () {
         $('.option-div-conn').css("display", "none")
         $('.question-style-answer').css("display", "block")
         $('.question-style').css("display", "block")
+        $('.lalaland').css("display","none")
 
         if($('#type  option:selected').val() === "multiple"){
             $('.option-div').css("display", "block")
+
         }else if($('#type  option:selected').val() === "connection"){
             $('.option-div-conn').css("display", "block")
             $('.question-style-answer').css("display", "none")
@@ -24,13 +26,15 @@ $(document).ready(function () {
         else if($('#type  option:selected').val() === "image"){
             $('.question-style-answer').css("display", "none")
 
+
         }else if($('#type  option:selected').val() === "math"){
             $('.question-style-answer').css("display", "none")
+            $('.lalaland').css("display","block")
 
         }else{
             $('.option-div').css("display", "none")
             $('.question-style-answer').css("display", "block")
-
+            $('.lalaland').css("display","none")
         }
     })
 
