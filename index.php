@@ -30,7 +30,9 @@ if (isset($_SESSION['userId'])) {
 
 </head>
 <body>
-
+<div id="navbutton">
+    <a href="index.php?logout='1'" type="button" class="btn btn-danger btn-lg"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
 
 <div class="container w-50 shadow-lg" style="min-width: 580px;" id="content" >
     <!-- logged in user information -->
@@ -43,7 +45,7 @@ if (isset($_SESSION['userId'])) {
 
         <div>
             <h3 >List of existing tests:</h3>
-            <div class="table-responsive" style="margin-right: 50px; margin-left: 50px;">
+            <div class="table-responsive" style="margin-right: 10px; margin-left: 10px;">
                 <table class="table table-hover" >
                     <thead>
                     <tr>
@@ -51,7 +53,6 @@ if (isset($_SESSION['userId'])) {
                         <th>Code</th>
                         <th>Active</th>
                         <th>Details</th>
-                        <!--<th>Edit</th>-->
                         <th>Done</th>
                         <th>Delete</th>
                         <th>PDF</th>
@@ -72,15 +73,14 @@ if (isset($_SESSION['userId'])) {
                         echo '<td>' .  $test["name"] . '</td>';
                         echo '<td>' . $test["code"] . '</td>';
                         echo '<td><button style="border-radius: 75px" type="submit" class="toggler btn btn-small btn-secondary" id="' . $test["id"] . '">' . ($test["active"] ? "Yes" : "No") . '</button></td>';
-                        echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-file-alt'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="ShowTest.php?id='. $test["id"]. '" >' .  "<button style='margin-left: 10px' class='btn btn-secondary'><i style='width: 15px' class='fas fa-file-alt'></i></button>"."</a>".'</td>';
                         //echo '<td>' . '<a href="questiontotest.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-edit'></i></button>"."</a>".'</td>';
                         echo '<td>' . '<a href="students.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-flag-checkered'></i></button>"."</a>".'</td>';
-                        echo '<td>' . '<a href="deleteTest.php?id='. $test["id"]. '" >'. "<button class='btn btn-outline-danger btn-md' ><i style='width: 15px'; class='far fa-trash-alt'></i></button>"."</a>".'</td>';
-                        echo '<td>' . '<a href="pdfExport.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='far fa-file-pdf'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="deleteTest.php?id='. $test["id"]. '" >'. "<button class='btn btn-outline-danger btn-md' ><i style='width: 15px' class='far fa-trash-alt'></i></button>"."</a>".'</td>';
+                        echo '<td>' . '<a href="pdfExport.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary btn-md' ><i style='width: 15px' class='far fa-file-pdf'></i></button>"."</a>".'</td>';
 
                         echo '</tr>';
                     }
-
                     ?>
                 </table>
             </div>
@@ -89,7 +89,7 @@ if (isset($_SESSION['userId'])) {
     </div>
 <div style="padding-left: 25px; padding-top: 25px">
     <a id="addtest" type="button" class="btn btn-secondary btn-md" href="createTest.php"><i class="far fa-plus-square"></i> Add new test</a>
-    <a href="index.php?logout='1'" type="button" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
 </div>
 </div>
 

@@ -49,6 +49,9 @@ label{
 .option-div-conn{
     display: none;
 }
+.pointsconn{
+    display: none;
+}
 
 #content{
     background: -moz-linear-gradient(top, #C5E7E7A3 0%, #f2f6f5 100%);

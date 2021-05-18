@@ -22,7 +22,7 @@ if (!isset($_SESSION['instructorId'])) {
 </head>
 <body>
 <div id="navbutton">
-    <a class="btn btn-outline-success btn-lg" href="../index.php"><i class="fas fa-arrow-left"></i>Back</a>
+    <a class="btn btn-outline-success btn-lg" href="index.php"><i class="fas fa-arrow-left"></i>Back to tests</a>
 </div>
 
 <div class="container w-50 shadow-lg" id="content">
@@ -36,7 +36,7 @@ if (!isset($_SESSION['instructorId'])) {
         <div class="row">
 
             <!-- VYBER TYPU OTAZKY -->
-            <div class="form-group col-4">
+            <div class="form-group col-5">
                 <label for="type">Select type of question</label>
                 <select class="form-control" name="type" id="type">
                     <!--<option value="question" disabled selected>Type</option>-->
@@ -47,10 +47,11 @@ if (!isset($_SESSION['instructorId'])) {
                     <option value="image">drawing</option>
                 </select>
             </div>
-            <div class="form-group col-6"></div>
-            <div class="form-group col-2">
-                <label for="points" ><strong>Points</strong></label>
-                <input class="form-control" min="1" type="number" name="points" id="points">
+            <div class="form-group col-4"></div>
+            <div class="form-group col-3">
+                <p for="points" class="pointsconn"><strong>Points (for every correct answer)</strong></p>
+                <p for="points" class="points"><strong>Points</strong></p>
+                <input style="margin-top: -20px" class="form-control" min="1" type="number" name="points" id="points">
             </div>
         </div>
 
@@ -134,9 +135,8 @@ if (!isset($_SESSION['instructorId'])) {
 
         <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
             <div class="input-group">
-                <button style="margin-right: 10px" class="btn btn-success " type="submit" name="action" value="addQuestion">Add Question</button>
-                <a style="margin-right: 10px" href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-primary ' > Nahliadni na test </button></a>
-                <a style="margin-right: 10px" href="index.php"<button class='btn btn-primary ' > DOMOV </button></a>
+                <button style="margin-right: 10px" class="btn btn-success " type="submit" name="action" value="addQuestion"><i class="far fa-plus-square"></i> Add Question</button>
+                <a style="margin-right: 10px" href="ShowTest.php?id=<?php echo $_GET["id"]?>"<button class='btn btn-secondary '><i class="fas fa-file-alt"></i> Test details </button></a>
             </div>
         </div>
 

@@ -5,9 +5,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <title>Students</title>
 </head>
 <body>
+<div id="navbutton">
+    <a class="btn btn-outline-success btn-lg" href="javascript:history.back()"><i class="fas fa-arrow-left"></i>Back</a>
+</div>
+<div class="container w-50 shadow-lg" id="content">
+<h1>Students who finished test</h1>
 
 <?php
 require 'config.php';
@@ -40,6 +49,6 @@ for($i=0; $i<count($students_id); $i++)
 }
 
 ?>
-
+</div>
 </body>
 </html>
