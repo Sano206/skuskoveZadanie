@@ -24,7 +24,8 @@
     $_SESSION['test_id'] =$_GET['test_id'] ;
     $_SESSION['student_id'] =$_GET['student_id'] ;
     require 'config.php';
-
+    $zero = 0;
+    $allright = 0 ;
     $a = $conn->prepare("SELECT * FROM tests WHERE id = :test_id");
     $a->bindParam(":test_id", $_GET['test_id']);
     $a->execute();
@@ -42,6 +43,9 @@
     $b = $conn->prepare("SELECT * FROM questions WHERE test_id = :test_id and id = :question_id");
 
     $e = $conn->prepare("SELECT * FROM answers WHERE question_id = :question_id");
+    $poi = $conn->prepare("SELECT * FROM test_complete WHERE test_id = :test_id and student_id = :student_id and question_id = :question_id");
+    $poi->bindParam(":test_id", $_GET['test_id']);
+    $poi->bindParam(":student_id", $_GET['student_id']);
 
 
     ?>
@@ -70,6 +74,10 @@
                     $b->bindParam(":question_id", $row['question_id']);
                     $b->execute();
                     $c = $b->fetch();
+                    $poi->bindParam(":question_id", $row['question_id']);
+                    $poi->execute();
+                    $lasan  = $poi->fetch();
+
 
                     echo "<tr>";
 
@@ -86,63 +94,122 @@
                     //TYP OTAZKY
                     echo "<td>" . $row['type'] . "</td>";
                     //MAX POINTS
-                    echo "<td>" . $c['points'] . "</td>";   //max pocet bodov otazky
+                    echo "<td>" . $c['points'] . "</td>";
+                    $upd = $conn->prepare("UPDATE test_complete SET point = :point WHERE test_id = :test_id and student_id = :student_id and question_id= :question_id");
 
+                    $upd->bindParam(":test_id", $_SESSION['test_id']);
+                    $upd->bindParam(":student_id", $_SESSION['student_id'] );
+                    $upd->bindParam(":question_id", $row['question_id']);
                     //BODOVANIE
-                    if ($row['type'] != 'connection') {
-                        //SHORT ODPOVEDE BODOVANIE AK SPRAVNE
-                        if ($c['answer'] == $row['answer']) {
-                            $tmp = $tmp + $c['points'];
-                            //bodovanie pre short
-                            echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control'  type='number' name='points' value='" . $c['points'] . "'></td>";
-                        //AK NESPRAVNE
-                        } else {
-                            echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
-                            $tmp = 0;
-                        }
-                        //SPAJANIE BODOVANIE
-                    } else {
-                        $e->bindParam(":question_id", $row['question_id']);
-                        $e->execute();
-                        $r = $e->fetch();
+                    if($lasan['point'] == null) {
 
-                        //CONNECTION 1. ODPOVED AK SPRAVNE
-                        if ($row['question'] == 'answer1') {
-                            if (trim($r['answer1']) == trim($row['answer'])) { //AK JE TO SPRAVNA ODPOVED
-                                $points = $points + $c['points'];
 
-                                //bodovanie
-                                echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
-                            //AK NESPRAVNE
+                        if ($row['type'] != 'connection') {
+                            //SHORT ODPOVEDE BODOVANIE
+                            if ($c['answer'] == $row['answer']) {
+                                $upd->bindParam(":point", $c['points']);
+                                try {
+                                    $upd->execute();
+                                } catch (Exception $e) {
+                                    var_dump($e);
+                                }
+                                $tmp = $tmp + $c['points'];
+                                //bodovanie pre short
+                                echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control'  type='number' name='points' value='" . $c['points'] . "'></td>";
                             } else {
-                                echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
-
-                            }
-
-                            //CONNECTION 2. ODPOVED
-                        } elseif ($row['question'] == 'answer2') {
-                            if (trim($r['answer2']) == trim($row['answer'])) {
-                                $points = $points + $c['points'];
-                                //bodovanie
-                                echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
-
-                            } else {
+                                $upd->bindParam(":point",$zero );
+                                try {
+                                    $upd->execute();
+                                } catch (Exception $e) {
+                                    var_dump($e);
+                                }
                                 echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
-
+                                $tmp = 0;
                             }
-
-                            //CONNECTION 3. ODPOVED
+                            //SPAJANIE BODOVANIE
                         } else {
-                            if (trim($r['answer3']) == trim($row['answer'])) {
-                                $points = $points + $c['points'];
-                                //bodovanie
-                                echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
+                            $e->bindParam(":question_id", $row['question_id']);
+                            $e->execute();
+                            $r = $e->fetch();
 
+                            //CONNECTION 1. ODPOVED
+                            if ($row['question'] == 'answer1') {
+                                if (trim($r['answer1']) == trim($row['answer'])) {
+                                    $allright += 1 ;
+                                    $upd->bindParam(":point", $c['points']);
+                                    try {
+                                        $upd->execute();
+                                    } catch (Exception $e) {
+                                        var_dump($e);
+                                    }
+
+                                    $tmp = $tmp + $c['points'];
+                                    //bodovanie
+                                    echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
+                                } else {
+                                    $upd->bindParam(":point",$zero );
+                                    try {
+                                        $upd->execute();
+                                    } catch (Exception $e) {
+                                        var_dump($e);
+                                    }
+                                    echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
+                                    $tmp = 0;
+                                }
+
+                                //CONNECTION 2. ODPOVED
+                            } elseif ($row['question'] == 'answer2') {
+                                if (trim($r['answer2']) == trim($row['answer'])) {
+                                    $allright += 1 ;
+                                    $upd->bindParam(":point", $c['points']);
+                                    try {
+                                        $upd->execute();
+                                    } catch (Exception $e) {
+                                        var_dump($e);
+                                    }
+
+                                    //bodovanie
+                                    echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
+                                    $tmp = $tmp + $c['points'];
+                                } else {
+                                    $upd->bindParam(":point",$zero );
+                                    try {
+                                        $upd->execute();
+                                    } catch (Exception $e) {
+                                        var_dump($e);
+                                    }
+                                    echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
+                                    $tmp = 0;
+                                }
+
+                                //CONNECTION 3. ODPOVED
                             } else {
-                                echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
+                                if (trim($r['answer3']) == trim($row['answer'])) {
+                                    $allright += 1 ;
 
+                                    //bodovanie
+                                    echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
+                                    $tmp = $tmp + $c['points'];
+                                } else {
+                                    echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='0'></td>";
+                                    $tmp = 0;
+                                }
+                            }
+                            if($allright == 3){
+                                $points = $points + $c['points'];
+                                $allright = 0;
                             }
                         }
+                    }
+                    else{
+                        $upd->bindParam(":point", $lasan['point']);
+                        try {
+                            $upd->execute();
+                        } catch (Exception $e) {
+                            var_dump($e);
+                        }
+                        echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $lasan['point'] . "'></td>";
+                        $points = $points + $lasan['point'];
                     }
 
 
@@ -156,8 +223,6 @@
 
 
                 echo " Student <strong>" . $studentName['name'] . " " . $studentName['surname'] . "</strong> got: " . $points . "points.";
-
-
 
 
                 ?>
@@ -184,8 +249,19 @@
 
                 </tbody>
             </table>
+            <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onClick="refreshPage()">Refresh</button>
+                </div>
+            </div>
 
-            <button>value</button>
+
+
+            <script>
+                function refreshPage(){
+                    window.location.reload();
+                }
+            </script>
         </div>
     </div>
 </div>
