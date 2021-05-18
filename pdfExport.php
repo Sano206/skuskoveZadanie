@@ -104,7 +104,7 @@ foreach ($students_id as $row)
            <br><br>
            ";
             $j++;
-            $j++;
+
             if($j >= count($student_answer))
             {
                 $student_answer[$j]['answer'] = "";
@@ -119,7 +119,7 @@ foreach ($students_id as $row)
            <br><br>
            ";
             $j++;
-            $j++;
+
             if($j >= count($student_answer))
             {
                 $student_answer[$j]['answer'] = "";
