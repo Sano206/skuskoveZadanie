@@ -8,6 +8,7 @@
  * one at http://mozilla.org/MPL/2.0/.
  */
 @font-face {
+
   font-family: Symbola;
   src: url(font/Symbola-basic.eot);
   src: local("Symbola Regular"), local("Symbola"), url(font/Symbola-basic.woff2) format("woff2"), url(font/Symbola-basic.woff) format("woff"), url(font/Symbola-basic.ttf) format("truetype");

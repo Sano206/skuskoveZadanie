@@ -11,7 +11,6 @@ $(document).ready(function () {
     var x = "black",
         y = 2;
 })
-
 function init() {
     canvas = document.getElementById('can');
     ctx = canvas.getContext("2d");

@@ -10,6 +10,7 @@
 
 (function() {
 
+
 var jQuery = window.jQuery,
   undefined,
   mqCmdId = 'mathquill-command-id',

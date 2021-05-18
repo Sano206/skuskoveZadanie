@@ -259,7 +259,7 @@
             </table>
             <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                 <div class="input-group">
-                    <button type="button" class="btn btn-secondary" onClick="refreshPage()">Refresh</button>
+                    <button type="button" class="btn btn-secondary" onClick="refreshPage()">Update points</button>
                 </div>
             </div>
 

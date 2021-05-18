@@ -93,6 +93,7 @@ if (isset($_GET['logout'])) {
         $multipleCount = 0;
         foreach ($rows as $row) {
 
+
             if ($row["type"] == "short") {
                 echo "<div class='form-control'>";
                 echo "<p>" . $row["question"] . "</p>";
@@ -121,9 +122,12 @@ if (isset($_GET['logout'])) {
                 $statement = $conn->prepare("SELECT * FROM options WHERE question_id = :question_id");
                 $statement->execute(array(':question_id' => $row["id"]));
                 $options = $statement->fetch();
+                var_dump($options);
+                echo "<br><br><br>";
                 $statement = $conn->prepare("SELECT * FROM answers WHERE question_id = :question_id");
                 $statement->execute(array(':question_id' => $row["id"]));
                 $answers = $statement->fetch();
+                var_dump($answers);
                 $falseAnswerCheck = 1;
                 echo '<div class="jtk-demo-main" data-demo-id="draggableConnectors">';
                 echo ' <div class="jtk-demo-canvas canvas-wide drag-drop-demo jtk-surface jtk-surface-nopan" id="canvas">';
