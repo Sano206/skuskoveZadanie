@@ -143,6 +143,13 @@ if (!isset($_SESSION['instructorId'])) {
 
 
     </form>
+    <button style='margin-top: 30px;' onclick="myFunction()" class="lalaland">Latex hint</button>
+    <p id="shower" class="lalaland"></p>
+    <script>
+        function myFunction() {
+            document.getElementById("shower").innerHTML = "<img src='latex.jpg' width='900px'>";
+        }
+    </script>
 
 </div>
 
