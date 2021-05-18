@@ -104,6 +104,11 @@ foreach ($students_id as $row)
            <br><br>
            ";
             $j++;
+            $j++;
+            if($j >= count($student_answer))
+            {
+                $student_answer[$j]['answer'] = "";
+            }
             $html .= "
                <tr>
                    <td>Q2</td>
@@ -114,6 +119,11 @@ foreach ($students_id as $row)
            <br><br>
            ";
             $j++;
+            $j++;
+            if($j >= count($student_answer))
+            {
+                $student_answer[$j]['answer'] = "";
+            }
             $html .= "
                <tr>
                    <td>Q3</td>
