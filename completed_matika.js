@@ -12,7 +12,6 @@ function hlava() {
     var mathField = MQ.MathField(htmlElement, config);
 
     mathField.latex(latex.value); // Renders the given LaTeX in the MathQuill field
-    console.log(latex.id);
     a++;
     hlava();
 
