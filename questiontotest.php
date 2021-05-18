@@ -16,10 +16,16 @@ if (!isset($_SESSION['instructorId'])) {
     <link rel="stylesheet" href="mathquill-0.10.1/mathquill.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="mathquill-0.10.1/mathquill.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container shadow-lg" id="content">
+<div id="navbutton">
+    <a class="btn btn-outline-success btn-lg" href="../index.php"><i class="fas fa-arrow-left"></i>Back</a>
+</div>
+
+<div class="container w-50 shadow-lg" id="content">
     <h1>Add questions</h1>
     <form method="post" action="testController.php">
         <div class="form-row">
