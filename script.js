@@ -8,11 +8,13 @@ $(document).ready(function () {
     })
 
     $('#type').change(() => {
-
         $('.option-div').css("display", "none")
         $('.option-div-conn').css("display", "none")
         $('.question-style-answer').css("display", "block")
         $('.question-style').css("display", "block")
+        $('.lalaland').css("display","none")
+        $('.pointsconn').css("display","none")
+        $('.points').css("display","block")
 
         if($('#type  option:selected').val() === "multiple"){
             $('.option-div').css("display", "block")
@@ -20,6 +22,8 @@ $(document).ready(function () {
             $('.option-div-conn').css("display", "block")
             $('.question-style-answer').css("display", "none")
             $('.question-style').css("display", "none")
+            $('.pointsconn').css("display","block")
+            $('.points').css("display","none")
 
         }
         else if($('#type  option:selected').val() === "image"){
@@ -27,11 +31,12 @@ $(document).ready(function () {
 
         }else if($('#type  option:selected').val() === "math"){
             $('.question-style-answer').css("display", "none")
+            $('.lalaland').css("display","block")
 
         }else{
             $('.option-div').css("display", "none")
             $('.question-style-answer').css("display", "block")
-
+            $('.lalaland').css("display","none")
         }
     })
 

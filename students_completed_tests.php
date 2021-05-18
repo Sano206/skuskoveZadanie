@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mathquill-0.10.1/mathquill.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="mathquill-0.10.1/mathquill.js"></script>
     <title>Completed tests</title>
 </head>
 <body>
@@ -21,11 +22,11 @@
 <div class="container shadow-lg" id="content" style="width: 80%; opacity: 1 !important;">
     <?php
     session_start();
-    $_SESSION['test_id'] = $_GET['test_id'];
-    $_SESSION['student_id'] = $_GET['student_id'];
+    $_SESSION['test_id'] =$_GET['test_id'] ;
+    $_SESSION['student_id'] =$_GET['student_id'] ;
     require 'config.php';
     $zero = 0;
-    $allright = 0;
+    $allright = 0 ;
     $a = $conn->prepare("SELECT * FROM tests WHERE id = :test_id");
     $a->bindParam(":test_id", $_GET['test_id']);
     $a->execute();
@@ -67,6 +68,7 @@
                 $i = 0;
                 $points = 0;
                 $tmp = 0;
+                $gosky = 0;
 
                 foreach ($d as $row) {
                     $tmp = 0;
@@ -76,7 +78,7 @@
                     $c = $b->fetch();
                     $poi->bindParam(":question_id", $row['question_id']);
                     $poi->execute();
-                    $lasan = $poi->fetch();
+                    $lasan  = $poi->fetch();
 
 
                     echo "<tr>";
@@ -88,7 +90,12 @@
                     //ODPOVED PRE OBRAZOK A OSTATNE
                     if ($row['type'] == 'image') {
                         echo "<td><img style='width: 150px' src='" . $row['answer'] . "'></td>";
-                    } else {
+                    }elseif ($row['type'] == 'math'){
+                        echo "<input id='latex$gosky' type='text' style='display:none;' value='" . $row['answer'] . "'></input>";
+                        echo "<td id='frajer$gosky'></td>";
+                        $gosky++;
+                    }
+                    else {
                         echo "<td>" . $row['answer'] . "</td>";
                     }
                     //TYP OTAZKY
@@ -98,10 +105,10 @@
                     $upd = $conn->prepare("UPDATE test_complete SET point = :point WHERE test_id = :test_id and student_id = :student_id and question_id= :question_id");
 
                     $upd->bindParam(":test_id", $_SESSION['test_id']);
-                    $upd->bindParam(":student_id", $_SESSION['student_id']);
+                    $upd->bindParam(":student_id", $_SESSION['student_id'] );
                     $upd->bindParam(":question_id", $row['question_id']);
                     //BODOVANIE
-                    if ($lasan['point'] == null) {
+                    if($lasan['point'] == null) {
 
 
                         if ($row['type'] != 'connection') {
@@ -117,7 +124,7 @@
                                 //bodovanie pre short
                                 echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control'  type='number' name='points' value='" . $c['points'] . "'></td>";
                             } else {
-                                $upd->bindParam(":point", $zero);
+                                $upd->bindParam(":point",$zero );
                                 try {
                                     $upd->execute();
                                 } catch (Exception $e) {
@@ -127,7 +134,8 @@
                                 $tmp = 0;
                             }
                             //SPAJANIE BODOVANIE
-                        } else {
+                        }
+                        else {
                             $e->bindParam(":question_id", $row['question_id']);
                             $e->execute();
                             $r = $e->fetch();
@@ -135,7 +143,7 @@
                             //CONNECTION 1. ODPOVED
                             if ($row['question'] == 'answer1') {
                                 if (trim($r['answer1']) == trim($row['answer'])) {
-                                    $allright += 1;
+                                    $allright += 1 ;
                                     $upd->bindParam(":point", $c['points']);
                                     try {
                                         $upd->execute();
@@ -147,7 +155,7 @@
                                     //bodovanie
                                     echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
                                 } else {
-                                    $upd->bindParam(":point", $zero);
+                                    $upd->bindParam(":point",$zero );
                                     try {
                                         $upd->execute();
                                     } catch (Exception $e) {
@@ -160,7 +168,7 @@
                                 //CONNECTION 2. ODPOVED
                             } elseif ($row['question'] == 'answer2') {
                                 if (trim($r['answer2']) == trim($row['answer'])) {
-                                    $allright += 1;
+                                    $allright += 1 ;
                                     $upd->bindParam(":point", $c['points']);
                                     try {
                                         $upd->execute();
@@ -172,7 +180,7 @@
                                     echo "<td><input id='" . $row['question_id'] . "' style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
                                     $tmp = $tmp + $c['points'];
                                 } else {
-                                    $upd->bindParam(":point", $zero);
+                                    $upd->bindParam(":point",$zero );
                                     try {
                                         $upd->execute();
                                     } catch (Exception $e) {
@@ -185,7 +193,7 @@
                                 //CONNECTION 3. ODPOVED
                             } else {
                                 if (trim($r['answer3']) == trim($row['answer'])) {
-                                    $allright += 1;
+                                    $allright += 1 ;
 
                                     //bodovanie
                                     echo "<td><input id='" . $row['question_id'] . "'  style='width: 70px;' class='matchedit form-control' type='number' name='points' value='" . $c['points'] . "'></td>";
@@ -195,12 +203,13 @@
                                     $tmp = 0;
                                 }
                             }
-                            if ($allright == 3) {
+                            if($allright == 3){
                                 $points = $points + $c['points'];
                                 $allright = 0;
                             }
                         }
-                    } else {
+                    }
+                    else{
                         $upd->bindParam(":point", $lasan['point']);
                         try {
                             $upd->execute();
@@ -235,7 +244,7 @@
                             console.log(matchid);
                             $.ajax({
                                 url: 'NewPoints.php',
-                                data: {matchvalue: matchvalue, matchid: matchid},
+                                data: {matchvalue: matchvalue,matchid: matchid },
                                 type: 'post'
                             }).done(function (responseData) {
                                 console.log('Done: ', responseData);
@@ -250,16 +259,20 @@
             </table>
             <div style="padding-left: 25px; padding-top: 25px;" class="button-group">
                 <div class="input-group">
-                    <button type="button" class="btn btn-secondary" onClick="refreshPage()">Refresh</button>
+                    <button type="button" class="btn btn-secondary" onClick="refreshPage()">Update points</button>
                 </div>
             </div>
+
+
+
             <script>
-                function refreshPage() {
+                function refreshPage(){
                     window.location.reload();
                 }
             </script>
         </div>
     </div>
 </div>
+<script src="completed_matika.js"></script>
 </body>
 </html>
