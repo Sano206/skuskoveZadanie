@@ -29,7 +29,9 @@ if (isset($_SESSION['userId'])) {
 
 </head>
 <body>
-
+<div id="navbutton">
+    <a href="index.php?logout='1'" type="button" class="btn btn-danger btn-lg"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
 
 <div class="container w-50 shadow-lg" style="min-width: 580px;" id="content" >
     <!-- logged in user information -->
@@ -83,7 +85,7 @@ if (isset($_SESSION['userId'])) {
     </div>
 <div style="padding-left: 25px; padding-top: 25px">
     <a id="addtest" type="button" class="btn btn-secondary btn-md" href="createTest.php"><i class="far fa-plus-square"></i> Add new test</a>
-    <a href="index.php?logout='1'" type="button" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
 </div>
 </div>
 
