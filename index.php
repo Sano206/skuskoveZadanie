@@ -57,6 +57,7 @@ if (isset($_SESSION['userId'])) {
                         <th>Done</th>
                         <th>Delete</th>
                         <th>PDF</th>
+                        <th>CSV</th>
                     </tr>
                     </thead>
                     <?php
@@ -79,7 +80,7 @@ if (isset($_SESSION['userId'])) {
                         echo '<td>' . '<a href="students.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='fas fa-flag-checkered'></i></button>"."</a>".'</td>';
                         echo '<td>' . '<a href="deleteTest.php?id='. $test["id"]. '" >'. "<button class='btn btn-outline-danger btn-md' ><i style='width: 15px'; class='far fa-trash-alt'></i></button>"."</a>".'</td>';
                         echo '<td>' . '<a href="pdfExport.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='far fa-file-pdf'></i></button>"."</a>".'</td>';
-
+                        echo '<td>' . '<a href="csvExport.php?id='. $test["id"]. '" >'. "<button class='btn btn-secondary'><i style='width: 15px' class='far fa-file-pdf'></i></button>"."</a>".'</td>';
                         echo '</tr>';
                     }
 
